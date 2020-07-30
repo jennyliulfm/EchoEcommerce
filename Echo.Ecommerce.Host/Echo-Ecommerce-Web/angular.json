@@ -24,7 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -88,9 +94,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/metismenu/dist/metisMenu.js"
+            ]
           }
         },
         "lint": {
@@ -119,6 +134,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Echo-Ecommerce-Web"
+    }
+  },
+  "defaultProject": "Echo-Ecommerce-Web",
+  "cli": {
+    "analytics": "4da08590-c006-4557-8426-d40882009ab8"
+  }
 }

@@ -1,0 +1,51 @@
+/*
+ * Custom Styles
+ */
+.account-small-logo{
+  height: 80px;
+  width: auto;
+}
+
+/*
+ * Inspinia Header Overrides
+ */
+.primary-page-heading {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 20px 0 15px 0;
+}
+
+.secondary-page-heading {
+  margin: 10px 0 15px 0;
+}
+
+.breadcrumb {
+  background: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.ibox-tools {
+  button {
+    margin-top: -5px;
+  }
+}
+
+.modal-header {
+  h4 {
+    margin-top: 2px;
+  }
+}
+
+.modal-form {
+  .form-group {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Date Picker in Modal Hack */
+bs-datepicker-container {
+  z-index: 3000 !important;
+}
