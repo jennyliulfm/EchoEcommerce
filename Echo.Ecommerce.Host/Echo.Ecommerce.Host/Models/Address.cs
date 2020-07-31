@@ -12,5 +12,24 @@ namespace Echo.Ecommerce.Host.Models
         public string Street { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+
+        public Address ()
+        {
+
+        }
+
+        public Address (Entities.Address  address)
+        {
+            this.AddressId = address.AddressId;
+
+            if ( address.User != null)
+            {
+                this.User = new Models.User(address.User);
+            }
+          
+            this.Street = address.Street;
+            this.City = address.City;
+            this.Country = address.Country;
+        }
     }
 }

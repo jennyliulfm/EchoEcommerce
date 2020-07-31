@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Echo.Ecommerce.Host.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,7 @@ namespace Echo.Ecommerce.Host.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly ILogger _logger;
@@ -30,7 +32,10 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var products = this._dbContext.Products.OrderBy(p => p.ProductId).AsNoTracking()
+                var products = this._dbContext.Products.OrderBy( p => p.Title)
+                    .Where( p => p.IsDeleted == false )
+                    .AsNoTracking()
+                    .Select( p => new Models.Product( p ))
                     .ToList();
 
                 if (products.Count > 0)
@@ -47,7 +52,6 @@ namespace Echo.Ecommerce.Host.Controllers
                 this._logger.LogError(ex, "GetAllProducts Failed");
                 return BadRequest();
             }
-
         }
 
         [HttpPost]
@@ -57,15 +61,18 @@ namespace Echo.Ecommerce.Host.Controllers
             try
             {
                 //Verify whether the product exists in DB or Not
-                var product = await this._dbContext.Products.FirstOrDefaultAsync(c => c.Title.ToUpper().Equals(model.Name.ToUpper()));
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(c => c.Title.ToUpper().Equals(model.Title.ToUpper()));
                 if (product != null) return Ok("Product is in the DB");
+
+                var cateogry = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == model.Category.CategoryId);
+                if (cateogry == null) return NotFound("Cateogry Not Found");
 
                 Echo.Ecommerce.Host.Entities.Product newProduct = new Entities.Product()
                 {
-                    Title = model.Name,
+                    Title = model.Title,
                     Price = model.Price,
                     Description = model.Description,
-                    //Category = new Entities.Category() { }
+                    Category = cateogry,
                 };
 
                 await this._dbContext.Products.AddAsync(newProduct);
@@ -152,13 +159,16 @@ namespace Echo.Ecommerce.Host.Controllers
 
                 if (product != null)
                 {
-                    //Soft delete
                     product.Price = model.Price;
-                    product.Title = model.Name;
+                    product.Title = model.Title;
                     product.Description = model.Description;
-                    _dbContext.Entry(product).State = EntityState.Modified;
+
+                    //Todo: Need to deal with its cateogry
+                    // For new category, need to link them together
+                    // For old category, need to update it information
+
                     await this._dbContext.SaveChangesAsync();
-                    return Ok(product);
+                    return Ok( new Models.Product(product));
                 }
                 else
                 {
@@ -170,9 +180,7 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 this._logger.LogError(ex, "DeleteProductById Failed");
                 return BadRequest();
-
             }
-
         }
     }
 }
