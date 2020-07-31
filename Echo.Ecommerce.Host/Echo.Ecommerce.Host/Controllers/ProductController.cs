@@ -30,8 +30,8 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var products = this._dbContext.Products.OrderBy(c => c.ProductId).AsNoTracking()
-                .ToList();
+                var products = this._dbContext.Products.OrderBy(p => p.ProductId).AsNoTracking()
+                    .ToList();
 
                 if (products.Count > 0)
                 {
@@ -52,20 +52,20 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        public async Task<ActionResult<Models.Category>> AddProduct(Models.Product product)
+        public async Task<ActionResult<Models.Category>> AddProduct(Models.Product model)
         {
             try
             {
-                //Verify whether the catogry exists in DB or Not
-                var _product = await this._dbContext.Products.FirstOrDefaultAsync(c => c.Title.ToUpper().Equals(product.Name.ToUpper()));
-                if (_product != null) return Ok("Product is in the DB");
+                //Verify whether the product exists in DB or Not
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(c => c.Title.ToUpper().Equals(model.Name.ToUpper()));
+                if (product != null) return Ok("Product is in the DB");
 
                 Echo.Ecommerce.Host.Entities.Product newProduct = new Entities.Product()
                 {
-                    Title = product.Name,
-                    Price = product.Price,
-                    Description = product.Description,
-                    //Category = product.Category
+                    Title = model.Name,
+                    Price = model.Price,
+                    Description = model.Description,
+                    Category = new Entities.Category() { }
                 };
 
                 await this._dbContext.Products.AddAsync(newProduct);
@@ -73,7 +73,7 @@ namespace Echo.Ecommerce.Host.Controllers
                 int result = await this._dbContext.SaveChangesAsync();
                 if (result > 0)
                 {
-                    return Ok(newProduct);
+                    return Ok(new Models.Product(newProduct));
                 }
                 else
                 {
@@ -87,59 +87,90 @@ namespace Echo.Ecommerce.Host.Controllers
             }
         }
 
-        //[HttpGet]
-        //[Route("GetCategoryById")]
-        //public async Task<ActionResult<Models.Category>> GetCategoryById(int categoryId)
-        //{
-        //    try
-        //    {
-        //        var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+        [HttpGet]
+        [Route("GetProductById")]
+        public async Task<ActionResult<Models.Product>> GetProductById(int productId)
+        {
+            try
+            {
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
 
-        //        if (category != null)
-        //        {
-        //            return Ok(new Models.Category(category));
-        //        }
-        //        else
-        //        {
-        //            return NotFound($"Category ({categoryId}) Not Found");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        this._logger.LogError(ex, "GetCategoryById Failed");
-        //        return BadRequest();
-        //    }
-        //}
+                if (product != null)
+                {
+                    return Ok(new Models.Product(product));
+                }
+                else
+                {
+                    return NotFound($"Product ({productId}) Not Found");
+                }
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "GetProductById Failed");
+                return BadRequest();
+            }
+        }
 
-        //[HttpDelete]
-        //[Route("DeleteCategoryById")]
-        //public async Task<ActionResult> DeleteCategoryById(int cateogryId)
-        //{
-        //    try
-        //    {
-        //        var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == cateogryId);
+        [HttpDelete]
+        [Route("DeleteProductById")]
+        public async Task<ActionResult> DeleteProductById(Models.Product model)
+        {
+            try
+            {
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
 
-        //        if (category != null)
-        //        {
-        //            //Soft delete
-        //            category.IsDeleted = true;
+                if (product != null)
+                {
+                    //Soft delete
+                    product.IsDeleted = true;
 
-        //            await this._dbContext.SaveChangesAsync();
-        //            return Ok();
-        //        }
-        //        else
-        //        {
-        //            return BadRequest();
-        //        }
+                    await this._dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        this._logger.LogError(ex, "DeleteCategoryById Failed");
-        //        return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "DeleteProductById Failed");
+                return BadRequest();
 
-        //    }
+            }
 
-        //}
+        }
+
+        [HttpPut]
+        [Route("UpdateProduct")]
+        public async Task<ActionResult> UpdateProduct(int productId)
+        {
+            try
+            {
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
+
+                if (product != null)
+                {
+                    //Soft delete
+                    product.IsDeleted = true;
+
+                    await this._dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "DeleteProductById Failed");
+                return BadRequest();
+
+            }
+
+        }
     }
 }
