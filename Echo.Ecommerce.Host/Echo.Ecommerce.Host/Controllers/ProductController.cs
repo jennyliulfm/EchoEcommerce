@@ -113,7 +113,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpDelete]
         [Route("DeleteProductById")]
-        public async Task<ActionResult> DeleteProductById(Models.Product model)
+        public async Task<ActionResult> DeleteProductById(int productId)
         {
             try
             {
@@ -144,19 +144,21 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPut]
         [Route("UpdateProduct")]
-        public async Task<ActionResult> UpdateProduct(int productId)
+        public async Task<ActionResult> UpdateProduct(Models.Product model)
         {
             try
             {
-                var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == productId);
+                var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == model.ProductId);
 
                 if (product != null)
                 {
                     //Soft delete
-                    product.IsDeleted = true;
-
+                    product.Price = model.Price;
+                    product.Title = model.Name;
+                    product.Description = model.Description;
+                    _dbContext.Entry(product).State = EntityState.Modified;
                     await this._dbContext.SaveChangesAsync();
-                    return Ok();
+                    return Ok(product);
                 }
                 else
                 {

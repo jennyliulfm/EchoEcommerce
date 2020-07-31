@@ -10,5 +10,13 @@ namespace Echo.Ecommerce.Host.Models
   
         public double Price { get; set; }
         public Category Category { get; set; }
+
+        public Product(Entities.Product product)
+        {
+            Name = product.Title;
+            Description = product.Description;
+            Price = product.Price;
+            Category = new Models.Category() { };
+        }
     }
 }

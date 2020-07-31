@@ -1,0 +1,42 @@
+<nav class="navbar-default navbar-static-side" role="navigation" >
+    <div class="sidebar-collapse">
+      <ul id="side-menu" class="nav metismenu">
+        <li class="nav-header" style=" background-color: #125430;">
+          <!-- <div class="logo-element">
+              <img alt="image" src="" />
+          </div> -->    
+          <div class="profile-element" *ngIf=""> 
+              <a> 
+                  <span class="block m-t-xs"> <strong class="font-bold"></strong> </span>
+                  <span class="text-muted text-xs block"></span>
+              </a>
+             
+          </div>
+      </li>  
+        <ng-container *ngFor="let page of pages; let index = index">
+          <li [class.active]="dropdownIndex === index || page.route === activeRoute"> 
+            <a [routerLink]="page.route ? [page.route] : []" (click)="openDropdown(index)">
+              <i class="fa" [ngClass]="page.icon"></i>
+              <span class="nav-label">{{ page.name }}</span>
+              <span *ngIf="!page.route" class="fa arrow"></span>
+            </a>
+            <ul *ngIf="page.children" class="nav nav-second-level"
+              [ngClass]="dropdownIndex === index ? 'collapse in' : 'collapse'"
+              [attr.aria-expanded]="dropdownIndex === index">
+              <ng-container *ngFor="let child of page.children">
+                <li> 
+                  <a *ngIf="!child.external" [routerLink]="child.route">
+                    {{ child.name }}
+                  </a>
+                  <a *ngIf="child.external" [href]="child.route" target="_blank">
+                    {{ child.name }}
+                  </a>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+  

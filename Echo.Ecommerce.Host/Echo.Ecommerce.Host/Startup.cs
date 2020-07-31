@@ -43,8 +43,17 @@ namespace Echo.Ecommerce.Host
 
             #region DBSetup
 
-            services.AddDbContext<DBContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // Configure for mssql
+            //services.AddDbContext<DBContext>(
+            //   options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //Configure for mysql
+            services.AddDbContextPool<DBContext>(options => options
+                // replace with your connection string
+                .UseMySql(Configuration.GetConnectionString("DefaultConnection"), mySqlOptions => mySqlOptions
+                    // replace with your Server Version and Type
+                    .ServerVersion(new Version(8, 0, 19), ServerType.MySql)
+            ));
 
             services.AddIdentity<Entities.User, IdentityRole>()
                 .AddEntityFrameworkStores<DBContext>()

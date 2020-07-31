@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Startup.cs">
     <Files>
-      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="42" Column="33" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="151" Column="116" />
       <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="36" Column="27" />
-      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="19" Column="40" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="19" Column="50" />
       <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Entities/User.cs" Line="1" Column="1" />
@@ -14,16 +14,24 @@
       <File FileName="Echo.Ecommerce.Host/Entities/OrderStatus.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Migrations/20200731001215_Initial.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Migrations/DBContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/Address.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Entities" expanded="True" />
+              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
