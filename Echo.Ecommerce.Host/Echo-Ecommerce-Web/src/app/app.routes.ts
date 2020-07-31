@@ -18,8 +18,6 @@ export const routes: Routes = [
       component: BasicLayoutComponent,
       children: [ 
         { path: 'home', component: HomeComponent },
-        { path: 'signup', component: SignupComponent }
-
       ]
     },
   ];

@@ -158,7 +158,7 @@ namespace Echo.Ecommerce.Host.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("UserLogin")]
         public async Task<ActionResult> UserLogin(Models.User model)
         {
@@ -166,7 +166,7 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null) return NotFound("User Not Found");
-                if (user.EmailConfirmed == false) return BadRequest("Email Not Confirmed");
+              //  if (user.EmailConfirmed == false) return BadRequest("Email Not Confirmed");
 
                 var result = this._userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
 

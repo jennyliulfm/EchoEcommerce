@@ -1,0 +1,10 @@
+
+*/obj
+*/node_modules
+yarn.lock
+package-lock.json
+
+*/.dll
+
+*~
+.DS_Store
