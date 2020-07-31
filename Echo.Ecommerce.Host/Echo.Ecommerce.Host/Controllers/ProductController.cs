@@ -52,7 +52,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        public async Task<ActionResult<Models.Category>> AddProduct(Models.Product model)
+        public async Task<ActionResult<Models.Product>> AddProduct(Models.Product model)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Echo.Ecommerce.Host.Controllers
                     Title = model.Name,
                     Price = model.Price,
                     Description = model.Description,
-                    Category = new Entities.Category() { }
+                    //Category = new Entities.Category() { }
                 };
 
                 await this._dbContext.Products.AddAsync(newProduct);

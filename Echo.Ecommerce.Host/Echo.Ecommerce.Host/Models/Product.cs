@@ -18,5 +18,10 @@ namespace Echo.Ecommerce.Host.Models
             Price = product.Price;
             Category = new Models.Category() { };
         }
+
+        public Product()
+        {
+
+        }
     }
 }
