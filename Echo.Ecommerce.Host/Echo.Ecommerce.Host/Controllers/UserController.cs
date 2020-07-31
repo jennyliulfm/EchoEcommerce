@@ -12,6 +12,9 @@ using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Echo.Ecommerce.Host.Controllers
 {
@@ -154,5 +157,52 @@ namespace Echo.Ecommerce.Host.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        [Route("UserLogin")]
+        public async Task<ActionResult> UserLogin(Models.User model)
+        {
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null) return NotFound("User Not Found");
+                if (user.EmailConfirmed == false) return BadRequest("Email Not Confirmed");
+
+                var result = this._userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
+
+                if (user != null && result == PasswordVerificationResult.Success)
+                {
+                    var tokenDescriber = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                        new Claim("UserId", user.Id.ToString())
+                        }),
+
+                        Expires = DateTime.UtcNow.AddMinutes(30),
+
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._appSettings.JWTSecret)), SecurityAlgorithms.HmacSha256Signature)
+                    };
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var securityToken = tokenHandler.CreateToken(tokenDescriber);
+                    var token = tokenHandler.WriteToken(securityToken);
+
+                    return Ok(new { token });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid Email or Password" });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, $"UserLogin Failed");
+                return BadRequest();
+            }
+          
+        }
+
     }
 }
