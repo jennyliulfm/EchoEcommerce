@@ -17,7 +17,8 @@ export class NavigationComponent implements OnChanges {
   public pages: Array<NavigationItem> = [
     { name: 'Fruits & Vegetables', icon: 'fa-building', route: '', },
     { name: 'Meat', icon: 'fa-building', route: '', },
-    { name: 'Milk', icon: 'fa-shopping-cart', route: '',}, 
+    { name: 'Milk', icon: 'fa-shopping-cart', route: '',},
+    { name: 'Administration', icon: 'fa-shopping-cart', route: 'admin/product', }
   ];
   constructor(
     private router: Router,

@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormBuilder, Validators, FormGroup, Form } from '@angular/forms';
 import { UserService } from "../../../services/user.service"
-import { User, UserLogin } from "../../../models/User"
+import { User, UserLogin } from "../../../models/model"
 
 
 interface UserForm {

@@ -1,16 +1,24 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/ProductController.cs">
     <Files>
       <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="167" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="17" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="11" Column="2" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="9" Column="44" />
+      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="12" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="76" Column="2" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="26" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Program.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="ProductController.cs" selected="True" />
+              </Node>
+              <Node name="Entities" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>

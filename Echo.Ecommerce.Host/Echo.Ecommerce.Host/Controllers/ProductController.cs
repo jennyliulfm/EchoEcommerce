@@ -14,7 +14,7 @@ namespace Echo.Ecommerce.Host.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ProductController : ControllerBase
     {
         private readonly ILogger _logger;
@@ -55,8 +55,8 @@ namespace Echo.Ecommerce.Host.Controllers
         }
 
         [HttpPost]
-        [Route("AddProduct")]
-        public async Task<ActionResult<Models.Product>> AddProduct(Models.Product model)
+        [Route("CreateProduct")]
+        public async Task<ActionResult<Models.Product>>  CreateProduct(Models.Product model)
         {
             try
             {
@@ -64,15 +64,16 @@ namespace Echo.Ecommerce.Host.Controllers
                 var product = await this._dbContext.Products.FirstOrDefaultAsync(c => c.Title.ToUpper().Equals(model.Title.ToUpper()));
                 if (product != null) return Ok("Product is in the DB");
 
-                var cateogry = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == model.Category.CategoryId);
-                if (cateogry == null) return NotFound("Cateogry Not Found");
+                //var cateogry = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == model.Category.CategoryId);
+                //if (cateogry == null) return NotFound("Cateogry Not Found");
 
                 Echo.Ecommerce.Host.Entities.Product newProduct = new Entities.Product()
                 {
                     Title = model.Title,
-                    Price = model.Price,
+                    Price = Double.Parse(model.Price),
                     Description = model.Description,
-                    Category = cateogry,
+                    //Category = cateogry,
+                  
                 };
 
                 await this._dbContext.Products.AddAsync(newProduct);
@@ -159,7 +160,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
                 if (product != null)
                 {
-                    product.Price = model.Price;
+                    product.Price = Double.Parse(model.Price);
                     product.Title = model.Title;
                     product.Description = model.Description;
 

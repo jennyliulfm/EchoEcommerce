@@ -8,14 +8,14 @@ namespace Echo.Ecommerce.Host.Models
         public string Title{ get; set; }
         public string Description { get; set; }
   
-        public double Price { get; set; }
+        public string Price { get; set; }
         public Category Category { get; set; }
 
         public Product(Entities.Product product)
         {
             Title = product.Title;
             Description = product.Description;
-            Price = product.Price;
+            Price = product.Price.ToString();
 
             if(product.Category != null )
             {
@@ -29,9 +29,6 @@ namespace Echo.Ecommerce.Host.Models
 
         }
 
-        public Product()
-        {
-
-        }
+ 
     }
 }

@@ -10,6 +10,7 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProductComponent } from './components/adminstrator/product/product.component';
 
 
 export const routes: Routes = [
@@ -18,6 +19,8 @@ export const routes: Routes = [
       component: BasicLayoutComponent,
       children: [ 
         { path: 'home', component: HomeComponent },
+        { path: 'admin/product', component: ProductComponent },
+
       ]
     },
   ];
