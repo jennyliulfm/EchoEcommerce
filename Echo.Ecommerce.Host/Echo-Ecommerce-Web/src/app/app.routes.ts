@@ -10,7 +10,7 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
-import { SignupComponent } from './signup/signup.component';
+
 
 export const routes: Routes = [
     {

@@ -19,7 +19,7 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { SignupComponent } from './signup/signup.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { SignupComponent } from './signup/signup.component';
     LogoutComponent,
     LoginComponent,
     HomeComponent,
-    SignupComponent
+
   ],
   imports: [
     BrowserModule,
