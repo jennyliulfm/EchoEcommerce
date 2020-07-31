@@ -8,3 +8,8 @@ package-lock.json
 
 *~
 .DS_Store
+
+/Echo.Ecommerce.Host/bin/*
+/Echo.Ecommerce.Host/obj/*
+/Echo-Ecommerce-Web/node_modules/*
+/Echo-Ecommerce-Web/dist/*

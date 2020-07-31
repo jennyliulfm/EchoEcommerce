@@ -28,5 +28,10 @@ namespace Echo.Ecommerce.Host.Models
         {
 
         }
+
+        public Product()
+        {
+
+        }
     }
 }
