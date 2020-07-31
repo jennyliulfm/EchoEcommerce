@@ -40,34 +40,37 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPost]
         [Route("RegisterUser")]
-        public async Task<ActionResult> RegisterUser(Models.User model)
+        public async Task<ActionResult<Models.User>> RegisterUser(Models.User model)
         {
             try
             {
                 //Verify whether the mail exists or not. 
-                var user = this._dbContext.AppUsers.FirstOrDefault(u => u.Email.Equals(model.Email));
+                var user = await this._userManager.FindByEmailAsync(model.Email);
                 if (user != null) return BadRequest("Email has been used");
 
                 Entities.User newUser = new Entities.User()
                 {
                     Email = model.Email,
-                    UserName = String.Format("{0} {1}", model.FirstName, model.LastName),
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Email,
                 };
 
                 var hashPassword = _userManager.PasswordHasher.HashPassword(newUser, model.Password);
                 newUser.PasswordHash = hashPassword;
 
-                await this._dbContext.AppUsers.AddAsync(newUser);
+                //Normalized UserName and Email
+                var result = await this._userManager.CreateAsync(newUser);
 
-                int result = await this._dbContext.SaveChangesAsync();
-                if (result > 0)
+                if ( result.Succeeded )
                 {
-                    this.SendMail(newUser);
-                    return Ok();
+                    this.SendConfirmedMail( newUser );
+                    return Ok( new Models.User( newUser ) );
                 }
                 else
                 {
-                    return BadRequest();
+                    this._logger.LogError($"RegisterUser Error: {result.Errors.ToString()}")
+;                    return BadRequest();
                 }
             }
             catch (Exception ex)
@@ -78,7 +81,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         }
 
-        private void SendMail(Entities.User user)
+        private void SendConfirmedMail(Entities.User user)
         {
             try
             {
@@ -115,8 +118,41 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 this._logger.LogError(ex, "SendMail Failed");
             }
-          
+        }
 
+        [HttpPut]
+        [Route("ConfirmUserEmailById")]
+        public async Task<ActionResult> ConfirmUserEmailById(string userId)
+        {
+            try
+            {
+                var user = await this._userManager.FindByIdAsync(userId);
+
+                if ( user != null)
+                {
+                    user.EmailConfirmed = true;
+
+                    var result  = await this._userManager.UpdateAsync(user);
+
+                    if ( result.Succeeded )
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                }
+                else
+                {
+                    return NotFound("User Not Found");
+                }
+            }
+            catch(Exception ex)
+            {
+                this._logger.LogError(ex, $"ConfirmUserEmailById {userId} Failed");
+                return BadRequest();
+            }
         }
     }
 }

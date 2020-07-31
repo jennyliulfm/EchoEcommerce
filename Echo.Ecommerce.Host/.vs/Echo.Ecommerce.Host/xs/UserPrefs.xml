@@ -1,6 +1,7 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Startup.cs">
     <Files>
+<<<<<<< Updated upstream
       <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="151" Column="116" />
       <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="36" Column="27" />
@@ -19,6 +20,10 @@
       <File FileName="Echo.Ecommerce.Host/Models/Address.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+=======
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="206" Column="10" />
+      <File FileName="Echo.Ecommerce.Host/Models/User.cs" Line="31" Column="43" />
+>>>>>>> Stashed changes
       <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -28,11 +33,18 @@
             <Node name="Echo.Ecommerce.Host" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
+<<<<<<< Updated upstream
               <Node name="Entities" expanded="True" />
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
+=======
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+>>>>>>> Stashed changes
               <Node name="Startup.cs" selected="True" />
             </Node>
+            <Node name="Echo.Ecommerce.Test" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -42,7 +54,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Echo.Ecommerce.Host PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="51" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="132" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
