@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/appsettings.json">
+    <Files>
+      <File FileName="Echo.Ecommerce.Test/GenerateApis.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Test/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Test/RestApi.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="14" Column="62" />
+      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="51" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Echo.Ecommerce.Host" expanded="True">
+            <Node name="Echo.Ecommerce.Host" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Echo.Ecommerce.Host" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Echo.Ecommerce.Host PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
