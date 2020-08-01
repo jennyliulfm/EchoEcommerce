@@ -1,25 +1,28 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/UserController.cs">
     <Files>
-      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="167" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="17" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="20" Column="9" />
-      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="11" Column="34" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="36" Column="43" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="34" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="15" Column="27" />
-      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="133" Column="72" />
+      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="10" Column="30" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="33" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="26" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="188" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="146" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="26" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="16" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" Line="47" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="33" Column="29" />
+      <File FileName="Echo.Ecommerce.Host/Entities/User.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UserController.cs" selected="True" />
+              </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -36,9 +39,8 @@
   <MonoDevelop.Ide.ItemProperties.Echo.Ecommerce.Host PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="51" column="1" />
-      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="167" column="1" />
-      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/ProductController.cs" relfile="Echo.Ecommerce.Host/Controllers/ProductController.cs" line="65" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="168" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="133" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

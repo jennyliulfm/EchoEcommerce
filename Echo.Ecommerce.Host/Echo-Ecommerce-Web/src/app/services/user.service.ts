@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, UserLogin } from "../models/model"
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private readonly BaseURL: string ="https://localhost:5001/User";
+  private readonly BaseURL: string = "https://localhost:5001/User";
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +26,14 @@ export class UserService {
   UserLogin(user: UserLogin): Observable<any> {
     return this.http.post(this.BaseURL + '/UserLogin', user);
   }
-  
+
+  /**
+   * Confirm user account
+   */
+  confirmEmail(uId: string) {
+    let params = new HttpParams();
+    let testing = { userId: uId};
+    
+    return this.http.post(this.BaseURL + '/ConfirmUserEmailById', {}, { params: {userId: uId}});
+  }
 }

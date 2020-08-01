@@ -105,10 +105,7 @@ export class TopnavigationComponent implements OnInit {
    * createUser()
    */
   createUser() {
-    
     this.userSignupModal.hide();
-    this.userGroupModel.reset();
-
     const args: User = {
       firstName: this.userFormGroupValue.firstName,
       lastName: this.userFormGroupValue.lastName,
@@ -117,17 +114,19 @@ export class TopnavigationComponent implements OnInit {
     };
 
     this.userSerive.CreateUser(args).subscribe(
-        res => {
-          if (res) {
-            this.toasterService.success(`Your Account Has been Created Successfully, Please Check Your Email to Confirm Your Account`);
+      res => {
+        if (res) {
+          this.toasterService.success(`Your Account Has been Created Successfully, Please Check Your Email to Confirm Your Account`);
+         
+          this.userGroupModel.reset();
 
-          }       
-        },
-        err => {
-          this.toasterService.error(`${err.error.message}`)  
-          console.error("ERROR: createUser", err);     
         }
-      )
+      },
+      err => {
+        this.toasterService.error(`${err.error.message}`)
+        console.error("ERROR: createUser", err);
+      }
+    )
 
   }
 
@@ -145,16 +144,16 @@ export class TopnavigationComponent implements OnInit {
     this.userSerive.UserLogin(args).subscribe(
       res => {
         if (res) {
-         
+
           this.toasterService.success(`You have successfully login`);
-          localStorage.setItem('token',res.token);
-    
-        }       
+          localStorage.setItem('token', res.token);
+
+        }
       },
       err => {
-        
+
         this.toasterService.error(`${err.error.message}`)
-        console.error("ERROR: createUser", err);     
+        console.error("ERROR: createUser", err);
       }
     );
 
