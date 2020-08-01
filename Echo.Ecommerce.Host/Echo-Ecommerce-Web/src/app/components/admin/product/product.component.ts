@@ -2,15 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormBuilder, Validators, FormGroup, Form } from '@angular/forms';
 import { ProductService } from '../../../services/product.service'
-import { Product, Category} from 'src/app/models/model';
+import { CategoryService } from '../../../services/category.service'
+import { Product, Category } from 'src/app/models/model';
 import { ToastrService } from 'ngx-toastr';
 
 
 interface ProductForm {
-  title: string;
+  name: string;
   description: string;
-  price: string;
-  cateogry: Category;
+  price: number;
+  cateogryId: number;
 }
 
 @Component({
@@ -21,20 +22,26 @@ interface ProductForm {
 export class ProductComponent implements OnInit {
 
   @ViewChild('productModal', { static: false }) productModal: ModalDirective;
-  
-  public products?: Array<Product> ;
+
+  public products?: Array<Product>;
+  public categories?: Array<Category>;
 
   constructor(
     private productService: ProductService,
     private formBuilder: FormBuilder,
-    private toasterService: ToastrService) { 
+    private toasterService: ToastrService,
+    private categoryService: CategoryService) {
 
-    }
+  }
 
   ngOnInit(): void {
-    
-    this.getAllProducts();  
+    this.getAllProducts();
+    this.getAllCategories();
   }
+  /**
+   * 
+   */
+
 
   /**
    * Get all products
@@ -43,26 +50,18 @@ export class ProductComponent implements OnInit {
     this.productService.getAllProducts().subscribe(
       res => {
         this.products = res;
-        console.log(res);    
-        console.log(this.products);
       },
       err => {
-        console.error("ERROR: createUser", err);     
+        console.error("Error: getAllProducts", err);
       }
     )
   }
-  /**
-   * Open product moda.
-   */
-  openProductModal() {
-    this.productModal.show();
-  }
 
   public readonly productGroupModel: FormGroup = this.formBuilder.group({
-    title: ['', Validators.required],
+    name: ['', Validators.required],
     description: ['', Validators.required],
     price: ['', Validators.required],
-    category: ['', Validators.required],
+    categoryId: ['', Validators.required],
   });
 
   get productFormGroupValue(): ProductForm {
@@ -72,39 +71,72 @@ export class ProductComponent implements OnInit {
   /**
    * 
    */
-
   closeProductModal() {
-   this.productModal.hide();
+    this.productModal.hide();
   }
 
+  /**
+  * Open product moda.
+  */
+  openProductModal() {
+    this.productModal.show();
+  }
   /**
    * Create new product
    */
   createProduct() {
-
     const args: Product = {
-      title: this.productFormGroupValue.title,
-      price: this.productFormGroupValue.price,
+      name: this.productFormGroupValue.name,
+      price: Number(this.productFormGroupValue.price),
       description: this.productFormGroupValue.description,
-      category: this.productFormGroupValue.cateogry,
+      category: this.getSelectedCategory(),
       productId: 0
     };
+
 
     this.productService.createNewProduct(args).subscribe(
       res => {
         if (res) {
           this.toasterService.success(`Product has been creates successfully`);
-          
-          this.productModal.hide(); 
-          this.productGroupModel.reset();     
-          
+
+          this.productModal.hide();
+          this.productGroupModel.reset();
+
           this.getAllProducts();
-        }       
+        }
       },
       err => {
-        console.error("ERROR: createProduct", err);     
+        console.error("ERROR: createProduct", err);
       }
     )
+
+  }
+
+  /**
+   * Get all cateogries
+   */
+  getAllCategories() {
+    this.categoryService.getAllCateogries().subscribe(
+      res => {
+        this.categories = res;
+      },
+
+      err => {
+        console.log("ERROR: getAllCategories")
+      }
+    )
+  }
+
+  /**
+   * Get Category By Id
+   */
+  getSelectedCategory() {
+    console.log(this.productGroupModel.value.categoryId);
+    for (let category of this.categories) {
+      if (category.categoryId == Number(this.productGroupModel.value.categoryId)) {
+        return category;
+      }
+    }
 
   }
 

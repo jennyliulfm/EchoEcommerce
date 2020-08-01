@@ -11,25 +11,30 @@ export class NavigationComponent implements OnChanges {
 
   @Input() isNavigationOpen: boolean;
 
-  
+
   public dropdownIndex = -1;
   public activeRoute: string;
   public pages: Array<NavigationItem> = [
     { name: 'Fruits & Vegetables', icon: 'fa-building', route: '', },
     { name: 'Meat', icon: 'fa-building', route: '', },
-    { name: 'Milk', icon: 'fa-shopping-cart', route: '',},
-    { name: 'Administration', icon: 'fa-shopping-cart', route: 'admin/product', }
+    { name: 'Milk', icon: 'fa-shopping-cart', route: '', },
+    {
+      name: 'Administration', icon: 'fa-shopping-cart', route: 'admin/product', children: [
+        { name: 'Product', external: false, route: '/admin/product', },
+        { name: 'Category', external: false, route: '/admin/category' }
+      ]
+    }
   ];
   constructor(
     private router: Router,
-    
+
   ) {
-      // Watch for route changes
-      router.events.subscribe(val => {
-        const route: any = val;
-        if (route.url) { this.activeRoute = route.url; }
-      });
-    }
+    // Watch for route changes
+    router.events.subscribe(val => {
+      const route: any = val;
+      if (route.url) { this.activeRoute = route.url; }
+    });
+  }
 
   ngAfterViewInit() {
   }
@@ -42,7 +47,7 @@ export class NavigationComponent implements OnChanges {
   }
 
   logout() {
-  
+
   }
 
   openDropdown(index: number) {

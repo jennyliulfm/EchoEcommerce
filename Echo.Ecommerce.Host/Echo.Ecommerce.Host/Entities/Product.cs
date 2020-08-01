@@ -12,7 +12,7 @@ namespace Echo.Ecommerce.Host.Entities
         public int ProductId { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
 
         [Required]

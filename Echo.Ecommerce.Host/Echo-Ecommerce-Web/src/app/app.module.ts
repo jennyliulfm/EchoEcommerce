@@ -19,7 +19,8 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProductComponent } from './components/adminstrator/product/product.component';
+import { ProductComponent } from './components/admin/product/product.component';
+import { CategoryComponent } from './components/admin/category/category.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProductComponent } from './components/adminstrator/product/product.comp
     LoginComponent,
     HomeComponent,
     ProductComponent,
+    CategoryComponent,
 
   ],
   imports: [

@@ -13,9 +13,9 @@ export interface UserLogin {
 
 export interface Product {
     productId: number,
-    title: string,
+    name: string,
     description?: string,
-    price: string,
+    price: number,
     category: Category
 }
 
