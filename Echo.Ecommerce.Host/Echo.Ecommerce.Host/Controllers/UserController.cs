@@ -74,8 +74,8 @@ namespace Echo.Ecommerce.Host.Controllers
                 else
                 {
                     this._logger.LogError($"RegisterUser Error: {result.Errors.ToString()}")
-;                    return BadRequest();
-                }
+;                    return BadRequest( new { message = "You are having trouble of creating the account, please try later" } );
+}
             }
             catch (Exception ex)
             {
@@ -127,13 +127,13 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPut]
         [Route("ConfirmUserEmailById")]
-        public async Task<ActionResult> ConfirmUserEmailById(string userId)
+        public async Task<ActionResult> ConfirmUserEmailById(Models.User model)
         {
             try
             {
-                var user = await this._userManager.FindByIdAsync(userId);
+                var user = await this._userManager.FindByIdAsync(model.Id);
 
-                if ( user != null)
+                if ( user != null && user.EmailConfirmed == false)
                 {
                     user.EmailConfirmed = true;
 
@@ -141,21 +141,21 @@ namespace Echo.Ecommerce.Host.Controllers
 
                     if ( result.Succeeded )
                     {
-                        return Ok();
+                        return Ok( );
                     }
                     else
                     {
-                        return BadRequest();
+                        return BadRequest(new { message = "User Not Found or Expired URL" });
                     }
                 }
                 else
                 {
-                    return NotFound("User Not Found");
+                    return Ok();
                 }
             }
             catch(Exception ex)
             {
-                this._logger.LogError(ex, $"ConfirmUserEmailById {userId} Failed");
+                this._logger.LogError(ex, $"ConfirmUserEmailById Failed");
                 return BadRequest();
             }
         }
@@ -178,7 +178,7 @@ namespace Echo.Ecommerce.Host.Controllers
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                        new Claim("UserId", user.Id.ToString())
+                            new Claim("UserId", user.Id.ToString())
                         }),
 
                         Expires = DateTime.UtcNow.AddMinutes(30),
@@ -194,7 +194,7 @@ namespace Echo.Ecommerce.Host.Controllers
                 }
                 else
                 {
-                    return BadRequest(new { message = "Invalid Email or Password" });
+                    return BadRequest( new { message = "Invalid Email or Password" } );
                 }
 
             }

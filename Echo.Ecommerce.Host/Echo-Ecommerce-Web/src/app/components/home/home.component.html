@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box" *ngFor="let product of products; let i = index;">
+
+                    <div class="product-imitation">
+                        [ INFO ]
+                    </div>
+                    <div class="product-desc">
+                        <span class="product-price">
+                            {{ product.price | currency }}
+                        </span>
+                        <small class="text-muted">{{ product.category.categoryName }}</small>
+                        <a class="product-name"> {{ product.name }}</a>
+
+                        <div class="small m-t-xs">
+                            {{ product.description }}
+                        </div>
+                        <div class="m-t text-righ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -13,7 +13,7 @@
 
 <div class="wrapper wrapper-content">
     <div class="row">
-        <div class="col-lg-8 col-md-12">
+        <div class="col-lg-12 col-md-12">
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>Products</h5>
@@ -38,10 +38,10 @@
                             <tbody>
                                 <tr class="gradeX" *ngFor="let product of products; let i = index;">
                                     <td>{{ product.productId }}</td>
-                                    <td>{{ product.name}}</td>
+                                    <td>{{ product.name }}</td>
                                     <td>{{ product.price | currency }}</td>
-                                    <td>{{ product.description}}</td>
-                                    <td>{{ product.category.categoryName}}</td>
+                                    <td>{{ product.description }}</td>
+                                    <td>{{ product.category.categoryName }}</td>
                                 </tr>
                             </tbody>
                         </table>

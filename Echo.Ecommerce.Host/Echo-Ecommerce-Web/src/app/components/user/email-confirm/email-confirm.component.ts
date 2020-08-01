@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service'
 })
 export class EmailConfirmComponent implements OnInit {
 
-  private userId: string;
+  public userId: string;
   private expiredDate: string;
 
   constructor(
@@ -26,6 +26,14 @@ export class EmailConfirmComponent implements OnInit {
     this.userId = this.route.snapshot.queryParamMap.get('uid');
     this.expiredDate = this.route.snapshot.queryParamMap.get('ex');
     
-    this.userService.confirmEmail(this.userId);
+    this.userService.confirmEmail(this.userId).subscribe (
+      res => {
+        this.router.navigateByUrl('home');
+      },
+
+      err => {
+        console.log(`Error: ConfirmEmail`);
+      }
+    )
   }
 }

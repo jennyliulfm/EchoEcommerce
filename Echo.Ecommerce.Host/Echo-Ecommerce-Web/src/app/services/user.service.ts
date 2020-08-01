@@ -30,10 +30,11 @@ export class UserService {
   /**
    * Confirm user account
    */
-  confirmEmail(uId: string) {
-    let params = new HttpParams();
-    let testing = { userId: uId};
-    
-    return this.http.post(this.BaseURL + '/ConfirmUserEmailById', {}, { params: {userId: uId}});
+  confirmEmail(userId: string): Observable<any> {
+
+    var data = {
+      Id: userId
+    }
+    return this.http.put(this.BaseURL + '/ConfirmUserEmailById', data);
   }
 }

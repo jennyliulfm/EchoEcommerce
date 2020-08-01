@@ -1,38 +1,18 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/UserController.cs">
     <Files>
-      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="133" Column="72" />
-      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="10" Column="30" />
-      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="33" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="26" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="188" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="146" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="26" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="16" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" Line="47" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="33" Column="29" />
-      <File FileName="Echo.Ecommerce.Host/Entities/User.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="133" Column="14" />
+      <File FileName="Echo.Ecommerce.Host/Program.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" />
+      <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" />
+      <File FileName="Echo.Ecommerce.Host/appsettings.json" />
+      <File FileName="Echo.Ecommerce.Host/Entities/User.cs" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Echo.Ecommerce.Host" expanded="True">
-            <Node name="Echo.Ecommerce.Host" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="UserController.cs" selected="True" />
-              </Node>
-              <Node name="Entities" expanded="True" />
-              <Node name="Models" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Echo.Ecommerce.Host" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

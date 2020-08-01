@@ -15,16 +15,18 @@ import { CategoryComponent } from './components/admin/category/category.componen
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 
 export const routes: Routes = [
-    {
-      path: '',
-      component: BasicLayoutComponent,
-      children: [ 
-        { path: 'home', component: HomeComponent },
-        { path: 'admin/product', component: ProductComponent },
-        { path: 'admin/category', component: CategoryComponent },
-        { path: 'emailconfirm', component: EmailConfirmComponent }
+  {
+    path: '', component: HomeComponent
 
-      ]
-    },
-  ];
-  
+  },
+  {
+    path: '',
+    component: BasicLayoutComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'admin/product', component: ProductComponent },
+      { path: 'admin/category', component: CategoryComponent },
+      { path: 'emailconfirm', component: EmailConfirmComponent }
+    ]
+  },
+];
