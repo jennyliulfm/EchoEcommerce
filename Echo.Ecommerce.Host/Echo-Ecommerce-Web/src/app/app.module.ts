@@ -16,11 +16,12 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { NavigationComponent } from './components/common/navigation/navigation.component';
 import { TopnavigationComponent } from './components/common/topnavigation/topnavigation.component';
 import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-layout.component';
-import { LogoutComponent } from './components/logout/logout.component';
-import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/user/logout/logout.component';
+
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
+import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 
 
 @NgModule({
@@ -31,10 +32,10 @@ import { CategoryComponent } from './components/admin/category/category.componen
     TopnavigationComponent,
     BasicLayoutComponent,
     LogoutComponent,
-    LoginComponent,
     HomeComponent,
     ProductComponent,
     CategoryComponent,
+    EmailConfirmComponent,
 
   ],
   imports: [

@@ -124,6 +124,7 @@ export class TopnavigationComponent implements OnInit {
           }       
         },
         err => {
+          this.toasterService.error(`${err.error.message}`)  
           console.error("ERROR: createUser", err);     
         }
       )
@@ -151,6 +152,8 @@ export class TopnavigationComponent implements OnInit {
         }       
       },
       err => {
+        
+        this.toasterService.error(`${err.error.message}`)
         console.error("ERROR: createUser", err);     
       }
     );

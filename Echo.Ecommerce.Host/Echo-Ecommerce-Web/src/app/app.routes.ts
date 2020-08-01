@@ -8,7 +8,7 @@ import { NavigationComponent } from './components/common/navigation/navigation.c
 import { TopnavigationComponent } from './components/common/topnavigation/topnavigation.component';
 import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-layout.component';
 
-import { LogoutComponent } from './components/logout/logout.component';
+import { LogoutComponent } from './components/user/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';

@@ -49,7 +49,9 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 //Verify whether the mail exists or not. 
                 var user = await this._userManager.FindByEmailAsync(model.Email);
-                if (user != null) return BadRequest("Email has been used");
+
+                string message = "Email has been used";
+                if (user != null) return BadRequest( new { message });
 
                 Entities.User newUser = new Entities.User()
                 {
@@ -166,7 +168,7 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null) return NotFound("User Not Found");
-              //  if (user.EmailConfirmed == false) return BadRequest("Email Not Confirmed");
+                if (user.EmailConfirmed == false) return BadRequest( new { message = "Email Not Comfirmed" } );
 
                 var result = this._userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
 
