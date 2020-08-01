@@ -24,3 +24,10 @@ export interface Category {
     categoryName: string,
     description: string
 }
+
+export interface CartProduct {
+    productId: number,
+    name: string,
+    price: number,
+    amount: number,
+  }

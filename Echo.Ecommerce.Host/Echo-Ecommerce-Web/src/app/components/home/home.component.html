@@ -17,9 +17,12 @@
                         <div class="small m-t-xs">
                             {{ product.description }}
                         </div>
-                        <div class="m-t text-righ">
 
+                        <div class="text-right">
+                            <button type="button" class="btn btn-lg btn-primary" (click)="addToCart($event, product)">Add To
+                                Cart</button>
                         </div>
+
                     </div>
                 </div>
             </div>

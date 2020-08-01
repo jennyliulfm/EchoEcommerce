@@ -6,6 +6,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FormBuilder, Validators, FormGroup, Form } from '@angular/forms';
 import { UserService } from "../../../services/user.service"
 import { User, UserLogin } from "../../../models/model"
+import { CartService } from 'src/app/services/cart.service';
 
 
 interface UserForm {
@@ -28,6 +29,8 @@ export class TopnavigationComponent implements OnInit {
   @Input() isNavigationOpen: boolean;
   @Output() toggleNavigationEvent: EventEmitter<boolean> = new EventEmitter;
 
+  public isCartOpen: boolean = false;
+
   public readonly passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!#\$])(?=.{8,14})";
 
   public readonly userGroupModel: FormGroup = this.formBuilder.group({
@@ -41,7 +44,8 @@ export class TopnavigationComponent implements OnInit {
     private router: Router,
     private userSerive: UserService,
     private formBuilder: FormBuilder,
-    private toasterService: ToastrService) {
+    private toasterService: ToastrService,
+    public cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -117,7 +121,7 @@ export class TopnavigationComponent implements OnInit {
       res => {
         if (res) {
           this.toasterService.success(`Your Account Has been Created Successfully, Please Check Your Email to Confirm Your Account`);
-         
+
           this.userGroupModel.reset();
 
         }

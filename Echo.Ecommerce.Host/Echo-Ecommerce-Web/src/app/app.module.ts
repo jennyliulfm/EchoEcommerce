@@ -22,6 +22,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { EmailConfirmComponent } from './components/user/email-confirm/email-con
     ProductComponent,
     CategoryComponent,
     EmailConfirmComponent,
+    CartComponent,
 
   ],
   imports: [
