@@ -40,5 +40,19 @@ namespace Echo.Ecommerce.Host.Models
             this.UserName = user.UserName;
             this.ValidationCode = user.ValidationCode;
         }
+
+        public User ( Entities.User user, Role role)
+        {
+            if (user.Address != null)
+            {
+                this.Address = new Models.Address(user.Address);
+            }
+            this.FirstName = user.FirstName;
+            this.LastName = user.LastName;
+            this.Email = user.Email;
+            this.UserName = user.UserName;
+            this.ValidationCode = user.ValidationCode;
+            this.Role = role;
+        }
     }
 }

@@ -9,17 +9,18 @@ using Echo.Ecommerce.Host.Entities;
 using Microsoft.EntityFrameworkCore;
 
 using Entities = Echo.Ecommerce.Host.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Echo.Ecommerce.Host.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CategoryController : ControllerBase
+    public class CategoryController : BasicController
     {
         private readonly ILogger _logger;
         private readonly DBContext _dbContext;
 
-        public CategoryController(ILoggerFactory loggerFactory, DBContext dbContext)
+        public CategoryController(ILoggerFactory loggerFactory, DBContext dbContext): base(dbContext)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
@@ -27,6 +28,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetAllCategroies")]
+        [Authorize(Policy = "AdminRole")]
         public async Task<ActionResult<List<Models.Category>>> GetAllCategories()
         {
             try
@@ -54,6 +56,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPost]
         [Route("CreateCategory")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Models.Category>> CreateCategory(Models.Category model)
         {
             try
@@ -89,6 +92,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetCategoryById")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Models.Category>> GetCategoryById(int categoryId)
         {
             try
@@ -113,6 +117,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpDelete]
         [Route("DeleteCategoryById")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteCategoryById(int cateogryId)
         {
             try

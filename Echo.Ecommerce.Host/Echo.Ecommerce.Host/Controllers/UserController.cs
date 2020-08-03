@@ -4,7 +4,6 @@ using Echo.Ecommerce.Host.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Echo.Ecommerce.Host.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit.Net.Smtp;
@@ -13,12 +12,15 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace Echo.Ecommerce.Host.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : BasicController
     {
         private readonly ILogger _logger;
         private readonly DBContext _dbContext;
@@ -31,7 +33,7 @@ namespace Echo.Ecommerce.Host.Controllers
         private List<string> _roles;
 
 
-        public UserController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting, RoleManager<IdentityRole> roleManager)
+        public UserController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting, RoleManager<IdentityRole> roleManager): base(dbContext)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
@@ -43,10 +45,21 @@ namespace Echo.Ecommerce.Host.Controllers
             this._appSettings = appSetting.Value;
 
             this._roles = new List<string>();
-            this._roles.Add("Admin");
             this._roles.Add("General");
-
             this.CreateRole();
+        }
+
+        private void CreateRole()
+        {
+            foreach (var r in this._roles)
+            {
+                var role = this._roleManager.RoleExistsAsync(r).Result;
+
+                if (!role)
+                {
+                    this._roleManager.CreateAsync(new IdentityRole(r)).GetAwaiter().GetResult();
+                }
+            }
         }
 
         [HttpPost]
@@ -71,15 +84,8 @@ namespace Echo.Ecommerce.Host.Controllers
                 var hashPassword = _userManager.PasswordHasher.HashPassword(newUser, model.Password);
                 newUser.PasswordHash = hashPassword;
 
-                // Verify usre's role
-                if (model.Email.Equals(this._appSettings.AdminName) && model.Password.Equals(this._appSettings.AdminPassword))
-                {
-                    model.Role = Role.Admin;
-                }
-                else
-                {
-                    model.Role = Role.General;
-                }
+                //// Verify usre's role
+                model.Role = Role.General;
 
                 var result = await this._userManager.CreateAsync(newUser);
                 result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
@@ -186,17 +192,21 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null) return NotFound("User Not Found");
-                if (user.EmailConfirmed == false) return BadRequest(new { message = "Email Not Comfirmed, Please Confirm Your Account " });
+                //if (user.EmailConfirmed == false) return BadRequest(new { message = "Email Not Comfirmed, Please Confirm Your Account " });
 
                 var result = this._userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
 
                 if (user != null && result == PasswordVerificationResult.Success)
                 {
+                    var role = await _userManager.GetRolesAsync(user);
+                    IdentityOptions options = new IdentityOptions();
+
                     var tokenDescriber = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim("UserId", user.Id.ToString())
+                            new Claim(options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault()),
+                            new Claim(ClaimTypes.Email, user.Email),
                         }),
 
                         Expires = DateTime.UtcNow.AddMinutes(30),
@@ -224,18 +234,29 @@ namespace Echo.Ecommerce.Host.Controllers
 
         }
 
-        private void CreateRole()
+        [HttpGet]
+        [Route("GetCurrentUser")]
+        public async Task<ActionResult<Models.User>> GetCurrentUser()
         {
-            foreach (var r in this._roles)
+            try
             {
-                var role = this._roleManager.RoleExistsAsync(r).Result;
+                var user = this.GetUser();
+                if ( user == null ) return NotFound(new { message = "User Not Found " });
 
-                if (!role)
-                {
-                    this._roleManager.CreateAsync(new IdentityRole(r)).GetAwaiter().GetResult();
-                }
+                var role = await this._userManager.GetRolesAsync(user);
+                if (role == null) return BadRequest(new { message = "No Permission " });
+
+                Enum.TryParse( role[0], out Role userRole);
+
+                return Ok(new Models.User(user, userRole)); 
             }
-
+            catch( Exception ex)
+            {
+                this._logger.LogError(ex, "GetCurrentUser Failed");
+                return BadRequest();
+            }
+        
         }
+        
     }
 }

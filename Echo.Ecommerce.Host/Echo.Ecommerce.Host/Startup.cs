@@ -84,7 +84,12 @@ namespace Echo.Ecommerce.Host
                 };
             });
 
-            services.AddAuthorization();
+            //services.AddAuthorization();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminRole",
+                     policy => policy.RequireRole("Admin"));
+            });
 
             #endregion
 
@@ -128,7 +133,8 @@ namespace Echo.Ecommerce.Host
                 endpoints.MapControllers();
             });
 
-            AdminSeedClass.Initialize(app.ApplicationServices, this.Configuration);
+            //Configure Adminstrator
+            AdminSeed.Initialize(app.ApplicationServices, this.Configuration);
         }
     }
 }

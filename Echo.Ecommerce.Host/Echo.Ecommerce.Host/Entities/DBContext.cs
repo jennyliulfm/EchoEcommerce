@@ -15,7 +15,10 @@ namespace Echo.Ecommerce.Host.Entities
         {
             base.OnModelCreating(builder);
 
-            //this.Roles.r
+            //To set user's name and email is unique
+            builder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
 
         public DbSet<User> AppUsers { get; set; }

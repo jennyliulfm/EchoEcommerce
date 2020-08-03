@@ -15,12 +15,12 @@ namespace Echo.Ecommerce.Host.Controllers
     [ApiController]
     [Route("[controller]")]
     //[Authorize]
-    public class ProductController : ControllerBase
+    public class ProductController : BasicController
     {
         private readonly ILogger _logger;
         private readonly DBContext _dbContext;
 
-        public ProductController(ILoggerFactory loggerFactory, DBContext dbContext)
+        public ProductController(ILoggerFactory loggerFactory, DBContext dbContext): base(dbContext)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
@@ -57,6 +57,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPost]
         [Route("CreateProduct")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Models.Product>>  CreateProduct(Models.Product model)
         {
             try
@@ -97,6 +98,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetProductById")]
+       
         public async Task<ActionResult<Models.Product>> GetProductById(int productId)
         {
             try
@@ -121,6 +123,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpDelete]
         [Route("DeleteProductById")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProductById(int productId)
         {
             try
@@ -152,6 +155,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpPut]
         [Route("UpdateProduct")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateProduct(Models.Product model)
         {
             try

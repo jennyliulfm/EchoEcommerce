@@ -1,33 +1,36 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/AdminSeedClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/BasicController.cs">
     <Files>
-      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="81" Column="43" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="255" Column="14" />
       <File FileName="Echo.Ecommerce.Host/Program.cs" Line="17" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="33" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Models/Category.cs" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="188" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="18" Column="52" />
       <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="146" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" />
       <File FileName="Echo.Ecommerce.Host/Models/Order.cs" />
       <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" />
       <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="35" Column="34" />
       <File FileName="Echo.Ecommerce.Host/Entities/User.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" Line="18" Column="15" />
-      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="58" Column="61" />
-      <File FileName="Echo.Ecommerce.Host/Models/User.cs" Line="37" Column="18" />
+      <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" Line="18" Column="53" />
+      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="132" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/User.cs" Line="55" Column="30" />
       <File FileName="Echo.Ecommerce.Host/Models/Address.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" Line="92" Column="88" />
       <File FileName="Echo.Ecommerce.Host/Models/AppConfig.cs" Line="27" Column="6" />
-      <File FileName="Echo.Ecommerce.Host/AdminSeedClass.cs" Line="4" Column="11" />
+      <File FileName="Echo.Ecommerce.Host/AdminSeedClass.cs" Line="13" Column="67" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/BasicController.cs" Line="11" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="BasicController.cs" selected="True" />
+              </Node>
+              <Node name="Entities" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="AdminSeedClass.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -42,7 +45,9 @@
   <MonoDevelop.Ide.ItemProperties.Echo.Ecommerce.Host PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="72" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="193" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="246" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
