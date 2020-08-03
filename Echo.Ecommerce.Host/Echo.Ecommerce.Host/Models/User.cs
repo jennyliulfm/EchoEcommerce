@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Echo.Ecommerce.Host.Models
 {
+    public enum  Role
+    {
+        Admin,
+        General,
+    }
+
     public class User: IdentityUser
     {
         public Address Address { get; set; }
@@ -15,6 +21,7 @@ namespace Echo.Ecommerce.Host.Models
         
         public string ValidationCode { get; set; }
         public string Password { get; set; }
+        public Role Role { get; set; }
 
         public User ()
         {

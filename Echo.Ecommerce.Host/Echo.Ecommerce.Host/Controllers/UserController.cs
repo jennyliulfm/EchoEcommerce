@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Echo.Ecommerce.Host.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Echo.Ecommerce.Host.Models;
@@ -15,6 +12,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using System.Collections.Generic;
 
 namespace Echo.Ecommerce.Host.Controllers
 {
@@ -27,18 +25,28 @@ namespace Echo.Ecommerce.Host.Controllers
 
         private readonly UserManager<Entities.User> _userManager;
         private readonly SignInManager<Entities.User> _signinManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly MailSenderSetting _emailSettings;
         private readonly AppSetting _appSettings;
+        private List<string> _roles;
 
-        public UserController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting)
+
+        public UserController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting, RoleManager<IdentityRole> roleManager)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
 
             this._userManager = userManager;
             this._signinManager = signinManager;
+            this._roleManager = roleManager;
             this._emailSettings = mailSetting.Value;
             this._appSettings = appSetting.Value;
+
+            this._roles = new List<string>();
+            this._roles.Add("Admin");
+            this._roles.Add("General");
+
+            this.CreateRole();
         }
 
         [HttpPost]
@@ -50,7 +58,7 @@ namespace Echo.Ecommerce.Host.Controllers
                 //Verify whether the mail exists or not. 
                 var user = await this._userManager.FindByEmailAsync(model.Email);
 
-                if (user != null) return BadRequest( new { message  = "Email has been used" });
+                if (user != null) return BadRequest(new { message = "Email has been used" });
 
                 Entities.User newUser = new Entities.User()
                 {
@@ -63,19 +71,29 @@ namespace Echo.Ecommerce.Host.Controllers
                 var hashPassword = _userManager.PasswordHasher.HashPassword(newUser, model.Password);
                 newUser.PasswordHash = hashPassword;
 
-                //Normalized UserName and Email
-                var result = await this._userManager.CreateAsync(newUser);
-
-                if ( result.Succeeded )
+                // Verify usre's role
+                if (model.Email.Equals(this._appSettings.AdminName) && model.Password.Equals(this._appSettings.AdminPassword))
                 {
-                    this.SendConfirmedMail( newUser );
-                    return Ok( new Models.User( newUser ) );
+                    model.Role = Role.Admin;
                 }
                 else
                 {
-                    this._logger.LogError($"RegisterUser Error: {result.Errors.ToString()}")
-;                    return BadRequest( new { message = "You are having trouble of creating the account, please try later" } );
-}
+                    model.Role = Role.General;
+                }
+
+                var result = await this._userManager.CreateAsync(newUser);
+                result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
+
+                if (result.Succeeded)
+                {
+                    this.SendConfirmedMail(newUser);
+                    return Ok(new Models.User(newUser));
+                }
+                else
+                {
+                    this._logger.LogError($"RegisterUser Error: {result.Errors.ToString()}");
+                    return BadRequest(new { message = "You are having trouble of creating the account, please try later" });
+                }
             }
             catch (Exception ex)
             {
@@ -118,7 +136,7 @@ namespace Echo.Ecommerce.Host.Controllers
                 client.Disconnect(true);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this._logger.LogError(ex, "SendMail Failed");
             }
@@ -133,15 +151,15 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 var user = await this._userManager.FindByIdAsync(model.Id);
 
-                if ( user != null && user.EmailConfirmed == false)
+                if (user != null && user.EmailConfirmed == false)
                 {
                     user.EmailConfirmed = true;
 
-                    var result  = await this._userManager.UpdateAsync(user);
+                    var result = await this._userManager.UpdateAsync(user);
 
-                    if ( result.Succeeded )
+                    if (result.Succeeded)
                     {
-                        return Ok( );
+                        return Ok();
                     }
                     else
                     {
@@ -153,7 +171,7 @@ namespace Echo.Ecommerce.Host.Controllers
                     return Ok();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this._logger.LogError(ex, $"ConfirmUserEmailById Failed");
                 return BadRequest();
@@ -168,7 +186,7 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null) return NotFound("User Not Found");
-                if (user.EmailConfirmed == false) return BadRequest( new { message = "Email Not Comfirmed, Please Confirm Your Account " } );
+                if (user.EmailConfirmed == false) return BadRequest(new { message = "Email Not Comfirmed, Please Confirm Your Account " });
 
                 var result = this._userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
 
@@ -194,7 +212,7 @@ namespace Echo.Ecommerce.Host.Controllers
                 }
                 else
                 {
-                    return BadRequest( new { message = "Invalid Email or Password" } );
+                    return BadRequest(new { message = "Invalid Email or Password" });
                 }
 
             }
@@ -203,8 +221,21 @@ namespace Echo.Ecommerce.Host.Controllers
                 this._logger.LogError(ex, $"UserLogin Failed");
                 return BadRequest();
             }
-          
+
         }
 
+        private void CreateRole()
+        {
+            foreach (var r in this._roles)
+            {
+                var role = this._roleManager.RoleExistsAsync(r).Result;
+
+                if (!role)
+                {
+                    this._roleManager.CreateAsync(new IdentityRole(r)).GetAwaiter().GetResult();
+                }
+            }
+
+        }
     }
 }
