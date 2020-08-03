@@ -28,7 +28,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetAllCategroies")]
-        [Authorize(Policy = "AdminRole")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<Models.Category>>> GetAllCategories()
         {
             try

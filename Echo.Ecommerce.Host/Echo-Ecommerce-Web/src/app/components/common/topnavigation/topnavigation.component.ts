@@ -28,8 +28,11 @@ export class TopnavigationComponent implements OnInit {
 
   @Input() isNavigationOpen: boolean;
   @Output() toggleNavigationEvent: EventEmitter<boolean> = new EventEmitter;
+  public isLoggedIn = false;
 
   public isCartOpen: boolean = false;
+  private currentUser?: User;
+ 
 
   public readonly passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!#\$])(?=.{8,14})";
 
@@ -49,6 +52,7 @@ export class TopnavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLogged();
   }
 
   toggleNavigation(): void {
@@ -57,7 +61,8 @@ export class TopnavigationComponent implements OnInit {
 
 
   logout(): void {
-
+    this.userSerive.logout();
+    this.isLoggedIn = false;
   }
 
 
@@ -114,7 +119,7 @@ export class TopnavigationComponent implements OnInit {
       firstName: this.userFormGroupValue.firstName,
       lastName: this.userFormGroupValue.lastName,
       email: this.userFormGroupValue.email,
-      password: this.userFormGroupValue.password
+      password: this.userFormGroupValue.password,
     };
 
     this.userSerive.CreateUser(args).subscribe(
@@ -123,7 +128,6 @@ export class TopnavigationComponent implements OnInit {
           this.toasterService.success(`Your Account Has been Created Successfully, Please Check Your Email to Confirm Your Account`);
 
           this.userGroupModel.reset();
-
         }
       },
       err => {
@@ -149,9 +153,15 @@ export class TopnavigationComponent implements OnInit {
       res => {
         if (res) {
 
+          this.isLoggedIn = true;
+          this.userGroupModel.reset();
+
           this.toasterService.success(`You have successfully login`);
           localStorage.setItem('token', res.token);
 
+          // Get current user's information after login.
+          this.getCurrentUser();
+          this.userSerive.currentUser = this.currentUser;
         }
       },
       err => {
@@ -161,6 +171,26 @@ export class TopnavigationComponent implements OnInit {
       }
     );
 
+  }
+
+  getCurrentUser() {
+    this.userSerive.getCurrentUser().subscribe(
+      res => {
+        this.currentUser = res;
+      },
+      err => {
+        this.toasterService.error(`${err.error.message}`)
+        console.error("ERROR: GetCurrentUser", err);
+      }
+    );
+  }
+
+  isLogged() {
+    if (this.userSerive.currentUser.email === "") {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
   }
 
 }

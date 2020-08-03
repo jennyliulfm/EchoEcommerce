@@ -84,12 +84,12 @@ namespace Echo.Ecommerce.Host
                 };
             });
 
-            //services.AddAuthorization();
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("AdminRole",
-                     policy => policy.RequireRole("Admin"));
-            });
+            services.AddAuthorization();
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminRole",
+            //         policy => policy.RequireRole("Admin"));
+            //});
 
             #endregion
 
