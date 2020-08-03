@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Echo.Ecommerce.Host.Models
 {
+    public enum  Role
+    {
+        Admin,
+        General,
+    }
+
     public class User: IdentityUser
     {
         public Address Address { get; set; }
@@ -15,6 +21,7 @@ namespace Echo.Ecommerce.Host.Models
         
         public string ValidationCode { get; set; }
         public string Password { get; set; }
+        public Role Role { get; set; }
 
         public User ()
         {
@@ -32,6 +39,20 @@ namespace Echo.Ecommerce.Host.Models
             this.Email = user.Email;  
             this.UserName = user.UserName;
             this.ValidationCode = user.ValidationCode;
+        }
+
+        public User ( Entities.User user, Role role)
+        {
+            if (user.Address != null)
+            {
+                this.Address = new Models.Address(user.Address);
+            }
+            this.FirstName = user.FirstName;
+            this.LastName = user.LastName;
+            this.Email = user.Email;
+            this.UserName = user.UserName;
+            this.ValidationCode = user.ValidationCode;
+            this.Role = role;
         }
     }
 }

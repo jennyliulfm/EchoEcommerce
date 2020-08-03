@@ -18,18 +18,18 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean  {
-      if (localStorage.getItem('token') != null) {
-        return true;
-      } else {
-        this.router.navigateByUrl('/login');
-        return false;
+    state: RouterStateSnapshot): boolean {
+    if (localStorage.getItem('token') != null) {
+      return true;
+    } else {
+      this.router.navigateByUrl('/login');
+      return false;
 
-      }
+    }
   }
 
   public getToken(): string {
-     return localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   public isAuthenticated(): boolean {
@@ -42,7 +42,7 @@ export class AuthGuard implements CanActivate {
     const decodedToken = helper.decodeToken(token);
     const expirationDate = helper.getTokenExpirationDate(token);
     const isExpired = helper.isTokenExpired(token);
-    
+
     return isExpired;
   }
 

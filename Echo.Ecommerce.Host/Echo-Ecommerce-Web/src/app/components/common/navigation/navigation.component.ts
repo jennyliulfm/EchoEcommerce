@@ -1,6 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationItem } from '../../../models/navigation';
+import { NavigationItem, NavigationItemChild } from '../../../models/navigation';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,22 +12,25 @@ export class NavigationComponent implements OnChanges {
 
   @Input() isNavigationOpen: boolean;
 
-
   public dropdownIndex = -1;
   public activeRoute: string;
+  public isShown: boolean = false;
+
   public pages: Array<NavigationItem> = [
     { name: 'Fruits & Vegetables', icon: 'fa-building', route: '', },
     { name: 'Meat', icon: 'fa-building', route: '', },
     { name: 'Milk', icon: 'fa-shopping-cart', route: '', },
     {
-      name: 'Administration', icon: 'fa-shopping-cart', route: 'admin/product', children: [
-        { name: 'Product', external: false, route: '/admin/product', },
-        { name: 'Category', external: false, route: '/admin/category' }
+      name: 'Administration', icon: 'fa-shopping-cart', isAdmin:true, children: [
+        { name: 'Product', external: false, route: '/admin/product', isAdmin: true},
+        { name: 'Category', external: false, route: '/admin/category', isAdmin: true }
       ]
     }
   ];
+
   constructor(
     private router: Router,
+    private userService: UserService
 
   ) {
     // Watch for route changes
@@ -43,7 +47,7 @@ export class NavigationComponent implements OnChanges {
   }
 
   ngOnInit(): void {
-    // todo - current signed in user information
+
   }
 
   logout() {

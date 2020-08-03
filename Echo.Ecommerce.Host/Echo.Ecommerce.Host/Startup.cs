@@ -56,10 +56,10 @@ namespace Echo.Ecommerce.Host
             ));
 
             services.AddIdentity<Entities.User, IdentityRole>()
-                .AddEntityFrameworkStores<DBContext>()
+                 .AddEntityFrameworkStores<DBContext>()
                 .AddUserManager<UserManager<Entities.User>>()
-                 .AddSignInManager<SignInManager<Entities.User>>()
-                 .AddDefaultTokenProviders();
+                .AddSignInManager<SignInManager<Entities.User>>()
+                .AddDefaultTokenProviders();
             #endregion
 
             #region Authentication
@@ -85,6 +85,11 @@ namespace Echo.Ecommerce.Host
             });
 
             services.AddAuthorization();
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminRole",
+            //         policy => policy.RequireRole("Admin"));
+            //});
 
             #endregion
 
@@ -127,6 +132,9 @@ namespace Echo.Ecommerce.Host
             {
                 endpoints.MapControllers();
             });
+
+            //Configure Adminstrator
+            AdminSeed.Initialize(app.ApplicationServices, this.Configuration);
         }
     }
 }

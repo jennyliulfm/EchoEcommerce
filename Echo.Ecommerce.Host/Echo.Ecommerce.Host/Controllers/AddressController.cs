@@ -13,6 +13,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,7 +21,7 @@ namespace Echo.Ecommerce.Host.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AddressController : ControllerBase
+    public class AddressController : BasicController
     {
         private readonly ILogger _logger;
         private readonly DBContext _dbContext;
@@ -30,7 +31,7 @@ namespace Echo.Ecommerce.Host.Controllers
         private readonly MailSenderSetting _emailSettings;
         private readonly AppSetting _appSettings;
 
-        public AddressController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting)
+        public AddressController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting): base(dbContext)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
@@ -45,11 +46,8 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var userId = User.Claims.FirstOrDefault(u => u.Type.Equals("UserId")).Value;
-                if (userId == null) return NotFound("User Not Exists");
-
-                var user = await this._userManager.FindByIdAsync(userId);
-                if (user == null) return NotFound("User Not Found");
+                var user = this.GetUser();
+                if (user == null) return NotFound(new { message = "User Not Found " });
 
                 Entities.Address address = new Entities.Address()
                 {
@@ -84,15 +82,12 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var userId = User.Claims.FirstOrDefault(u => u.Type.Equals("UserId")).Value;
-                if (userId == null) return NotFound("User Not Exists");
+                var user = this.GetUser();
+                if (user == null) return NotFound(new { message = "User Not Found " });
 
-                var user = await this._userManager.FindByIdAsync(userId);
-                if (user == null) return NotFound("User Not Found");
-
-                var addresses = this._dbContext.Addresses.Where(add => add.User.Id == user.Id)
+                var addresses = this._dbContext.Addresses.Where(addr => addr.User.Id == user.Id)
                     .AsNoTracking()
-                    .Select(add => new Models.Address(add))
+                    .Select(addr => new Models.Address(addr))
                     .ToList();
 
                 return Ok(addresses);

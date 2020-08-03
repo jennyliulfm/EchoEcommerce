@@ -23,6 +23,7 @@ import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CartComponent } from './components/cart/cart.component';
+import { TokenInterceptor } from '../app/auth/token.interceptor'
 
 
 @NgModule({
@@ -54,7 +55,13 @@ import { CartComponent } from './components/cart/cart.component';
     NgxFileDropModule,
     ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

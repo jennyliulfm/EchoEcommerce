@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,16 @@ namespace Echo.Ecommerce.Host.Entities
     {
         public DBContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            //To set user's name and email is unique
+            builder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
 
         public DbSet<User> AppUsers { get; set; }

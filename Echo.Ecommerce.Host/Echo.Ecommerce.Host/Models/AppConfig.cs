@@ -22,6 +22,8 @@ namespace Echo.Ecommerce.Host.Models
         public string JWTSecret { get; set; }
         public string ClientURL { get; set; }
         public string UserConfirmedRoute { get; set; }
+        public string AdminName { get; set; }
+        public string AdminPassword { get; set; }
     }
 
 }
