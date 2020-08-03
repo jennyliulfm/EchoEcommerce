@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Echo.Ecommerce.Host.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20200803054143_OrderProductEntityAdded")]
-    partial class OrderProductEntityAdded
+    [Migration("20200803091131_OrderProduct Entity")]
+    partial class OrderProductEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -230,6 +230,9 @@ namespace Echo.Ecommerce.Host.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
