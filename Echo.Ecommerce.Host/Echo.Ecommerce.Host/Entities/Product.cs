@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,5 +22,7 @@ namespace Echo.Ecommerce.Host.Entities
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         public bool? IsDeleted { get; set; } = false;
+
+        public List<OrderProduct> OrderProducts { get; set; }
     }
 }

@@ -25,5 +25,7 @@ namespace Echo.Ecommerce.Host.Entities
         public DateTime IssueDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
 
+        public List<OrderProduct> OrderProducts { get; set; }
+
     }
 }

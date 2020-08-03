@@ -11,5 +11,15 @@ namespace Echo.Ecommerce.Host.Models
         public double Price { get; set; }
         public User User { get; set; }
         public DateTime IssueDate { get; set; }
+
+        public Order(Entities.Order order)
+        {
+            OrderId = order.OrderId;
+            Price = order.Price;
+            IssueDate = order.IssueDate;
+            User = new User(order.User);
+
+
+        }
     }
 }
