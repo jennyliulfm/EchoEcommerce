@@ -133,17 +133,19 @@ namespace Echo.Ecommerce.Host
             });
 
             app.UseHttpsRedirection();
+           
 
             app.UseRouting();
-    
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseCors(builder =>
             builder.WithOrigins("http://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+           .AllowAnyHeader()
+           .AllowAnyMethod());
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -11,8 +11,10 @@ namespace Echo.Ecommerce.Host.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderProductId { get; set; }
 
+        [ForeignKey("OrderId")]
         public Order Order { get; set; }
 
         public Product Product { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace Echo.Ecommerce.Host.Models
   
         public double Price { get; set; }
         public Category Category { get; set; }
+        public int Quantity { get; set; }
 
         public Product(Entities.Product product)
         {
@@ -17,6 +18,7 @@ namespace Echo.Ecommerce.Host.Models
             Name = product.Name;
             Description = product.Description;
             Price = product.Price;
+            Quantity = product.Quantity;
           
             if(product.Category != null )
             {
