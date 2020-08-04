@@ -16,10 +16,6 @@ import { EmailConfirmComponent } from './components/user/email-confirm/email-con
 
 export const routes: Routes = [
   {
-    path: '', component: HomeComponent
-
-  },
-  {
     path: '',
     component: BasicLayoutComponent,
     children: [

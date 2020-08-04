@@ -26,4 +26,6 @@ namespace Echo.Ecommerce.Host.Models
         public string AdminPassword { get; set; }
     }
 
+    
+
 }

@@ -54,4 +54,8 @@ export class UserService {
     localStorage.removeItem('token');
     this.router.navigateByUrl('home');
   }
+
+  socialLogin(response) {
+    return this.http.post(this.BaseURL + '/SocialLogin', response);
+  }
 }

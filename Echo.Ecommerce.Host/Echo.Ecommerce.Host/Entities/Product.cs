@@ -22,7 +22,5 @@ namespace Echo.Ecommerce.Host.Entities
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
         public bool? IsDeleted { get; set; } = false;
-
-        public List<OrderProduct> OrderProducts { get; set; }
     }
 }

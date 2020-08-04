@@ -257,6 +257,35 @@ namespace Echo.Ecommerce.Host.Controllers
             }
         
         }
+
+        [HttpPost]
+        [Route("SocialLogin")]
+        public async Task<ActionResult<Models.User>> SocialLogin(Models.SocialUser model)
+        {
+            try
+            {
+                var user = await this._userManager.FindByEmailAsync(model.Email);
+                if( user == null )
+                {
+                    Entities.User newUser = new Entities.User()
+                    {
+                        Id = model.Id,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        UserName = model.Email,
+                    };
+
+
+                }
+                return Ok(new Models.User());
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "SocialLogin Failed");
+                return BadRequest();
+            }
+        }
         
     }
 }
