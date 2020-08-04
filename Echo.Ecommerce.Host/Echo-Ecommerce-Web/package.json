@@ -26,6 +26,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "angular-jwt": "^0.1.11",
+    "angularx-social-login": "^3.2.1",
     "animate.css": "^4.1.0",
     "bootstrap": "^4.4.1",
     "bootstrap-social": "^5.1.1",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.2",
+    "@angular-devkit/build-ng-packagr": "^0.1000.1",
     "@angular/cli": "~10.0.2",
     "@angular/compiler-cli": "~10.0.3",
     "@angular/language-service": "~9.0.2",
@@ -57,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^10.0.3",
     "ng-swagger-gen": "^2.3.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",

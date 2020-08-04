@@ -142,7 +142,6 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                 this._logger.LogError(ex, "DeleteCategoryById Failed");
                 return BadRequest();
-
             }
 
         }

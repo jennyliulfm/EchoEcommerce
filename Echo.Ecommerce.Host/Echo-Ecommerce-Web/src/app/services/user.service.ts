@@ -3,6 +3,7 @@ import { User, UserLogin } from "../models/model"
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
 
 
 @Injectable({
@@ -53,5 +54,9 @@ export class UserService {
   logout() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('home');
+  }
+
+  socialLogin(user: SocialUser): Observable<any> {
+    return this.http.post(this.BaseURL + '/SocialLogin', user);
   }
 }

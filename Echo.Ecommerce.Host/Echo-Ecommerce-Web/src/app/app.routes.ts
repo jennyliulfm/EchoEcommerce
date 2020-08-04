@@ -17,10 +17,6 @@ import { CheckoutComponent} from './components/checkout/checkout.component';
 
 export const routes: Routes = [
   {
-    path: '', component: HomeComponent
-
-  },
-  {
     path: '',
     component: BasicLayoutComponent,
     children: [

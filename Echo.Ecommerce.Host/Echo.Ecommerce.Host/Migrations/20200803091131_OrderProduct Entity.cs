@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Echo.Ecommerce.Host.Migrations
 {
-    public partial class OrderProductEntityAdded : Migration
+    public partial class OrderProductEntity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,12 @@ namespace Echo.Ecommerce.Host.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Email",
+                table: "AspNetUsers",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderProduct_OrderId",
                 table: "OrderProduct",
                 column: "OrderId");
@@ -49,6 +55,10 @@ namespace Echo.Ecommerce.Host.Migrations
         {
             migrationBuilder.DropTable(
                 name: "OrderProduct");
+
+            migrationBuilder.DropIndex(
+                name: "IX_AspNetUsers_Email",
+                table: "AspNetUsers");
         }
     }
 }

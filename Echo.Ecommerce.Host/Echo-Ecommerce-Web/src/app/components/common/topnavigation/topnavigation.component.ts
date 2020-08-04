@@ -7,6 +7,9 @@ import { FormBuilder, Validators, FormGroup, Form } from '@angular/forms';
 import { UserService } from "../../../services/user.service"
 import { User, UserLogin } from "../../../models/model"
 import { CartService } from 'src/app/services/cart.service';
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 
 interface UserForm {
@@ -32,7 +35,10 @@ export class TopnavigationComponent implements OnInit {
 
   public isCartOpen: boolean = false;
   private currentUser?: User;
- 
+
+  public socialUser: SocialUser;
+  loggedIn: boolean;
+
 
   public readonly passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!#\$])(?=.{8,14})";
 
@@ -48,11 +54,14 @@ export class TopnavigationComponent implements OnInit {
     private userSerive: UserService,
     private formBuilder: FormBuilder,
     private toasterService: ToastrService,
-    public cartService: CartService) {
+    public cartService: CartService,
+    private authService: SocialAuthService) {
   }
 
   ngOnInit(): void {
     this.isLogged();
+
+    this.getSocialUser();
   }
 
   toggleNavigation(): void {
@@ -173,6 +182,9 @@ export class TopnavigationComponent implements OnInit {
 
   }
 
+  /**
+   * To get current loggedin
+   */
   getCurrentUser() {
     this.userSerive.getCurrentUser().subscribe(
       res => {
@@ -185,6 +197,9 @@ export class TopnavigationComponent implements OnInit {
     );
   }
 
+  /**
+   * Verify whether user is logged in or not to control the menu
+   */
   isLogged() {
     if (this.userSerive.currentUser.email === "") {
       this.isLoggedIn = true;
@@ -192,5 +207,66 @@ export class TopnavigationComponent implements OnInit {
       this.isLoggedIn = false;
     }
   }
+
+  /**
+   * Login with google
+   */
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+    //Get loggedin user information
+    this.getSocialUser();
+
+  }
+
+  /**
+   * Log in with FB
+   */
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.getSocialUser();
+
+  }
+
+  /**
+   * Get loggined social media user
+   */
+  getSocialUser() {
+    this.authService.authState.subscribe(
+      res => {
+        this.toasterService.success("You have successfully login");
+
+        this.socialUser = res;
+
+        this.userSerive.socialLogin(this.socialUser).subscribe(
+          res => {
+            this.isLoggedIn = true;
+           
+            this.toasterService.success(`You have successfully login`);
+            localStorage.setItem('token', res.token);
+
+            // Get current user's information after login.
+            this.getCurrentUser();
+            this.userSerive.currentUser = this.currentUser;
+
+          },
+          err => {
+            this.toasterService.error(`${err.error.message}`)
+            console.error("ERROR: GetCurrentUser", err);
+
+          }
+        );
+
+      },
+
+      err => {
+
+        console.log("ERROR: GetSocialUser Failed");
+      }
+    );
+
+    this.closeSignInModal();
+  }
+
 
 }

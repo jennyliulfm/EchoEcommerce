@@ -84,6 +84,22 @@ namespace Echo.Ecommerce.Host
                 };
             });
 
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("GoogleSettings");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                })
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = Configuration["FacebookSettings:AppId"];
+                    facebookOptions.AppSecret = Configuration["FacebookSettings:AppSecret"];
+                });
+   
+
             services.AddAuthorization();
             //services.AddAuthorization(options =>
             //{

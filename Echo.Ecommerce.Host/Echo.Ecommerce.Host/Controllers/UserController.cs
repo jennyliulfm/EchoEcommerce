@@ -257,6 +257,86 @@ namespace Echo.Ecommerce.Host.Controllers
             }
         
         }
+
+        [HttpPost]
+        [Route("SocialLogin")]
+        public async Task<ActionResult> SocialLogin(Models.SocialUser model)
+        {
+            try
+            {
+               if (model.Email != null )
+                {
+                    var user = await this._userManager.FindByEmailAsync(model.Email);
+
+                    //If the user has not registered in the DB, then generate the user
+                    if (user == null)
+                    {
+                        Entities.User newUser = new Entities.User()
+                        {
+                            Email = model.Email,
+                            FirstName = model.FirstName,
+                            LastName = model.LastName,
+                            UserName = model.Email,
+                        };
+                        model.Role = Role.General;
+
+                        var result = await this._userManager.CreateAsync(newUser);
+                        result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
+
+                        //Generate JWT token
+                        if (result.Succeeded)
+                        {
+                            var token = await this.GenerateJWTTokenAsync(newUser);
+
+                            return Ok(new { token });
+                        }
+                        else
+                        {
+                            return BadRequest(new { message = "You are having trouble of loging in, please try later" });
+                        }
+                    }
+                    else
+                    {
+                        var token = await this.GenerateJWTTokenAsync(user);
+                        return Ok(new { token });
+                    }
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid Email or Password" });
+                }
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "SocialLogin Failed");
+                return BadRequest();
+            }
+        }
+
+
+        private async Task<string> GenerateJWTTokenAsync(Entities.User user)
+        {
+            var role = await _userManager.GetRolesAsync(user);
+            IdentityOptions options = new IdentityOptions();
+
+            var tokenDescriber = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault()),
+                    new Claim(ClaimTypes.Email, user.Email),
+                }),
+
+                Expires = DateTime.UtcNow.AddMinutes(30),
+
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._appSettings.JWTSecret)), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var securityToken = tokenHandler.CreateToken(tokenDescriber);
+            var token = tokenHandler.WriteToken(securityToken);
+            return token;
+        }
         
     }
 }

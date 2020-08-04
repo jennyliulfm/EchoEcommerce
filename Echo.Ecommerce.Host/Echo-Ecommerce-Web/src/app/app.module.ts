@@ -23,8 +23,14 @@ import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CartComponent } from './components/cart/cart.component';
+<<<<<<< HEAD
 import { TokenInterceptor } from '../app/auth/token.interceptor';
 import { CheckoutComponent } from './components/checkout/checkout.component'
+=======
+import { TokenInterceptor } from '../app/auth/token.interceptor'
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+>>>>>>> c41c369b9a4ea1ba971f214c2041ed512aa6ca0c
 
 
 @NgModule({
@@ -56,12 +62,31 @@ import { CheckoutComponent } from './components/checkout/checkout.component'
     FontAwesomeModule,
     NgxFileDropModule,
     ModalModule.forRoot(),
+    SocialLoginModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '624796833023-clhjgupm0pu6vgga7k5i5bsfp6qp6egh.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('298510618024928'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
     }
   ],
   bootstrap: [AppComponent]
