@@ -26,5 +26,9 @@ namespace Echo.Ecommerce.Host.Models
             }
 
         }
+        public Order()
+        {
+
+        }
     }
 }

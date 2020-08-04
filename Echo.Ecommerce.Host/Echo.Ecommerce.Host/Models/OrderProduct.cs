@@ -17,5 +17,9 @@ namespace Echo.Ecommerce.Host.Models
             Quantity = orderProduct.Quantity;
 
         }
+        public OrderProduct()
+        {
+
+        }
     }
 }

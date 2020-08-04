@@ -23,7 +23,8 @@ import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CartComponent } from './components/cart/cart.component';
-import { TokenInterceptor } from '../app/auth/token.interceptor'
+import { TokenInterceptor } from '../app/auth/token.interceptor';
+import { CheckoutComponent } from './components/checkout/checkout.component'
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TokenInterceptor } from '../app/auth/token.interceptor'
     CategoryComponent,
     EmailConfirmComponent,
     CartComponent,
+    CheckoutComponent,
 
   ],
   imports: [
