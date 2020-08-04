@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { CartProduct } from 'src/app/models/model';
+import { CartProduct, Address } from 'src/app/models/model';
+import { AddressService } from 'src/app/services/address.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,8 +12,13 @@ export class CheckoutComponent implements OnInit {
 
   public cartItems?: Array<CartProduct> ;
   public totalPrice?: number;
-  constructor(private cartService: CartService) {
-
+  public addresses?: Array<Address>;
+  constructor(private cartService: CartService,
+    private addressService: AddressService) {
+    this.cartService.getItems().subscribe( items => {
+      this.cartItems = items;
+      console.log(items);
+    });
    }
 
   ngOnInit(): void {

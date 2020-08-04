@@ -21,6 +21,12 @@ export class CartService {
     return this.products.asObservable();
   }
 
+  //Added by Hao temporally
+  getItems(): Observable<CartProduct[]>{
+
+    let observable = Observable.create(observer => observer.next(this.cartItems));
+    return observable;
+  }
   /**
    * 
    * @param product Add product to cart

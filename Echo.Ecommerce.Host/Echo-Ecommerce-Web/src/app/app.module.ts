@@ -23,14 +23,11 @@ import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CartComponent } from './components/cart/cart.component';
-<<<<<<< HEAD
-import { TokenInterceptor } from '../app/auth/token.interceptor';
-import { CheckoutComponent } from './components/checkout/checkout.component'
-=======
 import { TokenInterceptor } from '../app/auth/token.interceptor'
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
->>>>>>> c41c369b9a4ea1ba971f214c2041ed512aa6ca0c
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AddressService } from './services/address.service';
 
 
 @NgModule({
@@ -70,6 +67,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
       useClass: TokenInterceptor,
       multi: true
     },
+    AddressService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -89,6 +87,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
       } as SocialAuthServiceConfig,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
