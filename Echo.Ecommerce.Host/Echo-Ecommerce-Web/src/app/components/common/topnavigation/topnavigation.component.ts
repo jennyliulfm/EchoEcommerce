@@ -235,9 +235,28 @@ export class TopnavigationComponent implements OnInit {
     this.authService.authState.subscribe(
       res => {
         this.toasterService.success("You have successfully login");
+
         this.socialUser = res;
-        localStorage.setItem('token', this.socialUser.authToken);
-        console.log(this.socialUser);
+
+        this.userSerive.socialLogin(this.socialUser).subscribe(
+          res => {
+            this.isLoggedIn = true;
+           
+            this.toasterService.success(`You have successfully login`);
+            localStorage.setItem('token', res.token);
+
+            // Get current user's information after login.
+            this.getCurrentUser();
+            this.userSerive.currentUser = this.currentUser;
+
+          },
+          err => {
+            this.toasterService.error(`${err.error.message}`)
+            console.error("ERROR: GetCurrentUser", err);
+
+          }
+        );
+
       },
 
       err => {
