@@ -109,7 +109,7 @@ namespace Echo.Ecommerce.Host
             #endregion
 
             #region "Swagger"
-            services.AddSwaggerGen();
+           
             services.AddSwaggerDocument();
             #endregion
         }
@@ -137,8 +137,7 @@ namespace Echo.Ecommerce.Host
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseOpenApi();
-            app.UseSwaggerUI();
+           
 
             app.UseEndpoints(endpoints =>
             {
