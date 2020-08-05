@@ -28,6 +28,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddressService } from './services/address.service';
+import { OrderService } from './services/order.service';
 
 
 
@@ -69,6 +70,7 @@ import { AddressService } from './services/address.service';
       multi: true
     },
     AddressService,
+    OrderService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
