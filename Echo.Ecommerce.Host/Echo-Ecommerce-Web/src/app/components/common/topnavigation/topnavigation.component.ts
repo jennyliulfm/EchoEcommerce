@@ -253,4 +253,11 @@ export class TopnavigationComponent implements OnInit {
     }
   }
 
+  /**
+   * Open order detail
+   */
+  openOrderDetails() {
+    this.router.navigateByUrl('order/detail');
+  }
+
 }

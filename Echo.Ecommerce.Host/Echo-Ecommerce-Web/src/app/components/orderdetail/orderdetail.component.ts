@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CartProduct } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-orderdetail',
+  templateUrl: './orderdetail.component.html',
+  styleUrls: ['./orderdetail.component.css']
 })
-export class CartComponent implements OnInit {
+export class OrderdetailComponent implements OnInit {
 
   public cartItems?: Array<CartProduct> ;
   public totalPrice?: number;
 
-  constructor(private cartService: CartService) { 
+  constructor(
+    private cartService: CartService,
+    private router: Router) { 
 
   }
 
@@ -39,14 +42,7 @@ export class CartComponent implements OnInit {
   {
     
   }
-  /**
-   * remove product from cart
-   * @param productId 
-   */
-  removeItemFromCart(productId: number) {
-    this.cartService.removeProductFromCart(productId);
-  }
-
+ 
   /**
    * Empty Cart
    */
@@ -54,4 +50,14 @@ export class CartComponent implements OnInit {
     this.cartService.emptryCart();
   }
 
+  /**
+   * 
+   */
+  continueShopping() {
+    this.router.navigateByUrl('/home');
+  }
+
+  removeItemFromCart(item: CartProduct) {
+    this.cartService.removeProductFromCart(item);
+  }
 }

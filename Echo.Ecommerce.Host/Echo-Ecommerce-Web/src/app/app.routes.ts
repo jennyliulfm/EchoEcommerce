@@ -15,6 +15,7 @@ import { CategoryComponent } from './components/admin/category/category.componen
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CheckoutComponent} from './components/checkout/checkout.component';
 import { AuthGuard } from './auth/auth.guard'
+import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
 
 export const routes: Routes = [
   {
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'admin/product', component: ProductComponent, canActivate: [AuthGuard]},
       { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
       { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },
-      { path: 'order/checkout', component:CheckoutComponent,canActivate: [AuthGuard]}
+      { path: 'order/detail', component: OrderdetailComponent },
+      { path: 'order/checkout', component:CheckoutComponent }
     ]
   },
 ];

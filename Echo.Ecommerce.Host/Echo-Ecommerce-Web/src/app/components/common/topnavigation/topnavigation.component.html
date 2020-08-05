@@ -13,12 +13,10 @@
 
     <ul class="nav navbar-top-links navbar-right">
       <li class="checkout-test">
-        <button (click)="isCartOpen = !isCartOpen">
+        <button (click)="openOrderDetails()">
           <span class="glyphicon glyphicon-shopping-cart"></span>
           {{ cartService.cartItems.length }}
         </button>
-
-        <app-cart *ngIf="isCartOpen"></app-cart>
       </li>
 
       <li *ngIf="!isloggedIn">
