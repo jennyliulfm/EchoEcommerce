@@ -57,11 +57,10 @@ namespace Echo.Ecommerce.Host.Controllers
         }
 
         [HttpPost]
-        [Route("PlaceOrder")]
+        [Route("CreateOrder")]
         [Authorize(Roles = "General")]
-        public async Task<Object> PlaceOrder(Models.Order model)
+        public async Task<ActionResult<Models.Order>> CreateOrder(Models.Order model)
         {
-
             try
             {
                 var user = this.GetUser();
@@ -71,20 +70,30 @@ namespace Echo.Ecommerce.Host.Controllers
                     {
                         User = user,
                         IssueDate = DateTime.UtcNow,
+                        // Todo: need to add order status here
+                        Price = model.Price,
+           
                         OrderProducts = new List<Entities.OrderProduct>()
                     };
-                    foreach(Models.OrderProduct op in model.OrderProducts)
-                    {
-                        Entities.OrderProduct newOp = new Entities.OrderProduct()
-                        {
-                            OrderId = op.OrderId,
-                            Quantity = op.Quantity,
-                            ProductId = op.ProductId
-                        };
-                        newOrder.OrderProducts.Add(newOp);
-                    }
 
                     await this._dbContext.Orders.AddAsync(newOrder);
+
+                    foreach (Models.OrderProduct op in model.OrderProducts)
+                    {
+                        var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == op.ProductId);
+
+                        if (product != null)
+                        {
+                            Entities.OrderProduct orderProduct = new Entities.OrderProduct()
+                            {
+                                Order = newOrder,
+                                Product = product,
+                                Quantity = op.Quantity,
+                            };
+
+                            await this._dbContext.OrderProducts.AddAsync(orderProduct);
+                        }
+                    }    
 
                     int result = await this._dbContext.SaveChangesAsync();
                     if (result > 0)
@@ -105,10 +114,42 @@ namespace Echo.Ecommerce.Host.Controllers
             }
             catch(Exception ex)
             {
-                this._logger.LogError(ex, "User not logged in");
+                this._logger.LogError(ex, "CreateOrder Failed");
                 return BadRequest();
             }
             
+        }
+
+        [HttpGet]
+        [Route("GetOrdersForUser")]
+        public ActionResult<Models.Order> GetOrdersForUser()
+        {
+            try
+            {
+                var user = this.GetUser();
+
+                if( user != null )
+                {
+                    var orders = this._dbContext.Orders.Where(order => order.User.Id == user.Id)
+                        .AsNoTracking()
+                        .OrderBy(order => order.IssueDate)
+                        .Take(5)
+                        .Select(order => new Models.Order(order))
+                        .ToList();
+
+                    return Ok(orders);
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            catch( Exception ex)
+            {
+                this._logger.LogError(ex, "GetOrdersForUser Failed");
+                return BadRequest();
+            }
+           
         }
     }
 }

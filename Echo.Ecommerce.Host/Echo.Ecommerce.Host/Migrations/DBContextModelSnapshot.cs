@@ -101,10 +101,10 @@ namespace Echo.Ecommerce.Host.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -157,6 +157,9 @@ namespace Echo.Ecommerce.Host.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("double");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
@@ -394,15 +397,11 @@ namespace Echo.Ecommerce.Host.Migrations
                 {
                     b.HasOne("Echo.Ecommerce.Host.Entities.Order", "Order")
                         .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("Echo.Ecommerce.Host.Entities.Product", "Product")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Echo.Ecommerce.Host.Entities.Product", b =>
