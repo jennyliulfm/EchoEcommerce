@@ -1,26 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Echo.Ecommerce.Host.Entities;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Echo.Ecommerce.Host.Models;
+using NSwag;
+using NSwag.Generation.Processors.Security;
+using NSwag.AspNetCore;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Echo.Ecommerce.Host
 {
@@ -115,6 +110,26 @@ namespace Echo.Ecommerce.Host
 
             #region "Swagger"
             services.AddSwaggerGen();
+            var sec = new OpenApiSecurityRequirement { { "Bearer", Enumerable.Empty<string>() } };
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Jenny Testing";
+                    document.Info.Description = "API for Testing";
+                    document.Info.TermsOfService = "This API is the property";
+                    document.Info.Contact = new OpenApiContact
+                    {
+                        Name = "Jennifer Testing",
+                        Email = "chengyihang2008@gmai.com",
+                        Url = ""
+                    };
+                    document.Security = new List<OpenApiSecurityRequirement> { sec };
+                };
+            });
+
             #endregion
         }
 
@@ -125,12 +140,17 @@ namespace Echo.Ecommerce.Host
             {
                 app.UseDeveloperExceptionPage();
             }
-         
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3(config =>
             {
-                c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
+                config.OAuth2Client = new OAuth2ClientSettings
+                {
+                    ClientId = "",
+                    AppName = "swagger"
+                };
             });
+        
 
             app.UseHttpsRedirection();
            
@@ -144,8 +164,9 @@ namespace Echo.Ecommerce.Host
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseOpenApi();
+            app.UseSwaggerUI();
 
-           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

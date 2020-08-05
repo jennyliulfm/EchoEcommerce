@@ -19,8 +19,9 @@ namespace Echo.Ecommerce.Host
                 var userManager = provider.GetRequiredService<UserManager<Entities.User>>();
                 var roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                // automigration 
-                context.Database.Migrate();
+                // automigration
+                //Comment out:To fix the swagger error
+               // context.Database.Migrate();
                 CreateAdminUser(userManager, roleManager, configuration);
             }
         }
@@ -61,6 +62,7 @@ namespace Echo.Ecommerce.Host
             }
             catch (Exception ex)
             {
+                
 
             }
 
