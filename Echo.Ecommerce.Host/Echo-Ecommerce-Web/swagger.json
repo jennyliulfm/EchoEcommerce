@@ -1,43 +1,97 @@
 {
-  "openapi": "3.0.1",
+  "x-generator": "NSwag v13.7.0.0 (NJsonSchema v10.1.24.0 (Newtonsoft.Json v12.0.0.0))",
+  "swagger": "2.0",
   "info": {
-    "title": "Echo.Ecommerce.Host",
-    "version": "1.0"
+    "title": "My Title",
+    "version": "1.0.0"
   },
+  "host": "swagger: 2.0",
+  "schemes": [
+    "http"
+  ],
   "paths": {
+    "/Address/AddAddressForUser": {
+      "post": {
+        "tags": [
+          "Address"
+        ],
+        "operationId": "Address_AddAddressForUser",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Address"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
+          }
+        }
+      }
+    },
+    "/Address/GetAllAddressForUser": {
+      "get": {
+        "tags": [
+          "Address"
+        ],
+        "operationId": "Address_GetAllAddressForUser",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Address"
+              }
+            }
+          }
+        }
+      }
+    },
     "/Category/GetAllCategroies": {
       "get": {
         "tags": [
           "Category"
         ],
-        "operationId": "GetAllCategroies",
+        "operationId": "Category_GetAllCategories",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Category"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Category"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Category"
-                  }
-                }
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
               }
             }
           }
@@ -49,45 +103,34 @@
         "tags": [
           "Category"
         ],
-        "operationId": "CreateCategory",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Category"
-              }
+        "operationId": "Category_CreateCategory",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
             },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Category"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Category"
-              }
-            }
+            "x-nullable": false
           }
-        },
+        ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
             }
           }
         }
@@ -98,36 +141,27 @@
         "tags": [
           "Category"
         ],
-        "operationId": "GetCategoryById",
+        "operationId": "Category_GetCategoryById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
+            "type": "integer",
             "name": "categoryId",
             "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "format": "int32",
+            "x-nullable": false
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
             }
           }
         }
@@ -138,43 +172,754 @@
         "tags": [
           "Category"
         ],
-        "operationId": "DeleteCategoryById",
+        "operationId": "Category_DeleteCategoryById",
         "parameters": [
           {
+            "type": "integer",
             "name": "cateogryId",
             "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "format": "int32",
+            "x-nullable": false
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/Order/GetAllOrders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "Order_GetAllOrders",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Order"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Order/CreateOrder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "Order_CreateOrder",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        }
+      }
+    },
+    "/Order/GetOrdersForUser": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "Order_GetOrdersForUser",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        }
+      }
+    },
+    "/Product/GetAllProducts": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "Product_GetAllProducts",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Product/CreateProduct": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "Product_CreateProduct",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/Product/GetProductById": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "Product_GetProductById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "productId",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/Product/DeleteProductById": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "Product_DeleteProductById",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "productId",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/Product/UpdateProduct": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "Product_UpdateProduct",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/User/RegisterUser": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_RegisterUser",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/User/ConfirmUserEmailById": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_ConfirmUserEmailById",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/User/UserLogin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_UserLogin",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/User/GetCurrentUser": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_GetCurrentUser",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/User/SocialLogin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_SocialLogin",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SocialUser"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "WeatherForecast_Get",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WeatherForecast"
+              }
+            }
           }
         }
       }
     }
   },
-  "components": {
-    "schemas": {
-      "Category": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "categoryId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "categoryName": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "required": [
+        "addressId"
+      ],
+      "properties": {
+        "addressId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/IdentityUser"
+        },
+        {
+          "type": "object",
+          "required": [
+            "role"
+          ],
+          "properties": {
+            "address": {
+              "$ref": "#/definitions/Address"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "validationCode": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "role": {
+              "$ref": "#/definitions/Role"
+            }
           }
+        }
+      ]
+    },
+    "Role": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Admin",
+        "General"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "IdentityUser": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/IdentityUserOfString"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "IdentityUserOfString": {
+      "type": "object",
+      "required": [
+        "emailConfirmed",
+        "phoneNumberConfirmed",
+        "twoFactorEnabled",
+        "lockoutEnabled",
+        "accessFailedCount"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "normalizedUserName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "normalizedEmail": {
+          "type": "string"
+        },
+        "emailConfirmed": {
+          "type": "boolean"
+        },
+        "passwordHash": {
+          "type": "string"
+        },
+        "securityStamp": {
+          "type": "string"
+        },
+        "concurrencyStamp": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneNumberConfirmed": {
+          "type": "boolean"
+        },
+        "twoFactorEnabled": {
+          "type": "boolean"
+        },
+        "lockoutEnd": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lockoutEnabled": {
+          "type": "boolean"
+        },
+        "accessFailedCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "required": [
+        "categoryId"
+      ],
+      "properties": {
+        "categoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "categoryName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "required": [
+        "orderId",
+        "price",
+        "issueDate"
+      ],
+      "properties": {
+        "orderId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "orderProducts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderProduct"
+          }
+        }
+      }
+    },
+    "OrderProduct": {
+      "type": "object",
+      "required": [
+        "orderProductId",
+        "quantity",
+        "orderId",
+        "productId"
+      ],
+      "properties": {
+        "orderProductId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "product": {
+          "$ref": "#/definitions/Product"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "orderId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "required": [
+        "productId",
+        "price",
+        "quantity"
+      ],
+      "properties": {
+        "productId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "SocialUser": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/User"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "photoUrl": {
+              "type": "string"
+            },
+            "authToken": {
+              "type": "string"
+            },
+            "idToken": {
+              "type": "string"
+            },
+            "authorizationCode": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "WeatherForecast": {
+      "type": "object",
+      "required": [
+        "date",
+        "temperatureC",
+        "temperatureF"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "temperatureC": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "temperatureF": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "summary": {
+          "type": "string"
         }
       }
     }

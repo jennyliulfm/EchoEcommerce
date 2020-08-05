@@ -1,26 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Echo.Ecommerce.Host.Entities;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Echo.Ecommerce.Host.Models;
+using NSwag;
+using NSwag.Generation.Processors.Security;
+using NSwag.AspNetCore;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Echo.Ecommerce.Host
 {
@@ -114,7 +109,8 @@ namespace Echo.Ecommerce.Host
             #endregion
 
             #region "Swagger"
-            services.AddSwaggerGen();
+           
+            services.AddSwaggerDocument();
             #endregion
         }
 
@@ -125,12 +121,9 @@ namespace Echo.Ecommerce.Host
             {
                 app.UseDeveloperExceptionPage();
             }
-         
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
-            });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
            
@@ -144,8 +137,8 @@ namespace Echo.Ecommerce.Host
 
             app.UseAuthentication();
             app.UseAuthorization();
-
            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
