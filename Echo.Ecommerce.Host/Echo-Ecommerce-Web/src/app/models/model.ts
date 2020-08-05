@@ -33,3 +33,10 @@ export interface CartProduct {
     amount: number,
 }
 
+
+export interface Address {
+    addressId: number;
+    street: string,
+    city: string,
+    country: string
+}

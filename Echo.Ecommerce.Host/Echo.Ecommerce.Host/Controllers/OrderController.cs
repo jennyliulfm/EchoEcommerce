@@ -122,7 +122,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetOrdersForUser")]
-        public async ActionResult<Models.Order> GetOrdersForUser()
+        public ActionResult<Models.Order> GetOrdersForUser()
         {
             try
             {

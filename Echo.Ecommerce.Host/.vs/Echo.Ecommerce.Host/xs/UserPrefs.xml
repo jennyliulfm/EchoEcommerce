@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Entities/DBContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/OrderController.cs">
     <Files>
       <File FileName="Echo.Ecommerce.Host/Entities/OrderProduct.cs" Line="18" Column="42" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/OrderController.cs" Line="93" Column="45" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Order.cs" Line="30" Column="6" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/OrderController.cs" Line="130" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Order.cs" />
       <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" />
       <File FileName="Echo.Ecommerce.Host/Properties/launchSettings.json" />
       <File FileName="Echo.Ecommerce.Host/appsettings.json" />
@@ -15,16 +15,16 @@
       <File FileName="Echo.Ecommerce.Host/Startup.cs" />
       <File FileName="Echo.Ecommerce.Host/Program.cs" />
       <File FileName="Echo.Ecommerce.Host/Entities/User.cs" />
-      <File FileName="Echo.Ecommerce.Host/Models/User.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/SocialUser.cs" Line="9" Column="45" />
+      <File FileName="Echo.Ecommerce.Host/Models/User.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/SocialUser.cs" />
       <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" />
       <File FileName="Echo.Ecommerce.Host/Entities/Address.cs" />
       <File FileName="Echo.Ecommerce.Host/Controllers/BasicController.cs" />
-      <File FileName="Echo.Ecommerce.Host/Entities/OrderStatus.cs" Line="17" Column="29" />
-      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="21" Column="41" />
-      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" Line="35" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/OrderProduct.cs" Line="27" Column="43" />
-      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Entities/OrderStatus.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Order.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/OrderProduct.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Category.cs" />
       <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" Line="31" Column="24" />
     </Files>
     <Pads>
@@ -32,10 +32,10 @@
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True">
-                <Node name="DBContext.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="OrderController.cs" selected="True" />
               </Node>
+              <Node name="Entities" expanded="True" />
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
