@@ -58,7 +58,7 @@ export class TopnavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSocialUser();
+    //this.getSocialUser();
   }
 
   toggleNavigation(): void {
@@ -248,7 +248,9 @@ export class TopnavigationComponent implements OnInit {
       }
     );
 
-    this.closeSignInModal();
+    if (this.userSignInModal.isShown) {
+      this.userSignInModal.hide();
+    }
   }
 
 }

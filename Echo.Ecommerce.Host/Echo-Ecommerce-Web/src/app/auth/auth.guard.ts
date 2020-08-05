@@ -24,7 +24,8 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('token') != null) {
       return true;
     } else {
-      this.toastrService.error("You have not logged in, please Sign in first")
+      this.toastrService.error("You have not logged in, please Sign in first");
+      this.router.navigateByUrl('home');
       return false;
 
     }
