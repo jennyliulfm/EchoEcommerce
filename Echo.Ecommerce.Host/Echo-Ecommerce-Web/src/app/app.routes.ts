@@ -21,12 +21,12 @@ export const routes: Routes = [
     path: '',
     component: BasicLayoutComponent,
     children: [
-      { path: '**', component: HomeComponent },
+      { path:'', redirectTo:'home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent },
       { path: 'admin/product', component: ProductComponent, canActivate: [AuthGuard]},
       { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
       { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },
-      { path: 'order/checkout',component:CheckoutComponent,canActivate: [AuthGuard]}
+      { path: 'order/checkout', component:CheckoutComponent,canActivate: [AuthGuard]}
     ]
   },
 ];
