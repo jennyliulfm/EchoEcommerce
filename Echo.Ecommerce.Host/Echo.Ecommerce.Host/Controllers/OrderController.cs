@@ -61,7 +61,6 @@ namespace Echo.Ecommerce.Host.Controllers
         [Authorize(Roles = "General")]
         public async Task<ActionResult<Models.Order>> CreateOrder(Models.Order model)
         {
-
             try
             {
                 var user = this.GetUser();
@@ -92,9 +91,8 @@ namespace Echo.Ecommerce.Host.Controllers
                                 Quantity = op.Quantity,
                             };
 
-                            this._dbContext.OrderProducts.Add(orderProduct);
+                            await this._dbContext.OrderProducts.AddAsync(orderProduct);
                         }
-      
                     }    
 
                     int result = await this._dbContext.SaveChangesAsync();
@@ -116,10 +114,42 @@ namespace Echo.Ecommerce.Host.Controllers
             }
             catch(Exception ex)
             {
-                this._logger.LogError(ex, "User not logged in");
+                this._logger.LogError(ex, "CreateOrder Failed");
                 return BadRequest();
             }
             
+        }
+
+        [HttpGet]
+        [Route("GetOrdersForUser")]
+        public async ActionResult<Models.Order> GetOrdersForUser()
+        {
+            try
+            {
+                var user = this.GetUser();
+
+                if( user != null )
+                {
+                    var orders = this._dbContext.Orders.Where(order => order.User.Id == user.Id)
+                        .AsNoTracking()
+                        .OrderBy(order => order.IssueDate)
+                        .Take(5)
+                        .Select(order => new Models.Order(order))
+                        .ToList();
+
+                    return Ok(orders);
+                }
+                else
+                {
+                    return Ok();
+                }
+            }
+            catch( Exception ex)
+            {
+                this._logger.LogError(ex, "GetOrdersForUser Failed");
+                return BadRequest();
+            }
+           
         }
     }
 }
