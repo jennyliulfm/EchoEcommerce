@@ -2,15 +2,8 @@
   "x-generator": "NSwag v13.7.0.0 (NJsonSchema v10.1.24.0 (Newtonsoft.Json v12.0.0.0))",
   "swagger": "2.0",
   "info": {
-    "title": "Jenny Testing",
-    "description": "API for Testing",
-    "termsOfService": "This API is the property",
-    "contact": {
-      "name": "Jennifer Testing",
-      "url": "",
-      "email": "chengyihang2008@gmai.com"
-    },
-    "version": "v1"
+    "title": "My Title",
+    "version": "1.0.0"
   },
   "host": "swagger: 2.0",
   "schemes": [
@@ -930,10 +923,5 @@
         }
       }
     }
-  },
-  "security": [
-    {
-      "Bearer": []
-    }
-  ]
+  }
 }

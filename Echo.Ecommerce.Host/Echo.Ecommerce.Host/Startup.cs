@@ -110,26 +110,7 @@ namespace Echo.Ecommerce.Host
 
             #region "Swagger"
             services.AddSwaggerGen();
-            var sec = new OpenApiSecurityRequirement { { "Bearer", Enumerable.Empty<string>() } };
-
-            services.AddSwaggerDocument(config =>
-            {
-                config.PostProcess = document =>
-                {
-                    document.Info.Version = "v1";
-                    document.Info.Title = "Jenny Testing";
-                    document.Info.Description = "API for Testing";
-                    document.Info.TermsOfService = "This API is the property";
-                    document.Info.Contact = new OpenApiContact
-                    {
-                        Name = "Jennifer Testing",
-                        Email = "chengyihang2008@gmai.com",
-                        Url = ""
-                    };
-                    document.Security = new List<OpenApiSecurityRequirement> { sec };
-                };
-            });
-
+            services.AddSwaggerDocument();
             #endregion
         }
 
@@ -142,15 +123,7 @@ namespace Echo.Ecommerce.Host
             }
 
             app.UseOpenApi();
-            app.UseSwaggerUi3(config =>
-            {
-                config.OAuth2Client = new OAuth2ClientSettings
-                {
-                    ClientId = "",
-                    AppName = "swagger"
-                };
-            });
-        
+            app.UseSwaggerUi3();
 
             app.UseHttpsRedirection();
            
