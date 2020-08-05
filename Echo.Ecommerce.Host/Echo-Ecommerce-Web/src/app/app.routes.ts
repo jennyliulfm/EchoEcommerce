@@ -14,17 +14,19 @@ import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { CheckoutComponent} from './components/checkout/checkout.component';
+import { AuthGuard } from './auth/auth.guard'
 
 export const routes: Routes = [
   {
     path: '',
     component: BasicLayoutComponent,
     children: [
+      { path: '**', component: HomeComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'admin/product', component: ProductComponent },
-      { path: 'admin/category', component: CategoryComponent },
-      { path: 'emailconfirm', component: EmailConfirmComponent },
-      { path: 'checkout',component:CheckoutComponent}
+      { path: 'admin/product', component: ProductComponent, canActivate: [AuthGuard]},
+      { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
+      { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },
+      { path: 'order/checkout',component:CheckoutComponent,canActivate: [AuthGuard]}
     ]
   },
 ];
