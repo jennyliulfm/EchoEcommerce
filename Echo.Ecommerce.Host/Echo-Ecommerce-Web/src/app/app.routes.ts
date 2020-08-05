@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
+import { CheckoutComponent} from './components/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -22,7 +23,8 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'admin/product', component: ProductComponent },
       { path: 'admin/category', component: CategoryComponent },
-      { path: 'emailconfirm', component: EmailConfirmComponent }
+      { path: 'emailconfirm', component: EmailConfirmComponent },
+      { path: 'checkout',component:CheckoutComponent}
     ]
   },
 ];

@@ -20,5 +20,10 @@ namespace Echo.Ecommerce.Host.Models
             this.Product = new Models.Product(model.Product);
             this.Quantity = model.Quantity;
         }
+
+
+        public int OrderId { get; set; }
+
+        public int ProductId { get; set; }
     }
 }
