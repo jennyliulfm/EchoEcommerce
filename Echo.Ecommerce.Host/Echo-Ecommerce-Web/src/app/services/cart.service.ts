@@ -40,10 +40,10 @@ export class CartService {
    * Remove product from cart
    * @param productId 
    */
-  removeProductFromCart( productId: number) {
+  removeProductFromCart( product: CartProduct) {
 
     this.cartItems.map((item, index) => {
-      if (item.productId == productId) {
+      if (item.productId == product.productId) {
         this.cartItems.splice(index, 1);
       }
     });
