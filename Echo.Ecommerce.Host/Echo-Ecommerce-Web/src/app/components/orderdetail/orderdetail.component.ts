@@ -44,7 +44,7 @@ export class OrderdetailComponent implements OnInit {
   ngOnInit(): void {
     this.getCartItems();
     this.getTotalPrice(); 
-    this.addressServie.GetAllAddresses()
+    this.addressServie.getAllAddresses()
       .subscribe( (res) => {
         this.addresses = res;
       },
