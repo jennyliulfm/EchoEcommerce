@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 interface UserForm {
@@ -31,14 +32,13 @@ export class TopnavigationComponent implements OnInit {
 
   @Input() isNavigationOpen: boolean;
   @Output() toggleNavigationEvent: EventEmitter<boolean> = new EventEmitter;
-  public isLoggedIn = false;
+
+  public isloggedIn: boolean = false;
 
   public isCartOpen: boolean = false;
   private currentUser?: User;
 
   public socialUser: SocialUser;
-  loggedIn: boolean;
-
 
   public readonly passwordPattern: string = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!#\$])(?=.{8,14})";
 
@@ -59,9 +59,7 @@ export class TopnavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLogged();
-
-    this.getSocialUser();
+    this.checkLogin();
   }
 
   toggleNavigation(): void {
@@ -71,7 +69,7 @@ export class TopnavigationComponent implements OnInit {
 
   logout(): void {
     this.userSerive.logout();
-    this.isLoggedIn = false;
+    this.isloggedIn = false;
   }
 
 
@@ -93,6 +91,7 @@ export class TopnavigationComponent implements OnInit {
    * Close Signup modal
    */
   closeSignInModal() {
+    this.userGroupModel.reset();
     this.userSignInModal.hide();
   }
 
@@ -135,7 +134,6 @@ export class TopnavigationComponent implements OnInit {
       res => {
         if (res) {
           this.toasterService.success(`Your Account Has been Created Successfully, Please Check Your Email to Confirm Your Account`);
-
           this.userGroupModel.reset();
         }
       },
@@ -162,7 +160,7 @@ export class TopnavigationComponent implements OnInit {
       res => {
         if (res) {
 
-          this.isLoggedIn = true;
+          this.isloggedIn = true;
           this.userGroupModel.reset();
 
           this.toasterService.success(`You have successfully login`);
@@ -171,10 +169,11 @@ export class TopnavigationComponent implements OnInit {
           // Get current user's information after login.
           this.getCurrentUser();
           this.userSerive.currentUser = this.currentUser;
+          this.checkLogin();
         }
       },
       err => {
-
+        this.closeSignInModal();
         this.toasterService.error(`${err.error.message}`)
         console.error("ERROR: createUser", err);
       }
@@ -197,24 +196,12 @@ export class TopnavigationComponent implements OnInit {
     );
   }
 
-  /**
-   * Verify whether user is logged in or not to control the menu
-   */
-  isLogged() {
-    if (this.userSerive.currentUser.email === "") {
-      this.isLoggedIn = true;
-    } else {
-      this.isLoggedIn = false;
-    }
-  }
 
   /**
    * Login with google
    */
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-
-    //Get loggedin user information
     this.getSocialUser();
 
   }
@@ -234,20 +221,21 @@ export class TopnavigationComponent implements OnInit {
   getSocialUser() {
     this.authService.authState.subscribe(
       res => {
-        this.toasterService.success("You have successfully login");
-
         this.socialUser = res;
 
         this.userSerive.socialLogin(this.socialUser).subscribe(
           res => {
-            this.isLoggedIn = true;
-           
+
+            this.isloggedIn = true;
+
             this.toasterService.success(`You have successfully login`);
             localStorage.setItem('token', res.token);
 
             // Get current user's information after login.
             this.getCurrentUser();
             this.userSerive.currentUser = this.currentUser;
+
+            this.checkLogin();
 
           },
           err => {
@@ -260,13 +248,39 @@ export class TopnavigationComponent implements OnInit {
       },
 
       err => {
-
         console.log("ERROR: GetSocialUser Failed");
       }
     );
 
-    this.closeSignInModal();
+    if (this.userSignInModal.isShown) {
+      this.userSignInModal.hide();
+    }
   }
 
+  /**
+   * Open order detail
+   */
+  openOrderDetails() {
+    this.router.navigateByUrl('order/detail');
+  }
 
+  /**
+   * check login 
+   */
+  checkLogin() {
+    const token = localStorage.getItem('token');
+    if (token != null) {
+      const helper = new JwtHelperService();
+      const isExpired = helper.isTokenExpired(token);
+
+      if (isExpired == true) {
+        this.isloggedIn = false;
+      }
+      else {
+        this.isloggedIn = true;
+      }
+    } else {
+      this.isloggedIn = false;
+    }
+  }
 }

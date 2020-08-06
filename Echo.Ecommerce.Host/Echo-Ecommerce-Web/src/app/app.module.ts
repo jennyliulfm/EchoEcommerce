@@ -22,12 +22,14 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/admin/product/product.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
-import { CartComponent } from './components/cart/cart.component';
 import { TokenInterceptor } from '../app/auth/token.interceptor'
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddressService } from './services/address.service';
+import { OrderService } from './services/order.service';
+import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
+
 
 
 @NgModule({
@@ -42,8 +44,8 @@ import { AddressService } from './services/address.service';
     ProductComponent,
     CategoryComponent,
     EmailConfirmComponent,
-    CartComponent,
     CheckoutComponent,
+    OrderdetailComponent,
 
   ],
   imports: [
@@ -68,6 +70,7 @@ import { AddressService } from './services/address.service';
       multi: true
     },
     AddressService,
+    OrderService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
