@@ -21,6 +21,10 @@ namespace Echo.Ecommerce.Host.Entities
         [Required]
         [ForeignKey("UserId")]
         public User User { get; set; }
+
+        [Required]
+        [ForeignKey("AddressId")]
+        public Address Address { get; set; }
        
         public DateTime IssueDate { get; set; }
         public OrderStatus OrderStatus { get; set; }

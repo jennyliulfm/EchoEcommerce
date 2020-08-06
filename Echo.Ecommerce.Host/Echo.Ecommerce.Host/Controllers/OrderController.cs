@@ -78,23 +78,26 @@ namespace Echo.Ecommerce.Host.Controllers
 
                     await this._dbContext.Orders.AddAsync(newOrder);
 
-                    foreach (Models.OrderProduct op in model.OrderProducts)
+                    if(model.OrderProducts.Count >0 )
                     {
-                        var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == op.ProductId);
-
-                        if (product != null)
+                        foreach (Models.OrderProduct op in model.OrderProducts)
                         {
-                            Entities.OrderProduct orderProduct = new Entities.OrderProduct()
+                            var product = await this._dbContext.Products.FirstOrDefaultAsync(p => p.ProductId == op.ProductId);
+
+                            if (product != null)
                             {
-                                Order = newOrder,
-                                Product = product,
-                                Quantity = op.Quantity,
-                            };
+                                Entities.OrderProduct orderProduct = new Entities.OrderProduct()
+                                {
+                                    Order = newOrder,
+                                    Product = product,
+                                    Quantity = op.Quantity,
+                                };
 
-                            await this._dbContext.OrderProducts.AddAsync(orderProduct);
+                                await this._dbContext.OrderProducts.AddAsync(orderProduct);
+                            }
                         }
-                    }    
-
+                    }
+                   
                     int result = await this._dbContext.SaveChangesAsync();
                     if (result > 0)
                     {
