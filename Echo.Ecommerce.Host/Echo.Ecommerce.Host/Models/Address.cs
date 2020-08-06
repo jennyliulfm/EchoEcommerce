@@ -12,13 +12,14 @@ namespace Echo.Ecommerce.Host.Models
         public string Street { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public string Passcode { get; set; }
 
         public Address ()
         {
 
         }
 
-        public Address (Entities.Address  address)
+        public Address (Entities.Address address)
         {
             this.AddressId = address.AddressId;
 
@@ -30,6 +31,7 @@ namespace Echo.Ecommerce.Host.Models
             this.Street = address.Street;
             this.City = address.City;
             this.Country = address.Country;
+            this.Passcode = address.Passcode;
         }
     }
 }

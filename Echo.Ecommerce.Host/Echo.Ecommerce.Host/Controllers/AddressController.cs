@@ -54,6 +54,7 @@ namespace Echo.Ecommerce.Host.Controllers
                     Street = model.Street,
                     City = model.City,
                     Country = model.Country,
+                    Passcode = model.Passcode,    
                     User = user,
                 };
 
