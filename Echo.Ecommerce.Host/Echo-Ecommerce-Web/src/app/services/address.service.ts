@@ -8,11 +8,11 @@ import { Address } from '../models/model';
 })
 export class AddressService {
 
-  private readonly BaseURL: string ="https://localhost:5001/Address";
+  private readonly BaseURL: string = "https://localhost:5001/Address";
   constructor(private http: HttpClient) { }
 
-  GetAllAddresses():Observable<Array<Address>> {
-    return this.http.get<Array<Address>>( this.BaseURL + '/GetAllAddressForUser');
+  GetAllAddresses(): Observable<Array<Address>> {
+    return this.http.get<Array<Address>>(this.BaseURL + '/GetAllAddressForUser');
 
   }
 }

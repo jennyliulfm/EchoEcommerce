@@ -16,7 +16,6 @@ export class OrderdetailComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router) {
-
   }
 
   ngOnInit(): void {

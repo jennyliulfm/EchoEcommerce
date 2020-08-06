@@ -41,3 +41,17 @@ export interface Address {
     city: string;
     country: string;
 }
+
+export interface Order {
+    orderId: number,
+    price: number,
+    user: User,
+    orderProducts: Array<OrderProduct>
+
+
+}
+
+export interface OrderProduct {
+    productId: number,
+    quantity: number
+}
