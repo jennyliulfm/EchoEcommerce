@@ -30,10 +30,6 @@ namespace Echo.Ecommerce.Host.Models
 
         public User (Entities.User user)
         {
-            if (user.Address != null )
-            {
-                this.Address = new Models.Address(user.Address);
-            }
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
             this.Email = user.Email;  
@@ -43,10 +39,6 @@ namespace Echo.Ecommerce.Host.Models
 
         public User ( Entities.User user, Role role)
         {
-            if (user.Address != null)
-            {
-                this.Address = new Models.Address(user.Address);
-            }
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
             this.Email = user.Email;

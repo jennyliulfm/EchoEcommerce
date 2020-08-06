@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -12,9 +11,8 @@ export class AuthGuard implements CanActivate {
   /**
    *
    */
-  constructor(
-    private router: Router,
-    private toastrService: ToastrService) {
+  constructor(private router: Router) {
+
 
   }
 
@@ -24,8 +22,7 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('token') != null) {
       return true;
     } else {
-      this.toastrService.error("You have not logged in, please Sign in first");
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('/login');
       return false;
 
     }

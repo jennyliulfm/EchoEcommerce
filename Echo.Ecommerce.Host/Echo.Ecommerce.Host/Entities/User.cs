@@ -16,7 +16,8 @@ namespace Echo.Ecommerce.Host.Entities
 
         [Column("Code")]
         public string ValidationCode { get; set; }
-        public Address Address { get; set; }
+
+        public List<Address> Addresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }
 

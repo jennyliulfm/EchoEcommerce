@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
 
   public products?: Array<Product>
   private productSelected?: Array<Product>;
-  public quantity: number ;
 
   constructor(
     private productService: ProductService,
@@ -40,16 +39,16 @@ export class HomeComponent implements OnInit {
   /**
    * Addtocart
    */
-  addToCart(event, product: Product, quantity: number) {
-    const cartProductAdded: CartProduct = {
+  addToCart(event, product: Product) {
+
+    const cartProductAdded: CartProduct  = {
       productId: product.productId,
       name: product.name,
       price: product.price,
-      description: product.description,
-      quantity: quantity,
+      amount: 1,
     };
-
-    this.chartService.addProductToCart(cartProductAdded);
+    
+    this.chartService.addProductToCart( cartProductAdded );
   }
 
 }

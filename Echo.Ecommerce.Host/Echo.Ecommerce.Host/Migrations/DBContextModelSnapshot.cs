@@ -40,8 +40,7 @@ namespace Echo.Ecommerce.Host.Migrations
 
                     b.HasKey("AddressId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Address");
                 });
@@ -376,8 +375,8 @@ namespace Echo.Ecommerce.Host.Migrations
             modelBuilder.Entity("Echo.Ecommerce.Host.Entities.Address", b =>
                 {
                     b.HasOne("Echo.Ecommerce.Host.Entities.User", "User")
-                        .WithOne("Address")
-                        .HasForeignKey("Echo.Ecommerce.Host.Entities.Address", "UserId");
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Echo.Ecommerce.Host.Entities.Order", b =>

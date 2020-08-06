@@ -13,27 +13,29 @@
 
     <ul class="nav navbar-top-links navbar-right">
       <li class="checkout-test">
-        <button (click)="openOrderDetails()">
+        <button (click)="isCartOpen = !isCartOpen">
           <span class="glyphicon glyphicon-shopping-cart"></span>
           {{ cartService.cartItems.length }}
         </button>
+
+        <app-cart *ngIf="isCartOpen"></app-cart>
       </li>
 
-      <li *ngIf="!isloggedIn">
+      <li *ngIf="!isLoggedIn">
         <a (click)="openSignupModal()">
           <i class="fa fa-user"></i>
           <span>Sign up</span>
         </a>
       </li>
 
-      <li *ngIf="!isloggedIn">
+      <li *ngIf="!isLoggedIn">
         <a (click)="openSignInModal()">
           <i class="fa fa-user"></i>
           <span>Sign In</span>
         </a>
       </li>
 
-      <li *ngIf="isloggedIn">
+      <li *ngIf="isLoggedIn">
         <a (click)="logout()">
           <i class="fa fa-sign-out"></i>
           <span>Log Out</span>

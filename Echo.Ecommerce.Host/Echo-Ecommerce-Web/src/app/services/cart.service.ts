@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable, of } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { CartProduct } from '../models/model';
-import { FaStackComponent } from '@fortawesome/angular-fontawesome';
 
 
 @Injectable({
@@ -12,19 +11,18 @@ export class CartService {
   constructor() { }
 
   public cartItems: Array<CartProduct> = [];
-
+  public products = new Subject();
 
 
   /**
    * Get cart items
    */
   getProducts(): Observable<any> {
-    //return this.products.asObservable();
-    return of(this.cartItems);
+    return this.products.asObservable();
   }
 
   //Added by Hao temporally
-  getItems(): Observable<CartProduct[]> {
+  getItems(): Observable<CartProduct[]>{
 
     let observable = Observable.create(observer => observer.next(this.cartItems));
     return observable;
@@ -34,34 +32,23 @@ export class CartService {
    * @param product Add product to cart
    */
   addProductToCart(product: CartProduct) {
-
-    var isAdded = false;
-
-    this.cartItems.map((item, index) => {
-      if (item.productId == product.productId) {
-        item.quantity += product.quantity;
-        isAdded = true;
-
-      }
-    });
-
-    if (isAdded == false) {
-      this.cartItems.push(product);
-    }
-
+    this.cartItems.push(product);
+    this.products.next(this.cartItems);
   }
 
   /**
    * Remove product from cart
    * @param productId 
    */
-  removeProductFromCart(product: CartProduct) {
+  removeProductFromCart( productId: number) {
+
     this.cartItems.map((item, index) => {
-      if (item.productId == product.productId) {
+      if (item.productId == productId) {
         this.cartItems.splice(index, 1);
       }
     });
 
+    this.products.next(this.cartItems);
   }
 
   /**
@@ -69,29 +56,19 @@ export class CartService {
    */
   emptryCart() {
     this.cartItems.length = 0;
+    this.products.next(this.cartItems);
   }
 
-  /**
-   * Get total price
-   */
+ /**
+  * Get total price
+  */
   getTotalPrice() {
     let total = 0;
     this.cartItems.filter(item => {
-      total += item.price * item.quantity;
+      total += item.price;
     });
 
     return total;
-  }
-
-  /**
-   * update quanity
-   */
-  updateItemQuantity(quanity: number, item: CartProduct) {
-    this.cartItems.map((item, index) => {
-      if (item.productId == item.productId) {
-        item.quantity = quanity;
-      }
-    });
   }
 
 }

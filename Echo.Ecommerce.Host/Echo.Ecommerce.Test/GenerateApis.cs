@@ -28,7 +28,7 @@ namespace Echo.Ecommerce.Test
                 {
                     ClassName = "{controller}Api",
                     AdditionalContractNamespaceUsages = new string[] { "" },
-                    AdditionalNamespaceUsages = new string[] { "Echo.Ecommerce.Host.Controllers", "Echo.Ecommerce.Host.Models", "Microsoft.AspNetCore.Mvc.ModelBinding", "Microsoft.AspNetCore.Mvc" },
+                    AdditionalNamespaceUsages = new string[] {"Echo.Ecommerce.Host.Controllers", "Echo.Ecommerce.Host.Models","Microsoft.AspNetCore.Mvc.ModelBinding", "Microsoft.AspNetCore.Mvc" },
                     CSharpGeneratorSettings =
                     {
                         Namespace = "Echo.Ecommerce.Host.WebApi"
@@ -42,10 +42,10 @@ namespace Echo.Ecommerce.Test
                 var code = generator.GenerateFile();
                 var json = document.ToJson();
 
-                json = json.Replace("localhost", "swagger: 2.0");
-                string path = System.IO.Path.Join(Environment.CurrentDirectory, "..//..//..//RestApi.cs");
+                json = json.Replace("localhost", "");
+                string path = System.IO.Path.Join(Environment.CurrentDirectory, "..\\..\\..\\RestApi.cs");
                 System.IO.File.WriteAllText(path, code);
-                System.IO.File.WriteAllText(System.IO.Path.Join(Environment.CurrentDirectory, "..//..//..//..//Echo-Ecommerce-Web//swagger.json"), json);
+                System.IO.File.WriteAllText(System.IO.Path.Join(Environment.CurrentDirectory, "..\\..\\..\\..\\Echo.Ecommerce.Web\\swagger.json"), json);
             }
             catch (Exception ex)
             {

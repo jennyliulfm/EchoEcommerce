@@ -1,40 +1,41 @@
 <div class="container">
-  <div class="row centered-form">
+    <div class="row centered-form">
     <div class="col-40">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Please confirm your order</h3>
-        </div>
-        <div class="panel-body">
-          <table>
-            <tr>
-              <th>Item</th>
-              <th>Quantity</th>
-            </tr>
-            <tr *ngFor="let item of cartItems">
-              <td>{{item.name}} </td>
-              <td>{{item.amount}} </td>
-            </tr>
-          </table>
-          <hr>
-          <p>Total <span class="price" style="color:black"><b>${{totalPrice}} </b></span></p>
-          <form novalidate role="form">
-            <div class="form-group">
-              <label for="fullName">Select from my stored addresses</label>
-              <select name="" id="">
-                <option value="">Please select an address</option>
-                <option *ngFor="let address of addresses" [value]="address.addressId">
-                  {{address.street+','+address.city+','+address.country}}
-                </option>
-              </select>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Please confirm your order</h3>
+                     </div>
+                     <div class="panel-body">
+                        <table>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                            </tr>
+                            <tr *ngFor="let item of cartItems">
+                                <td>{{item.name}} </td>
+                                <td>{{item.amount}} </td>
+                            </tr>
+                        </table>
+                      <hr>
+                      <p>Total <span class="price" style="color:black"><b>${{totalPrice}} </b></span></p>
+                    <form novalidate role="form" #aform="ngForm" >
+                        <div class="form-group" >
+                            <label for="fullName">Select from my stored addresses</label>
+                            <!-- <select name="" id="" (change)="onSelectChange($event)">
+                                <option value="">Please select an address</option>
+                                <option *ngFor="let address of storedAddresses" [value]="address.addressId" >
+                                {{address.fullname+','+address.street+','+address.suburb+','+address.state+','+address.phone}}
+                                </option>
+                            </select> -->
+                        </div>
+                        <button class="btn btn-primary">Confirm</button>
+                    </form>
+                </div>
             </div>
-            <button class="btn btn-primary" (click)="onSubmit()">Confirm</button>
-          </form>
         </div>
-      </div>
+
     </div>
 
-  </div>
-
-
+    
 </div>
+
