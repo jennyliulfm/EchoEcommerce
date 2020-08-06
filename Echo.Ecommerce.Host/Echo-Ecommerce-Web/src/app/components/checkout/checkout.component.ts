@@ -37,7 +37,7 @@ export class CheckoutComponent implements OnInit {
     {
       var orderProducts: OrderProduct[] = [];
       this.cartItems.map(item=>{
-        orderProducts.push({productId: item.productId, quantity:item.amount});
+        orderProducts.push({productId: item.productId, quantity:item.quantity});
       })
       var order: Order = { 
         orderId: null, 

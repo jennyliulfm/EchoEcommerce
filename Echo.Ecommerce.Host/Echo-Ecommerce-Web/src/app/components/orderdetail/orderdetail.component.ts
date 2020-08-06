@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CartProduct } from 'src/app/models/model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CartProduct, Address } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { AddressService } from 'src/app/services/address.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-orderdetail',
@@ -12,18 +15,19 @@ export class OrderdetailComponent implements OnInit {
 
   public cartItems?: Array<CartProduct>;
   public totalPrice?: number;
-<<<<<<< HEAD
   public addresses: Address[];
   public addressForm: FormGroup;
   public errorMessage: string;
+  @ViewChild('addressModal', { static: false }) addressModal: ModalDirective;
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private addressServie: AddressService,
-    private formBuilder: FormBuilder) { 
+    private formBuilder: FormBuilder,) { 
       this.createAddressForm();
   }
+
 
   closeAddressModal() {
     this.addressModal.hide();
@@ -34,17 +38,11 @@ export class OrderdetailComponent implements OnInit {
   */
   openAddressModal() {
     this.addressModal.show();
-=======
 
-  constructor(
-    private cartService: CartService,
-    private router: Router) {
->>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
   }
 
   ngOnInit(): void {
     this.getCartItems();
-<<<<<<< HEAD
     this.getTotalPrice(); 
     this.addressServie.GetAllAddresses()
       .subscribe( (res) => {
@@ -53,9 +51,7 @@ export class OrderdetailComponent implements OnInit {
       (error) => {
         this.errorMessage = error;
       });
-=======
     this.getTotalPrice();
->>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
   }
 
   /**
@@ -94,7 +90,6 @@ export class OrderdetailComponent implements OnInit {
     this.cartService.removeProductFromCart(item);
   }
 
-<<<<<<< HEAD
   addAddress(){
     if(this.addressForm.valid){
 
@@ -106,7 +101,7 @@ export class OrderdetailComponent implements OnInit {
       //     console.log(err);
       //   })
     }
-=======
+  }
   /**
    * Modify quantity for an item
    * @param quantity M
@@ -121,6 +116,13 @@ export class OrderdetailComponent implements OnInit {
     }
 
     this.getTotalPrice();
->>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
+  }
+
+  createAddressForm(){
+    this.addressForm = this.formBuilder.group({
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+    })
   }
 }
