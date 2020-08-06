@@ -17,7 +17,8 @@ export class OrderdetailComponent implements OnInit {
   public cartItems?: Array<CartProduct> ;
   public totalPrice?: number;
   public addresses: Address[];
-  private addressForm: FormGroup;
+  public addressForm: FormGroup;
+  public errorMessage: string;
 
   constructor(
     private cartService: CartService,
@@ -27,14 +28,14 @@ export class OrderdetailComponent implements OnInit {
       this.createAddressForm();
   }
 
-  closeProductModal() {
+  closeAddressModal() {
     this.addressModal.hide();
   }
 
   /**
   * Open product moda.
   */
-  openProductModal() {
+  openAddressModal() {
     this.addressModal.show();
   }
 
@@ -43,7 +44,12 @@ export class OrderdetailComponent implements OnInit {
     this.getCartItems();
     this.getTotalPrice(); 
     this.addressServie.GetAllAddresses()
-      .subscribe( res => this.addresses = res);
+      .subscribe( (res) => {
+        this.addresses = res;
+      },
+      (error) => {
+        this.errorMessage = error;
+      });
   }
   
   
@@ -90,5 +96,18 @@ export class OrderdetailComponent implements OnInit {
 
   removeItemFromCart(item: CartProduct) {
     this.cartService.removeProductFromCart(item);
+  }
+
+  addAddress(){
+    if(this.addressForm.valid){
+
+      // this.addressServie.CreateAddress(this.addressForm.value)
+      //   .subscribe(res => {
+      //     console.log(res);
+      //   },
+      //   err => {
+      //     console.log(err);
+      //   })
+    }
   }
 }
