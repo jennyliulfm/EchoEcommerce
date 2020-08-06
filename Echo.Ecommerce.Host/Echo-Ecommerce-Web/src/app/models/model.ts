@@ -21,24 +21,25 @@ export interface Product {
 }
 
 export interface Category {
-    categoryId: number,
-    categoryName: string,
-    description: string
+    categoryId: number;
+    categoryName: string;
+    description: string;
 }
 
 export interface CartProduct {
-    productId: number,
-    name: string,
-    price: number,
-    amount: number,
+    productId: number;
+    description:string;
+    name: string;
+    price: number;
+    quantity: number;
 }
 
 
 export interface Address {
     addressId: number;
-    street: string,
-    city: string,
-    country: string
+    street: string;
+    city: string;
+    country: string;
 }
 
 export interface Order {

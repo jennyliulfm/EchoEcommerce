@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Migrations/DBContextModelSnapshot.cs">
     <Files>
       <File FileName="Echo.Ecommerce.Host/Entities/OrderProduct.cs" Line="21" Column="1" />
@@ -30,24 +31,49 @@
       <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" />
       <File FileName="Echo.Ecommerce.Host/Migrations/20200804113053_support order.cs" />
       <File FileName="Echo.Ecommerce.Host/Entities/Category.cs" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Controllers/AddressController.cs">
+    <Files>
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="265" Column="11" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" Line="1" Column="1" />
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
+<<<<<<< HEAD
               <Node name="Controllers" expanded="True" />
               <Node name="Entities" expanded="True" />
               <Node name="Migrations" expanded="True">
                 <Node name="DBContextModelSnapshot.cs" selected="True" />
               </Node>
               <Node name="Properties" expanded="True" />
+=======
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AddressController.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Echo.Ecommerce.Test" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
             </Node>
           </Node>
         </State>
       </Pad>
+<<<<<<< HEAD
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
+=======
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Echo.Ecommerce.Host" expanded="True" selected="True" />
+        </State>
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -56,10 +82,15 @@
   <MonoDevelop.Ide.ItemProperties.Echo.Ecommerce.Host PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
+<<<<<<< HEAD
       <Breakpoint file="/Users/user/Projects/_echo/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="72" column="1" />
       <Breakpoint file="/Users/user/Projects/_echo/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/UserController.cs" relfile="Echo.Ecommerce.Host/Controllers/UserController.cs" line="193" column="1" />
       <Breakpoint file="/Users/user/Projects/_echo/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/CategoryController.cs" relfile="Echo.Ecommerce.Host/Controllers/CategoryController.cs" line="36" column="1" />
       <Breakpoint file="/Users/user/Projects/_echo/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/AddressController.cs" relfile="Echo.Ecommerce.Host/Controllers/AddressController.cs" line="49" column="1" />
+=======
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Host/Controllers/CategoryController.cs" relfile="Echo.Ecommerce.Host/Controllers/CategoryController.cs" line="36" column="1" />
+      <Breakpoint file="/Users/jenniferliu/Documents/git/EchoEcommerce/Echo.Ecommerce.Host/Echo.Ecommerce.Test/GenerateApis.cs" relfile="Echo.Ecommerce.Test/GenerateApis.cs" line="21" column="1" />
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

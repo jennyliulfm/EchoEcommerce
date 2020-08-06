@@ -38,51 +38,42 @@
                                             </a>
                                         </h3>
                                         <p class="small">
-                                            It is a long established fact that a reader will be distracted by the
-                                            readable
-                                            content of a page when looking at its layout. The point of using Lorem Ipsum
-                                            is
+                                            {{ item.description }}
                                         </p>
-                                        <!-- <dl class="small m-b-none">
-                        <dt>Description lists</dt>
-                        <dd>A description list is perfect for defining terms.</dd>
-                      </dl> -->
-
                                         <div class="m-t-sm">
-                                            <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift
+                                            <a class="text-muted"><i class="fa fa-gift"></i> Add gift
                                                 package</a>
-                                            |
-                                            <a href="#" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
+                                            <a class="text-muted" (click)="removeItemFromCart(item)"><i
+                                                    class="fa fa-trash"></i> Remove item</a>
                                         </div>
                                     </td>
 
                                     <td>
-                                        {{ item.price  | currency:'AUS' }}
+                                        {{ item.price  * item.quantity | currency: 'AUS' }}
 
                                         <!-- <s class="small text-muted">$230,00</s> -->
                                     </td>
                                     <td width="65">
-                                        <input type="text" class="form-control" placeholder="1">
+                                        <input type="text" class="form-control" [ngModel]="item.quantity" #amount
+                                            (keyup.enter)="onEnter(amount.value, item)">
                                     </td>
                                     <td>
                                         <h4>
-                                            {{ item.price  | currency:'AUS' }}
+                                            {{ item.price  * item.quantity | currency: 'AUS' }}
                                         </h4>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="ibox-content">
-                        <button class="btn btn-primary float-right" (click)="removeItemFromCart(item)"><i
-                                class="fa fa fa-shopping-cart"></i> Checkout</button>
-                        <button class="btn btn-white" (click)="continueShopping()"><i class="fa fa-arrow-left"></i>
-                            Continue shopping</button>
-
-                    </div>
 
                 </div>
 
+            </div>
+            <div class="ibox-content">
+                <button class="btn btn-primary float-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                <button class="btn btn-white" (click)="continueShopping()"><i class="fa fa-arrow-left"></i>
+                    Continue shopping</button>
             </div>
         </div>
 
@@ -120,10 +111,10 @@
                         *For United States, France and Germany applicable sales tax will be applied
                     </span>
                     <div class="m-t-sm">
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
-                            <a href="#" class="btn btn-white btn-sm"> Cancel</a>
-                        </div>
+                        <button class="btn btn-primary float-left"><i class="fa fa fa-shopping-cart"></i>
+                            Checkout</button>
+                        <button class="btn btn-white float-right"><i class="fa"></i>
+                            Cancel</button>
                     </div>
                 </div>
             </div>
@@ -133,7 +124,7 @@
                     <h5>Support</h5>
                 </div>
                 <div class="ibox-content text-center">
-                    <h3><i class="fa fa-phone"></i> +43 100 783 001</h3>
+                    <h3><i class="fa fa-phone"></i> (61) 0499725455</h3>
                     <span class="small">
                         Please contact with us if you have any questions. We are avalible 24h.
                     </span>

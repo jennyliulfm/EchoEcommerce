@@ -16,7 +16,6 @@ export class AddressService {
 
   }
   CreateAddress(address: Address):Observable<any>{
-    console.log(address);
     return this.http.post(this.BaseURL+'/AddAddressForUser',address);
   }
 }

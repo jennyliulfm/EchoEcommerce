@@ -1,21 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartProduct, Address } from 'src/app/models/model';
+import { Component, OnInit } from '@angular/core';
+import { CartProduct } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
-import { AddressService } from 'src/app/services/address.service';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { FormBuilder, Validators, FormGroup, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-orderdetail',
   templateUrl: './orderdetail.component.html',
   styleUrls: ['./orderdetail.component.css']
 })
-
 export class OrderdetailComponent implements OnInit {
-  @ViewChild('addressModal', { static: false }) addressModal: ModalDirective;
-  public cartItems?: Array<CartProduct> ;
+
+  public cartItems?: Array<CartProduct>;
   public totalPrice?: number;
+<<<<<<< HEAD
   public addresses: Address[];
   public addressForm: FormGroup;
   public errorMessage: string;
@@ -37,11 +34,17 @@ export class OrderdetailComponent implements OnInit {
   */
   openAddressModal() {
     this.addressModal.show();
+=======
+
+  constructor(
+    private cartService: CartService,
+    private router: Router) {
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
   }
 
   ngOnInit(): void {
-    
     this.getCartItems();
+<<<<<<< HEAD
     this.getTotalPrice(); 
     this.addressServie.GetAllAddresses()
       .subscribe( (res) => {
@@ -50,28 +53,29 @@ export class OrderdetailComponent implements OnInit {
       (error) => {
         this.errorMessage = error;
       });
+=======
+    this.getTotalPrice();
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
   }
-  
-  
+
   /**
    * Get cart item
    */
   getCartItems() {
-    this.cartService.getItems().subscribe( items => {
+    this.cartService.getItems().subscribe(items => {
       this.cartItems = items;
     });
   }
-  
+
 
   /**
    * 
    * @param productId 
    */
-  getTotalPrice()
-  {
-    
+  getTotalPrice() {
+    this.totalPrice = this.cartService.getTotalPrice();
   }
- 
+
   /**
    * Empty Cart
    */
@@ -86,18 +90,11 @@ export class OrderdetailComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  createAddressForm(){
-    this.addressForm = this.formBuilder.group({
-      street: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      country:['', [Validators.required]]
-    });
-  }
-
   removeItemFromCart(item: CartProduct) {
     this.cartService.removeProductFromCart(item);
   }
 
+<<<<<<< HEAD
   addAddress(){
     if(this.addressForm.valid){
 
@@ -109,5 +106,21 @@ export class OrderdetailComponent implements OnInit {
       //     console.log(err);
       //   })
     }
+=======
+  /**
+   * Modify quantity for an item
+   * @param quantity M
+   * @param item 
+   */
+  onEnter(quantity: number, item: CartProduct) {
+    if (quantity != 0) {
+      this.cartService.updateItemQuantity(quantity, item)
+    }
+    else {
+      this.cartService.removeProductFromCart(item);
+    }
+
+    this.getTotalPrice();
+>>>>>>> 40cd4bd904d031bc14e492aa1329f1beb2e530e4
   }
 }
