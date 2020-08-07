@@ -5,6 +5,15 @@ import { Router } from '@angular/router';
 import { AddressService } from 'src/app/services/address.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+
+interface AddressForm {
+  street: string;
+  city: string;
+  country: string;
+  passcode: string;
+}
+
 
 @Component({
   selector: 'app-orderdetail',
@@ -13,46 +22,39 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class OrderdetailComponent implements OnInit {
 
-  public cartItems?: Array<CartProduct>;
-  public totalPrice?: number;
-  public addresses: Address[];
-  public addressForm: FormGroup;
-  public errorMessage: string;
-  @ViewChild('addressModal', { static: false }) addressModal: ModalDirective;
+  public cartItems?: Array<CartProduct> = [];
+  public totalPrice?: number = 0;
+  public addresses: Array<Address> = [];
+  public isAddedNew: boolean = false;
+  public selectedAddressId: number = 0;
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private addressServie: AddressService,
-    private formBuilder: FormBuilder,) { 
-      this.createAddressForm();
-  }
-
-
-  closeAddressModal() {
-    this.addressModal.hide();
-  }
-
-  /**
-  * Open product moda.
-  */
-  openAddressModal() {
-    this.addressModal.show();
-
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService) {
+      
+      //this.getAddressForUser();
   }
 
   ngOnInit(): void {
     this.getCartItems();
-    this.getTotalPrice(); 
-    this.addressServie.GetAllAddresses()
-      .subscribe( (res) => {
-        this.addresses = res;
-      },
-      (error) => {
-        this.errorMessage = error;
-      });
     this.getTotalPrice();
   }
+
+  public readonly addressGroupModel: FormGroup = this.formBuilder.group({
+    street: ['', Validators.required],
+    city: ['', Validators.required],
+    country: ['', Validators.required],
+    passcode: ['', Validators.required],
+  });
+
+
+  get getAddressGroupModelValue(): AddressForm {
+    return this.addressGroupModel.value;
+  }
+
 
   /**
    * Get cart item
@@ -90,17 +92,27 @@ export class OrderdetailComponent implements OnInit {
     this.cartService.removeProductFromCart(item);
   }
 
-  addAddress(){
-    if(this.addressForm.valid){
-
-      // this.addressServie.CreateAddress(this.addressForm.value)
-      //   .subscribe(res => {
-      //     console.log(res);
-      //   },
-      //   err => {
-      //     console.log(err);
-      //   })
+  /**
+   * 
+   */
+  addNewAddress() {
+    
+    const args: Address ={
+     street: this.getAddressGroupModelValue.street,
+     city: this.getAddressGroupModelValue.street,
+     country: this.getAddressGroupModelValue.country,
+     passcode: this.getAddressGroupModelValue.passcode
     }
+
+    this.addressServie.createNewAddress(args).subscribe(
+      res => {
+        this.getAddressForUser();
+      },
+      err => {
+
+      }
+    );
+
   }
   /**
    * Modify quantity for an item
@@ -108,7 +120,7 @@ export class OrderdetailComponent implements OnInit {
    * @param item 
    */
   onEnter(item: CartProduct) {
-    if (quantity != 0) {
+    if (item.quantity != 0) {
       this.cartService.updateItemQuantity(item)
     }
     else {
@@ -118,11 +130,40 @@ export class OrderdetailComponent implements OnInit {
     this.getTotalPrice();
   }
 
-  createAddressForm(){
-    this.addressForm = this.formBuilder.group({
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
-    })
+  /**
+   * 
+   */
+  getAddressForUser() {
+    // this.addressServie.getAllAddresses().subscribe(
+    //   res => {
+    //     this.addresses = res;
+    //   },
+    //   err => {
+    //     this.toastrService.error(`${err.error.message}`)
+    //     console.error("ERROR: getAddressForUser", err);
+    //   }
+    // );
   }
+
+  /**
+   * 
+   */
+  addMoreAddress() {
+    this.isAddedNew = !this.isAddedNew;
+  }
+
+  /**
+   * 
+   */
+  selectAddress(addressId: number) {
+    this.selectedAddressId = addressId;
+  }
+
+  /**
+   * Create order
+   */
+  createNewOrder() {
+
+  }
+
 }

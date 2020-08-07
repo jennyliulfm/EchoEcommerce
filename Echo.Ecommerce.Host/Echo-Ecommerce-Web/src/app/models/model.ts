@@ -34,12 +34,12 @@ export interface CartProduct {
     quantity: number;
 }
 
-
 export interface Address {
-    addressId: number;
+    addressId?: number;
     street: string;
     city: string;
     country: string;
+    passcode: string;
 }
 
 export interface Order {
@@ -47,8 +47,6 @@ export interface Order {
     price: number,
     user: User,
     orderProducts: Array<OrderProduct>
-
-
 }
 
 export interface OrderProduct {

@@ -11,11 +11,16 @@ export class AddressService {
   private readonly BaseURL: string = "https://localhost:5001/Address";
   constructor(private http: HttpClient) { }
 
-  GetAllAddresses(): Observable<Array<Address>> {
+  /**
+   * 
+   */
+  getAllAddresses(): Observable<Array<Address>> {
     return this.http.get<Array<Address>>(this.BaseURL + '/GetAllAddressForUser');
 
   }
-  CreateAddress(address: Address):Observable<any>{
-    return this.http.post(this.BaseURL+'/AddAddressForUser',address);
+
+  /** */
+  createNewAddress(address: Address):Observable<Address>{
+    return this.http.post<Address>(this.BaseURL+'/AddAddressForUser',address);
   }
 }
