@@ -11,6 +11,8 @@ namespace Echo.Ecommerce.Host.Models
         public double Price { get; set; }
         public User User { get; set; }
         public DateTime IssueDate { get; set; }
+        public int AddressId { get; set; }
+        public  Address Address { get; set; }
        
         public List<OrderProduct> OrderProducts { get; set; }
 
@@ -23,13 +25,24 @@ namespace Echo.Ecommerce.Host.Models
             OrderId = order.OrderId;
             Price = order.Price;
             IssueDate = order.IssueDate;
-            User = new User(order.User);
 
-            OrderProducts = new List<Models.OrderProduct>();
-
-            foreach(Entities.OrderProduct op in order.OrderProducts)
+            if (order.Address!=null )
             {
-                OrderProducts.Add(new Models.OrderProduct(op));
+                this.Address = new Models.Address(order.Address);
+            }
+
+            if (order.User != null )
+            {
+                this.User = new Models.User(order.User);
+            }
+
+            if(order.OrderProducts.Count >0 && order.OrderProducts != null )
+            {
+                OrderProducts = new List<Models.OrderProduct>();
+                foreach (Entities.OrderProduct op in order.OrderProducts)
+                {
+                    OrderProducts.Add(new Models.OrderProduct(op));
+                }
             }
         }
     }

@@ -17,11 +17,18 @@ namespace Echo.Ecommerce.Host.Models
         {
             this.OrderProductId = model.OrderProductId;
             this.OrderId = model.Order.OrderId;
-            this.ProductId = model.Product.ProductId;
+
+            if( model.Product!=null )
+            {
+                this.ProductId = model.Product.ProductId;
+
+            }
+           
             this.Quantity = model.Quantity;
         }
 
         public int OrderId { get; set; }
+        
 
         public int ProductId { get; set; }
     }

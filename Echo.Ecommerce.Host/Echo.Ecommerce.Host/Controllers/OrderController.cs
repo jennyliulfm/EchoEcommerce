@@ -33,7 +33,9 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var orders = this._dbContext.Orders.Include(o => o.OrderProducts)
+                var orders = this._dbContext.Orders.Include(o => o.User)
+                    .Include( o => o.Address)
+                    .Include(o => o.OrderProducts)
                     .OrderBy(o => o.OrderId)
                     .AsNoTracking()
                     .Select(o => new Models.Order(o))
@@ -66,19 +68,22 @@ namespace Echo.Ecommerce.Host.Controllers
                 var user = this.GetUser();
                 if (user != null)
                 {
+                    var address = this._dbContext.Addresses.FirstOrDefault(addr => addr.AddressId == model.AddressId);
+                    if (address == null) return BadRequest(new { message = "Address is empty" });
+
                     Order newOrder = new Entities.Order()
                     {
                         User = user,
                         IssueDate = DateTime.UtcNow,
-                        // Todo: need to add order status here
                         Price = model.Price,
-           
+                        Address = address,
                         OrderProducts = new List<Entities.OrderProduct>()
                     };
 
                     await this._dbContext.Orders.AddAsync(newOrder);
+                    await this._dbContext.SaveChangesAsync();
 
-                    if(model.OrderProducts.Count >0 )
+                    if (model.OrderProducts.Count >0 )
                     {
                         foreach (Models.OrderProduct op in model.OrderProducts)
                         {
@@ -99,6 +104,7 @@ namespace Echo.Ecommerce.Host.Controllers
                     }
                    
                     int result = await this._dbContext.SaveChangesAsync();
+
                     if (result > 0)
                     {
                         return Ok(new Models.Order(newOrder));
@@ -125,7 +131,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
         [HttpGet]
         [Route("GetOrdersForUser")]
-        public ActionResult<Models.Order> GetOrdersForUser()
+        public ActionResult<Models.Order> GetOrdersForUser(int pageNumber)
         {
             try
             {
@@ -133,9 +139,13 @@ namespace Echo.Ecommerce.Host.Controllers
 
                 if( user != null )
                 {
-                    var orders = this._dbContext.Orders.Where(order => order.User.Id == user.Id)
+                    var orders = this._dbContext.Orders
+                        .Include( o => o.Address)
+                        .Include( o => o.OrderProducts)
+                        .Where(order => order.User.Id == user.Id)
                         .AsNoTracking()
                         .OrderBy(order => order.IssueDate)
+                        .Skip(5 * pageNumber)
                         .Take(5)
                         .Select(order => new Models.Order(order))
                         .ToList();
