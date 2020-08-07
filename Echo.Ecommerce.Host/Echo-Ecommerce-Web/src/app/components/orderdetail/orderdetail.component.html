@@ -54,8 +54,8 @@
                                         <!-- <s class="small text-muted">$230,00</s> -->
                                     </td>
                                     <td width="65">
-                                        <input type="text" class="form-control" [ngModel]="item.quantity" #amount
-                                            (keyup.enter)="onEnter(amount.value, item)">
+                                        <input type="text" class="form-control" [(ngModel)]="item.quantity" #amount
+                                            (keyup.enter)="onEnter(item)">
                                     </td>
                                     <td>
                                         <h4>
@@ -90,13 +90,14 @@
                     <h2 class="font-bold">
                         {{ totalPrice  | currency:'AUS'}}
                     </h2>
-
+                    <span class="text-muted small">
+                        *For United States, France and Germany applicable sales tax will be applied
+                    </span>
                     <hr />
                     <span>
                         Select address
                     </span>
                     <br>
-
                     <select class="col-md-12" >
                         <option value="">Please select an address</option>
                         <option *ngFor="let address of addresses" [value]="address.addressId">
@@ -107,9 +108,7 @@
                     <div class="m-t-sm">
                         <button class="btn btn-primary btn-sm" (click)="openAddressModal()">Add Address</button>
                     </div>
-                    <span class="text-muted small">
-                        *For United States, France and Germany applicable sales tax will be applied
-                    </span>
+                    
                     <div class="m-t-sm">
                         <button class="btn btn-primary float-left"><i class="fa fa fa-shopping-cart"></i>
                             Checkout</button>

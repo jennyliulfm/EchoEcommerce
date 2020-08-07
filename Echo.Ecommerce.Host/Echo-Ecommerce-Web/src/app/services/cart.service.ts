@@ -86,10 +86,10 @@ export class CartService {
   /**
    * update quanity
    */
-  updateItemQuantity(quanity: number, item: CartProduct) {
+  updateItemQuantity(item: CartProduct) {
     this.cartItems.map((item, index) => {
       if (item.productId == item.productId) {
-        item.quantity = quanity;
+        item.quantity = item.quantity;
       }
     });
   }

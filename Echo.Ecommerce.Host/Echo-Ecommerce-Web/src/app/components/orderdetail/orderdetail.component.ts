@@ -107,9 +107,9 @@ export class OrderdetailComponent implements OnInit {
    * @param quantity M
    * @param item 
    */
-  onEnter(quantity: number, item: CartProduct) {
+  onEnter(item: CartProduct) {
     if (quantity != 0) {
-      this.cartService.updateItemQuantity(quantity, item)
+      this.cartService.updateItemQuantity(item)
     }
     else {
       this.cartService.removeProductFromCart(item);
