@@ -128,7 +128,7 @@
                                     class="form-control" formControlName="country">
                             </div>
                             <div class="form-group"><input type="text" placeholder="Enter Passcode" class="form-control"
-                                    formControlName="Passcode">
+                                    formControlName="passcode">
                             </div>
 
                             <button class="btn btn-sm btn-primary m-t-n-xs" type="submit">
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="m-t-sm">
-                        <button class="btn btn-primary float-left" (click)="createNewOrder()"><i class="fa fa fa-shopping-cart"></i>
+                        <button class="btn btn-primary float-left" (click)="createNewOrder()" [disabled]="this.cartItems.length==0 || this.isAddedNew ==true || this.totalPrice==0"><i class="fa fa fa-shopping-cart"></i>
                             Checkout</button>
                         <button class="btn btn-white float-right"><i class="fa"></i>
                             Cancel</button>

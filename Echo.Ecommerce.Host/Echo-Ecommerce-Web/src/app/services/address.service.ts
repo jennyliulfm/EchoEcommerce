@@ -16,7 +16,6 @@ export class AddressService {
    */
   getAllAddresses(): Observable<Array<Address>> {
     return this.http.get<Array<Address>>(this.BaseURL + '/GetAllAddressForUser');
-
   }
 
   /** */

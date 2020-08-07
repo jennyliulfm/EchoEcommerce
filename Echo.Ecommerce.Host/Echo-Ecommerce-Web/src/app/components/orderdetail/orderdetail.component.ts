@@ -34,8 +34,7 @@ export class OrderdetailComponent implements OnInit {
     private addressServie: AddressService,
     private formBuilder: FormBuilder,
     private toastrService: ToastrService) {
-      
-      //this.getAddressForUser();
+      this.getAddressForUser();
   }
 
   ngOnInit(): void {
@@ -134,15 +133,16 @@ export class OrderdetailComponent implements OnInit {
    * 
    */
   getAddressForUser() {
-    // this.addressServie.getAllAddresses().subscribe(
-    //   res => {
-    //     this.addresses = res;
-    //   },
-    //   err => {
-    //     this.toastrService.error(`${err.error.message}`)
-    //     console.error("ERROR: getAddressForUser", err);
-    //   }
-    // );
+    this.addressServie.getAllAddresses().subscribe(
+      res => {
+        this.addresses = res;
+      },
+      err => {
+        this.toastrService.error(`${err.error.message}`)
+        console.error("ERROR: getAddressForUser", err);
+      }
+    );
+   
   }
 
   /**
