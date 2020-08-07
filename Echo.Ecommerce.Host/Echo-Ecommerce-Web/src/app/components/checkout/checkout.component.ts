@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
     });
     this.totalPrice = this.cartService.getTotalPrice();
     console.log(this.totalPrice);
-    this.addressService.GetAllAddresses().subscribe( addresses => {
+    this.addressService.getAllAddresses().subscribe( addresses => {
       this.addresses = addresses;
     })
     

@@ -39,6 +39,13 @@
           <span>Log Out</span>
         </a>
       </li>
+
+      <li *ngIf="isloggedIn">
+        <a [routerLink]="[ 'userLayout']">
+          <i class="fa fa-user"></i>
+          <span>User profile</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </div>

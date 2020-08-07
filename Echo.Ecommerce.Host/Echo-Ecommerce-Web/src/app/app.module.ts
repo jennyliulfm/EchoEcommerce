@@ -29,6 +29,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddressService } from './services/address.service';
 import { OrderService } from './services/order.service';
 import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
+import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
+import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
 
 
 
@@ -46,7 +48,8 @@ import { OrderdetailComponent } from './components/orderdetail/orderdetail.compo
     EmailConfirmComponent,
     CheckoutComponent,
     OrderdetailComponent,
-
+    UserLayoutComponent,
+    UserNavigationComponent,
   ],
   imports: [
     BrowserModule,
