@@ -105,7 +105,9 @@ export class OrderdetailComponent implements OnInit {
 
     this.addressServie.createNewAddress(args).subscribe(
       res => {
+        this.addressGroupModel.reset();
         this.getAddressForUser();
+        this.isAddedNew = false;
       },
       err => {
 
