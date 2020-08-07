@@ -43,13 +43,14 @@ export interface Address {
 }
 
 export interface Order {
-    orderId: number,
+    orderId?: number,
     price: number,
-    user: User,
+    user?: User,
+    addressId: number,
     orderProducts: Array<OrderProduct>
 }
 
 export interface OrderProduct {
-    productId: number,
-    quantity: number
+    productId?: number,
+    quantity?: number
 }

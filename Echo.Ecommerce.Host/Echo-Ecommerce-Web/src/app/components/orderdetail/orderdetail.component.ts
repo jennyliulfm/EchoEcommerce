@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartProduct, Address } from 'src/app/models/model';
+import { CartProduct, Address, Order, OrderProduct } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/services/address.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { OrderService } from 'src/app/services/order.service';
 
 interface AddressForm {
   street: string;
@@ -33,7 +34,8 @@ export class OrderdetailComponent implements OnInit {
     private router: Router,
     private addressServie: AddressService,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    private orderService: OrderService) {
       this.getAddressForUser();
   }
 
@@ -165,6 +167,33 @@ export class OrderdetailComponent implements OnInit {
    * Create order
    */
   createNewOrder() {
+
+    const args: Order = {
+      price: this.totalPrice,
+      addressId: Number(this.selectedAddressId),
+      
+      orderProducts: []     
+    }
+
+    var orderProduct: OrderProduct = {};
+    for( let item of this.cartItems) {
+      orderProduct = {};
+      orderProduct.productId = item.productId;
+      orderProduct.quantity = Number(item.quantity);
+      args.orderProducts.push(orderProduct);
+    }
+    console.log(args);
+
+    this.orderService.createNewOrder(args).subscribe(
+      res => {
+        console.log("result");
+        console.log(res);
+
+      },
+      err => {
+
+      }
+    )
 
   }
 

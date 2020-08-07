@@ -43,12 +43,13 @@ export class CheckoutComponent implements OnInit {
         orderId: null, 
         price: null, 
         user: null,
-        orderProducts: null
+        orderProducts: null,
+        addressId: 0
       }
 
       order.price =this.totalPrice;
       order.orderProducts = orderProducts;
-      this.orderService.CreateNewOrder(order)
+      this.orderService.createNewOrder(order)
         .subscribe( res=>{
           console.log(res);
         },
