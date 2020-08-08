@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Entities = Echo.Ecommerce.Host.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Echo.Ecommerce.Host.Repositories;
 
 namespace Echo.Ecommerce.Host.Controllers
 {
@@ -19,11 +20,14 @@ namespace Echo.Ecommerce.Host.Controllers
     {
         private readonly ILogger _logger;
         private readonly DBContext _dbContext;
+        private readonly CategoryRepository _categoryRepository;
 
         public CategoryController(ILoggerFactory loggerFactory, DBContext dbContext): base(dbContext)
         {
             this._logger = loggerFactory.CreateLogger(this.GetType().Name);
             this._dbContext = dbContext;
+
+            this._categoryRepository = new CategoryRepository(this._dbContext);
         }
 
         [HttpGet]
@@ -33,11 +37,16 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var categories = this._dbContext.Categories.OrderBy(c => c.CategoryName).AsNoTracking()
-                .Select(category => new Models.Category(category))
+                var categories = await this._categoryRepository.FindAllAsync();
+
+                List<Models.Category> modelCategories = categories.Select(category => new Models.Category(category))
                 .ToList();
 
-                if (categories.Count > 0)
+                //var categories = this._dbContext.Categories.OrderBy(c => c.CategoryName).AsNoTracking()
+                //.Select(category => new Models.Category(category))
+                //.ToList();
+
+                if (modelCategories.Count > 0)
                 {
                     return Ok(categories);
                 }
@@ -62,7 +71,9 @@ namespace Echo.Ecommerce.Host.Controllers
             try
             {
                 //Verify whether the catogry exists in DB or Not
-                var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryName.ToUpper().Equals(model.CategoryName.ToUpper()));
+                //var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryName.ToUpper().Equals(model.CategoryName.ToUpper()));
+                var category = await this._categoryRepository.FindByAsync(c => c.CategoryName.ToUpper().Equals(model.CategoryName.ToUpper()));
+
                 if (category != null) return Ok("Category is in the DB");
 
                 Echo.Ecommerce.Host.Entities.Category newCategory = new Entities.Category()
@@ -71,9 +82,12 @@ namespace Echo.Ecommerce.Host.Controllers
                     Description = model.Description
                 };
 
-                await this._dbContext.Categories.AddAsync(newCategory);
+                //await this._dbContext.Categories.AddAsync(newCategory);
+                int result = await this._categoryRepository.CreateAsync(newCategory);
 
-                int result = await this._dbContext.SaveChangesAsync();
+                //int result = await this._dbContext.SaveChangesAsync();
+                //int result = await this._categoryRepository.SaveAsync();
+
                 if (result > 0)
                 {
                     return Ok(new Models.Category(newCategory));
@@ -97,8 +111,9 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+                //var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == categoryId);
 
+                var category = await this._categoryRepository.FindByAsync(c => c.CategoryId == categoryId);
                 if (category != null)
                 {
                     return Ok(new Models.Category(category));
@@ -122,14 +137,16 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == cateogryId);
+                var category = await this._categoryRepository.FindByAsync(c => c.CategoryId == cateogryId);
+                //var category = await this._dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == cateogryId);
 
                 if (category != null)
                 {
                     //Soft delete
                     category.IsDeleted = true;
 
-                    await this._dbContext.SaveChangesAsync();
+                    //await this._dbContext.SaveChangesAsync();
+                    await this._categoryRepository.SaveAsync();
                     return Ok();
                 }
                 else

@@ -14,6 +14,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
+using Echo.Ecommerce.Host.Repositories;
 
 
 namespace Echo.Ecommerce.Host.Controllers
@@ -31,7 +32,7 @@ namespace Echo.Ecommerce.Host.Controllers
         private readonly MailSenderSetting _emailSettings;
         private readonly AppSetting _appSettings;
         private List<string> _roles;
-
+        private readonly UserRepository _userRepository;
 
         public UserController(ILoggerFactory loggerFactory, DBContext dbContext, UserManager<Entities.User> userManager, SignInManager<Entities.User> signinManager, IOptions<MailSenderSetting> mailSetting, IOptions<AppSetting> appSetting, RoleManager<IdentityRole> roleManager): base(dbContext)
         {
@@ -43,6 +44,8 @@ namespace Echo.Ecommerce.Host.Controllers
             this._roleManager = roleManager;
             this._emailSettings = mailSetting.Value;
             this._appSettings = appSetting.Value;
+
+            this._userRepository = new UserRepository(this._userManager);
 
             this._roles = new List<string>();
             this._roles.Add("General");
@@ -69,7 +72,8 @@ namespace Echo.Ecommerce.Host.Controllers
             try
             {
                 //Verify whether the mail exists or not. 
-                var user = await this._userManager.FindByEmailAsync(model.Email);
+                //var user = await this._userManager.FindByEmailAsync(model.Email);
+                var user = await this._userRepository.FindUserByEmailAsync(model.Email);
 
                 if (user != null) return BadRequest(new { message = "Email has been used" });
 
@@ -87,8 +91,10 @@ namespace Echo.Ecommerce.Host.Controllers
                 //// Verify usre's role
                 model.Role = Role.General;
 
-                var result = await this._userManager.CreateAsync(newUser);
-                result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
+                //var result = await this._userManager.CreateAsync(newUser);
+                var result = await this._userRepository.CreateNewUserAsync(newUser);
+                
+                result = await this._userRepository.CreateRoleForUserAsync(newUser, model.Role);
 
                 if (result.Succeeded)
                 {
@@ -155,7 +161,8 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var user = await this._userManager.FindByIdAsync(model.Id);
+                var user = await this._userRepository.FindUserByIdAsync(model.Id);
+                    
 
                 if (user != null && user.EmailConfirmed == false)
                 {
@@ -190,7 +197,8 @@ namespace Echo.Ecommerce.Host.Controllers
         {
             try
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                //var user = await _userManager.FindByEmailAsync(model.Email);
+                var user = await this._userRepository.FindUserByEmailAsync(model.Email);
                 if (user == null) return NotFound("User Not Found");
                 //if (user.EmailConfirmed == false) return BadRequest(new { message = "Email Not Comfirmed, Please Confirm Your Account " });
 
@@ -198,14 +206,15 @@ namespace Echo.Ecommerce.Host.Controllers
 
                 if (user != null && result == PasswordVerificationResult.Success)
                 {
-                    var role = await _userManager.GetRolesAsync(user);
+                    //var role = await _userManager.GetRolesAsync(user);
+                    var role = await this._userRepository.GetRoleOfUserAsync(user);
                     IdentityOptions options = new IdentityOptions();
 
                     var tokenDescriber = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                            new Claim(options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault()),
+                            new Claim(options.ClaimsIdentity.RoleClaimType, role),
                             new Claim(ClaimTypes.Email, user.Email),
                         }),
 
@@ -243,10 +252,11 @@ namespace Echo.Ecommerce.Host.Controllers
                 var user = this.GetUser();
                 if ( user == null ) return NotFound(new { message = "User Not Found " });
 
-                var role = await this._userManager.GetRolesAsync(user);
+                //var role = await this._userManager.GetRolesAsync(user);
+                var role = await this._userRepository.GetRoleOfUserAsync(user);
                 if (role == null) return BadRequest(new { message = "No Permission " });
 
-                Enum.TryParse( role[0], out Role userRole);
+                Enum.TryParse( role, out Role userRole);
 
                 return Ok(new Models.User(user, userRole)); 
             }
@@ -266,8 +276,9 @@ namespace Echo.Ecommerce.Host.Controllers
             {
                if (model.Email != null )
                 {
-                    var user = await this._userManager.FindByEmailAsync(model.Email);
+                    // var user = await this._userManager.FindByEmailAsync(model.Email);
 
+                    var user = await this._userRepository.FindUserByEmailAsync(model.Email);
                     //If the user has not registered in the DB, then generate the user
                     if (user == null)
                     {
@@ -280,8 +291,11 @@ namespace Echo.Ecommerce.Host.Controllers
                         };
                         model.Role = Role.General;
 
-                        var result = await this._userManager.CreateAsync(newUser);
-                        result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
+
+                        //var result = await this._userManager.CreateAsync(newUser);
+                        //result = await this._userManager.AddToRoleAsync(newUser, model.Role.ToString());
+                        var result = await this._userRepository.CreateNewUserAsync(newUser);
+                        result = await this._userRepository.CreateRoleForUserAsync(newUser, model.Role);
 
                         //Generate JWT token
                         if (result.Succeeded)

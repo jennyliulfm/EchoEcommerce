@@ -16,6 +16,7 @@ using NSwag.Generation.Processors.Security;
 using NSwag.AspNetCore;
 using System.Linq;
 using System.Collections.Generic;
+using Echo.Ecommerce.Host.Repositories;
 
 namespace Echo.Ecommerce.Host
 {
@@ -49,6 +50,7 @@ namespace Echo.Ecommerce.Host
                     // replace with your Server Version and Type
                     .ServerVersion(new Version(8, 0, 19), ServerType.MySql)
             ));
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddIdentity<Entities.User, IdentityRole>()
                  .AddEntityFrameworkStores<DBContext>()
