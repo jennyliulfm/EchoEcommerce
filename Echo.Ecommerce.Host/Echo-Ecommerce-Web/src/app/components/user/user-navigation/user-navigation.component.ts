@@ -19,8 +19,8 @@ export class UserNavigationComponent implements OnInit {
   private currentUser?: User;
 
   public pages: Array<NavigationItem> = [
-    { name: 'Personal information', icon: 'fa-building', route: '', },
-    { name: 'Address management', icon: 'fa-building', route: '', },
+    { name: 'Personal information', icon: 'fa-building', route: 'user/profile', },
+    { name: 'Address management', icon: 'fa-building', route: 'user/addressmanagement', },
     { name: 'Order history', icon: 'fa-shopping-cart', route: '', },
 
   ];

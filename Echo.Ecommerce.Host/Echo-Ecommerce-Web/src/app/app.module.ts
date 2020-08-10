@@ -31,8 +31,8 @@ import { OrderService } from './services/order.service';
 import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
 import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
 import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
-
-
+import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
+import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 
 @NgModule({
   declarations: [
