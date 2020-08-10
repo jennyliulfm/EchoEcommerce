@@ -38,6 +38,7 @@ export const routes: Routes = [
     path:'userLayout',
     component:UserLayoutComponent,
     children:[
+      { path:'', redirectTo:'home', pathMatch: 'full'},
       { path: 'user/profile', component:UserProfileComponent},
       { path: 'user/addressmanagement', component:AddressManagementComponent}
     ]
