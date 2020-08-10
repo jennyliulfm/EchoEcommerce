@@ -50,6 +50,8 @@ import { AddressManagementComponent } from './components/user/address-management
     OrderdetailComponent,
     UserLayoutComponent,
     UserNavigationComponent,
+    UserProfileComponent,
+    AddressManagementComponent
   ],
   imports: [
     BrowserModule,
