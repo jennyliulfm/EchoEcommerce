@@ -23,14 +23,21 @@ namespace Echo.Ecommerce.Host.Models
             OrderId = order.OrderId;
             Price = order.Price;
             IssueDate = order.IssueDate;
-            User = new User(order.User);
+            if(order.User!=null)
+            {
+                User = new User(order.User);
+            }
+            
 
             OrderProducts = new List<Models.OrderProduct>();
-
-            foreach(Entities.OrderProduct op in order.OrderProducts)
+            if(order.OrderProducts!=null)
             {
-                OrderProducts.Add(new Models.OrderProduct(op));
+                foreach (Entities.OrderProduct op in order.OrderProducts)
+                {
+                    OrderProducts.Add(new Models.OrderProduct(op));
+                }
             }
+
         }
     }
 }

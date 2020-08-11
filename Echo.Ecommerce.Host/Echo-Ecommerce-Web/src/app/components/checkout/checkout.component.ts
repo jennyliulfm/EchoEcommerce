@@ -48,7 +48,7 @@ export class CheckoutComponent implements OnInit {
 
       order.price =this.totalPrice;
       order.orderProducts = orderProducts;
-      this.orderService.CreateNewOrder(order)
+      this.orderService.createNewOrder(order)
         .subscribe( res=>{
           console.log(res);
         },

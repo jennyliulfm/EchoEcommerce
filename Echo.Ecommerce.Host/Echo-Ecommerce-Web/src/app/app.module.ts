@@ -33,6 +33,7 @@ import { UserLayoutComponent } from './components/user/user-layout/user-layout.c
 import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
 import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
+import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AddressManagementComponent } from './components/user/address-management
     UserLayoutComponent,
     UserNavigationComponent,
     UserProfileComponent,
-    AddressManagementComponent
+    AddressManagementComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

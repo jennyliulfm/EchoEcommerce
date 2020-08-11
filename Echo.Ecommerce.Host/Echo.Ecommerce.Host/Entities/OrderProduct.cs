@@ -14,7 +14,9 @@ namespace Echo.Ecommerce.Host.Entities
         [ForeignKey("OrderId")]
         public Order Order { get; set; }
 
+        [ForeignKey("ProductId")]
         public Product Product { get; set; }
+
         public int Quantity { get; set; }
     }
 }

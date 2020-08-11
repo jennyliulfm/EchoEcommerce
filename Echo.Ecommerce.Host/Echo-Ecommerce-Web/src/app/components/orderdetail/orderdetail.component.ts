@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CartProduct, Address } from 'src/app/models/model';
+import { CartProduct, Address, Order, OrderProduct } from 'src/app/models/model';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/services/address.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { OrderService } from 'src/app/services/order.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-orderdetail',
@@ -24,7 +26,9 @@ export class OrderdetailComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private addressServie: AddressService,
-    private formBuilder: FormBuilder,) { 
+    private formBuilder: FormBuilder,
+    private orderService: OrderService,
+    private userService: UserService) { 
       this.createAddressForm();
   }
 
@@ -93,13 +97,13 @@ export class OrderdetailComponent implements OnInit {
   addAddress(){
     if(this.addressForm.valid){
 
-      // this.addressServie.CreateAddress(this.addressForm.value)
-      //   .subscribe(res => {
-      //     console.log(res);
-      //   },
-      //   err => {
-      //     console.log(err);
-      //   })
+      this.addressServie.createAddress(this.addressForm.value)
+        .subscribe(res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        })
     }
   }
   /**
@@ -124,5 +128,29 @@ export class OrderdetailComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
     })
+  }
+
+  addOrder(){
+    console.log("added");
+    if(this.cartItems!=null && this.totalPrice != 0){
+    
+      var orderProducts: OrderProduct[] = [];
+      this.cartItems.map(item=>{
+        orderProducts.push({productId: item.productId, quantity:Number(item.quantity)});
+      })
+      var order: Order = { 
+        orderId: -1, 
+        price: this.totalPrice, 
+        user: this.userService.currentUser,
+        orderProducts: orderProducts
+      }
+      this.orderService.createNewOrder(order)
+        .subscribe( res=>{
+          console.log(res);
+        },
+        err=>{
+          alert(err.toString());
+        });
+    }
   }
 }

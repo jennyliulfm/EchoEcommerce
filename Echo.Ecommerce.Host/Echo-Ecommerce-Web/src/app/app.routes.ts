@@ -19,6 +19,7 @@ import { OrderdetailComponent } from './components/orderdetail/orderdetail.compo
 import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
+import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 
 export const routes: Routes = [
   {
@@ -40,7 +41,8 @@ export const routes: Routes = [
     children:[
       { path:'', redirectTo:'home', pathMatch: 'full'},
       { path: 'user/profile', component:UserProfileComponent},
-      { path: 'user/addressmanagement', component:AddressManagementComponent}
+      { path: 'user/addressmanagement', component:AddressManagementComponent},
+      { path: 'user/orderhistory', component:OrderHistoryComponent}
     ]
   }
 ];

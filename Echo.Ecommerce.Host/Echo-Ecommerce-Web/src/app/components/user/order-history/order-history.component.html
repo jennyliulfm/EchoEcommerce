@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Issued date</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of orders">
+                    <td>{{order.orderId}} </td>
+                    <td>{{order.issueDate | date:'short'}} </td>
+                    <td>{{order.price}} </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
