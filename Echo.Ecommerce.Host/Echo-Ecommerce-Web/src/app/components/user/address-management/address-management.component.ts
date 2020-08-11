@@ -51,7 +51,7 @@ export class AddressManagementComponent implements OnInit {
   addAddress(){
     if(this.addressForm.valid){
 
-      this.addressService.createAddress(this.addressForm.value)
+      this.addressService.createNewAddress(this.addressForm.value)
         .subscribe(res => {
           console.log(res);
         },

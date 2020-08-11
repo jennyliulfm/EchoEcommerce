@@ -13,19 +13,11 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   /**
-<<<<<<< HEAD
    * 
    * @param order 
    */
   createNewOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(this.BaseURL + '/CreateOrder', order);
-=======
-   * place order
-   * @param order 
-   */
-  createNewOrder(order: Order){
-    return this.http.post( this.BaseURL + '/CreateOrder', order);
->>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
   }
 
   /**
