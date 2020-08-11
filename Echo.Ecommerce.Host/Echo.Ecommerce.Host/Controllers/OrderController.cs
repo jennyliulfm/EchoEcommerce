@@ -61,7 +61,7 @@ namespace Echo.Ecommerce.Host.Controllers
         [HttpPost]
         [Route("CreateOrder")]
         [Authorize(Roles = "General")]
-        public async Task<ActionResult<Models.Order>> CreateOrder(Models.Order model)
+        public async Task<ActionResult<Object>> CreateOrder(Models.Order model)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace Echo.Ecommerce.Host.Controllers
 
                     if (result > 0)
                     {
-                        return Ok(new Models.Order(newOrder));
+                        return Ok();
                     }
                     else
                     {

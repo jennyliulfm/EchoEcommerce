@@ -33,7 +33,7 @@ export class TopnavigationComponent implements OnInit {
   @Input() isNavigationOpen: boolean;
   @Output() toggleNavigationEvent: EventEmitter<boolean> = new EventEmitter;
 
-  public isloggedIn: boolean = false;
+  public isloggedIn: boolean = true;
 
   public isCartOpen: boolean = false;
   private currentUser?: User;

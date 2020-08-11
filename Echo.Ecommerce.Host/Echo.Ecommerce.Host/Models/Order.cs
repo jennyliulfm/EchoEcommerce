@@ -25,6 +25,7 @@ namespace Echo.Ecommerce.Host.Models
             OrderId = order.OrderId;
             Price = order.Price;
             IssueDate = order.IssueDate;
+<<<<<<< HEAD
 
             if (order.Address!=null )
             {
@@ -39,11 +40,26 @@ namespace Echo.Ecommerce.Host.Models
             if(order.OrderProducts.Count >0 && order.OrderProducts != null )
             {
                 OrderProducts = new List<Models.OrderProduct>();
+=======
+            if(order.User!=null)
+            {
+                User = new User(order.User);
+            }
+            
+
+            OrderProducts = new List<Models.OrderProduct>();
+            if(order.OrderProducts!=null)
+            {
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
                 foreach (Entities.OrderProduct op in order.OrderProducts)
                 {
                     OrderProducts.Add(new Models.OrderProduct(op));
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
         }
     }
 }

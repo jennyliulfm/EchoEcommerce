@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AddressService } from 'src/app/services/address.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+<<<<<<< HEAD
 import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -15,6 +16,10 @@ interface AddressForm {
   passcode: string;
 }
 
+=======
+import { OrderService } from 'src/app/services/order.service';
+import { UserService } from 'src/app/services/user.service';
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
 
 @Component({
   selector: 'app-orderdetail',
@@ -34,9 +39,15 @@ export class OrderdetailComponent implements OnInit {
     private router: Router,
     private addressServie: AddressService,
     private formBuilder: FormBuilder,
+<<<<<<< HEAD
     private toastrService: ToastrService,
     private orderService: OrderService) {
       this.getAddressForUser();
+=======
+    private orderService: OrderService,
+    private userService: UserService) { 
+      this.createAddressForm();
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
   }
 
   ngOnInit(): void {
@@ -52,8 +63,22 @@ export class OrderdetailComponent implements OnInit {
   });
 
 
+<<<<<<< HEAD
   get getAddressGroupModelValue(): AddressForm {
     return this.addressGroupModel.value;
+=======
+  ngOnInit(): void {
+    this.getCartItems();
+    this.getTotalPrice(); 
+    this.addressServie.getAllAddresses()
+      .subscribe( (res) => {
+        this.addresses = res;
+      },
+      (error) => {
+        this.errorMessage = error;
+      });
+    this.getTotalPrice();
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
   }
 
 
@@ -93,6 +118,7 @@ export class OrderdetailComponent implements OnInit {
     this.cartService.removeProductFromCart(item);
   }
 
+<<<<<<< HEAD
   /**
    * 
    */
@@ -103,6 +129,18 @@ export class OrderdetailComponent implements OnInit {
      city: this.getAddressGroupModelValue.street,
      country: this.getAddressGroupModelValue.country,
      passcode: this.getAddressGroupModelValue.passcode
+=======
+  addAddress(){
+    if(this.addressForm.valid){
+
+      this.addressServie.createAddress(this.addressForm.value)
+        .subscribe(res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        })
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
     }
 
     this.addressServie.createNewAddress(args).subscribe(
@@ -149,6 +187,7 @@ export class OrderdetailComponent implements OnInit {
    
   }
 
+<<<<<<< HEAD
   /**
    * 
    */
@@ -197,4 +236,29 @@ export class OrderdetailComponent implements OnInit {
 
   }
 
+=======
+  addOrder(){
+    console.log("added");
+    if(this.cartItems!=null && this.totalPrice != 0){
+    
+      var orderProducts: OrderProduct[] = [];
+      this.cartItems.map(item=>{
+        orderProducts.push({productId: item.productId, quantity:Number(item.quantity)});
+      })
+      var order: Order = { 
+        orderId: -1, 
+        price: this.totalPrice, 
+        user: this.userService.currentUser,
+        orderProducts: orderProducts
+      }
+      this.orderService.createNewOrder(order)
+        .subscribe( res=>{
+          console.log(res);
+        },
+        err=>{
+          alert(err.toString());
+        });
+    }
+  }
+>>>>>>> 8e1754e62b96960d82f1d8982ce3adce9259602f
 }

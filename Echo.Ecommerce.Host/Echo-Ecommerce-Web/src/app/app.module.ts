@@ -29,8 +29,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddressService } from './services/address.service';
 import { OrderService } from './services/order.service';
 import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
-
-
+import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
+import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
+import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
+import { AddressManagementComponent } from './components/user/address-management/address-management.component';
+import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,11 @@ import { OrderdetailComponent } from './components/orderdetail/orderdetail.compo
     EmailConfirmComponent,
     CheckoutComponent,
     OrderdetailComponent,
-
+    UserLayoutComponent,
+    UserNavigationComponent,
+    UserProfileComponent,
+    AddressManagementComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
