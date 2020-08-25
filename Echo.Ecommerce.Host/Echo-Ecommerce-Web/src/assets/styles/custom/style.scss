@@ -58,12 +58,10 @@ bs-datepicker-container {
   background-color: whitesmoke;
   overflow: scroll;
   overflow: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 #page-wrapper {
-  width: 95%;
+  width: 100%;
   height: 100%;
 }
 
@@ -282,10 +280,13 @@ ol {
 /*---------------------
   Header
 -----------------------*/
-
-.header__top {
-  background: #f5f5f5;
-  
+.shop-top {
+  background-color: #f53d2d;
+  width: 100vw;
+  margin: 0 0 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .header__top__left {
@@ -294,7 +295,7 @@ ol {
 
 .header__top__left ul li {
   font-size: 14px;
-  color: #1c1c1c;
+  color: white;
   display: inline-block;
   margin-right: 45px;
   position: relative;
@@ -306,7 +307,7 @@ ol {
   top: 1px;
   height: 20px;
   width: 1px;
-  background: #000000;
+  background: white;
   opacity: 0.1;
   content: "";
 }
@@ -320,7 +321,7 @@ ol {
 }
 
 .header__top__left ul li i {
-  color: #252525;
+  color: white;
   margin-right: 5px;
 }
 
@@ -341,7 +342,7 @@ ol {
   top: 1px;
   height: 20px;
   width: 1px;
-  background: #000000;
+  background:white;
   opacity: 0.1;
   content: "";
 }
@@ -349,7 +350,7 @@ ol {
 .header__top__right__social a {
   font-size: 14px;
   display: inline-block;
-  color: #1c1c1c;
+  color:white;
   margin-right: 20px;
 }
 
@@ -360,7 +361,7 @@ ol {
 .header__top__right__language {
   position: relative;
   display: inline-block;
-  margin-right: 40px;
+  margin-right: 35px;
   cursor: pointer;
 }
 
@@ -376,7 +377,7 @@ ol {
   top: 1px;
   height: 20px;
   width: 1px;
-  background: #000000;
+  background: white;
   opacity: 0.1;
   content: "";
 }
@@ -387,20 +388,20 @@ ol {
 
 .header__top__right__language div {
   font-size: 14px;
-  color: #1c1c1c;
+  color: white;
   display: inline-block;
   margin-right: 4px;
 }
 
 .header__top__right__language span {
   font-size: 14px;
-  color: #1c1c1c;
+  color: white;
   position: relative;
   top: 2px;
 }
 
 .header__top__right__language ul {
-  background: #222222;
+  background: white;
   width: 100px;
   text-align: left;
   padding: 5px 0;
@@ -423,23 +424,95 @@ ol {
 
 .header__top__right__language ul li a {
   font-size: 14px;
-  color: #ffffff;
+  color: white;
   padding: 5px 10px;
 }
 
-.header__top__right__auth {
+.header__top__right__auth_login {
+  position: relative;
   display: inline-block;
+  cursor: pointer;
+  margin-right: 35px;
 }
 
-.header__top__right__auth a {
+.header__top__right__auth_login a {
   display: block;
   font-size: 14px;
-  color: #1c1c1c;
+  color: white;
 }
 
-.header__top__right__auth a i {
+.header__top__right__auth_login a i {
   margin-right: 6px;
 }
+
+.header__top__right__auth_login:after {
+  position: absolute;
+  right: -21px;
+  top: 1px;
+  height: 20px;
+  width: 1px;
+  background: white;
+  opacity: 0.1;
+  content: "";
+}
+
+
+.header__top__right__auth_signup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 35px;
+}
+
+.header__top__right__auth_signup a {
+  display: block;
+  font-size: 14px;
+  color: white;
+}
+
+.header__top__right__auth_signup a i {
+  margin-right: 6px;
+}
+
+.header__top__right__auth_signup:after {
+  position: absolute;
+  right: -21px;
+  top: 1px;
+  height: 20px;
+  width: 1px;
+  background: white;
+  opacity: 0.1;
+  content: "";
+}
+
+.header__top__right__help{
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.header__top__right__help a {
+  display: block;
+  font-size: 14px;
+  color: white;
+}
+
+.header__top__right__help a i {
+  margin-right: 6px;
+}
+
+.header__top__right__help:after {
+  position: absolute;
+  right: -21px;
+  top: 1px;
+  height: 20px;
+  width: 1px;
+  background: #000000;
+  opacity: 0.1;
+  content: "";
+}
+
+
 
 .header__logo {
   padding: 15px 0;
@@ -527,7 +600,7 @@ ol {
 }
 
 .header__cart {
-  text-align: right;
+  text-align: center;
   padding: 24px 0;
 }
 
@@ -535,6 +608,19 @@ ol {
   display: inline-block;
   margin-right: 25px;
 }
+
+.header__cart a {
+  display: inline-block;
+  color:white;
+}
+
+.search-bar a {
+  display: inline-block;
+  color:white;
+}
+
+
+
 
 .header__cart ul li {
   list-style: none;
@@ -552,7 +638,7 @@ ol {
 
 .header__cart ul li a i {
   font-size: 18px;
-  color: #1c1c1c;
+  color: white;
 }
 
 .header__cart ul li a span {
@@ -573,12 +659,12 @@ ol {
 
 .header__cart .header__cart__price {
   font-size: 14px;
-  color: #6f6f6f;
+  color: white;
   display: inline-block;
 }
 
 .header__cart .header__cart__price span {
-  color: #252525;
+  color: white;
   font-weight: 700;
 }
 
@@ -596,6 +682,7 @@ ol {
 
 .hero {
   padding-bottom: 50px;
+  z-index: -10;
 }
 
 .hero.hero-normal {
@@ -790,10 +877,14 @@ ol {
 /*---------------------
   Categories
 -----------------------*/
+.categories {
+  z-index: -10;
+}
 
 .categories__item {
   height: 270px;
   position: relative;
+  
 }
 
 .categories__item h5 {
@@ -3134,7 +3225,7 @@ ol {
 
   .humberger__menu__cart .header__cart__price {
     font-size: 14px;
-    color: #6f6f6f;
+    color: white;
     display: inline-block;
   }
 
@@ -3553,6 +3644,10 @@ ol {
   .header__cart {
     text-align: center;
     padding: 10px 0 24px;
+  }
+
+  .header__cart {
+
   }
 
   .over_hid {
