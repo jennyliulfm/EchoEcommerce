@@ -22,12 +22,14 @@ import { AddressManagementComponent } from './components/user/address-management
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 
 export const routes: Routes = [
+  {path:'home', component: HomeComponent},
+
   {
     path: '',
     component: BasicLayoutComponent,
     children: [
       { path:'', redirectTo:'home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent },
+     
       { path: 'admin/product', component: ProductComponent, canActivate: [AuthGuard]},
       { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
       { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },

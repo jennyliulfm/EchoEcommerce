@@ -34,6 +34,14 @@ import { UserNavigationComponent } from './components/user/user-navigation/user-
 import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+import { TopnavComponent } from './components/common/topnav/topnav.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TopbannerComponent } from './components/common/topbanner/topbanner.component';
+import { FeaturedComponent } from './components/common/featured/featured.component';
+import { MiddlebannerComponent } from './components/common/middlebanner/middlebanner.component';
+import { LatestProductsComponent } from './components/common/latest-products/latest-products.component';
+import { BottombannerComponent } from './components/common/bottombanner/bottombanner.component';
+import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +61,14 @@ import { OrderHistoryComponent } from './components/user/order-history/order-his
     UserNavigationComponent,
     UserProfileComponent,
     AddressManagementComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    TopnavComponent,
+    TopbannerComponent,
+    FeaturedComponent,
+    MiddlebannerComponent,
+    LatestProductsComponent,
+    BottombannerComponent,
+    TopcategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +83,8 @@ import { OrderHistoryComponent } from './components/user/order-history/order-his
     FontAwesomeModule,
     NgxFileDropModule,
     ModalModule.forRoot(),
-    SocialLoginModule
+    SocialLoginModule,
+    CarouselModule
   ],
   providers: [
     {
