@@ -33,8 +33,6 @@
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
-              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",  
-              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
               "src/assets/styles/styles.scss"
             ],
             "scripts": [
@@ -117,21 +115,20 @@
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",  
-              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "src/assets/styles/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/metismenu/dist/metisMenu.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-             
-              "src/assets/styles/js/jquery-ui.min.js",
+              "node_modules/jquery-ui-dist/jquery-ui.min.js",
               "src/assets/styles/js/jquery.nice-select.min.js",
               "src/assets/styles/js/jquery.slicknav.js",
               "src/assets/styles/js/mixitup.min.js",
               "node_modules/owl.carousel/dist/owl.carousel.min.js",
-              "src/assets/styles/js/main.js"
+              "src/assets/styles/js/main.js"   
                  
             ]
           }

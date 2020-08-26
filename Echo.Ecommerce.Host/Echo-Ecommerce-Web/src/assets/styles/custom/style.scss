@@ -52,18 +52,28 @@ bs-datepicker-container {
 
 
 
-.wrapper {
-  height: 100vh;
-  width: 100vw;
+#wrapper {
+  // height: 100vh;
+  // width: 100vw;
   background-color: whitesmoke;
-  overflow: scroll;
-  overflow: auto;
+  // overflow: scroll;
+  // overflow: auto;
+}
+
+.wrapper {
+  padding: 0 0 0 0;
+}
+
+.wrapper-content {
+  padding: 0 0 0 0;
 }
 
 #page-wrapper {
   width: 100%;
   height: 100%;
 }
+
+
 
 h1,
 h2,
@@ -163,8 +173,9 @@ ol {
 
 .set-bg {
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .spad {
@@ -283,10 +294,10 @@ ol {
 .shop-top {
   background-color: #f53d2d;
   width: 100vw;
-  margin: 0 0 0 0;
   position: sticky;
   top: 0;
   z-index: 10;
+  margin-bottom: 50px;
 }
 
 .header__top__left {
@@ -342,7 +353,7 @@ ol {
   top: 1px;
   height: 20px;
   width: 1px;
-  background:white;
+  background: white;
   opacity: 0.1;
   content: "";
 }
@@ -350,7 +361,7 @@ ol {
 .header__top__right__social a {
   font-size: 14px;
   display: inline-block;
-  color:white;
+  color: white;
   margin-right: 20px;
 }
 
@@ -485,7 +496,7 @@ ol {
   content: "";
 }
 
-.header__top__right__help{
+.header__top__right__help {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -611,12 +622,12 @@ ol {
 
 .header__cart a {
   display: inline-block;
-  color:white;
+  color: white;
 }
 
 .search-bar a {
   display: inline-block;
-  color:white;
+  color: white;
 }
 
 
@@ -681,8 +692,9 @@ ol {
 -----------------------*/
 
 .hero {
-  padding-bottom: 50px;
-  z-index: -10;
+  height: 260px;
+  margin-bottom: 30px
+
 }
 
 .hero.hero-normal {
@@ -699,7 +711,7 @@ ol {
   left: 0;
   top: 46px;
   width: 100%;
-  z-index: 9;
+  z-index: -10;
   background: #ffffff;
 }
 
@@ -848,10 +860,52 @@ ol {
 }
 
 .hero__item {
-  height: 431px;
+  height: 270px;
   display: flex;
   align-items: center;
   padding-left: 75px;
+}
+
+.top-banner-left {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.top-banner-right {
+  height: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.top-banner-right-item {
+  height: 120px;
+  display: flex;
+  margin-bottom: 10px;
+  max-width: 100%;
+  margin-left: 30px;
+  width: 100%;
+}
+
+owl-carousel-o {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.owl-item {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+#page-content {
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .hero__text span {
@@ -884,7 +938,7 @@ ol {
 .categories__item {
   height: 270px;
   position: relative;
-  
+
 }
 
 .categories__item h5 {
@@ -2597,6 +2651,7 @@ ol {
   height: 350px;
   display: flex;
   align-items: center;
+
 }
 
 .blog__details__hero__text {
@@ -3445,7 +3500,7 @@ ol {
   .header .container {
     position: relative;
   }
- 
+
 
   .humberger__menu__wrapper {
     width: 300px;
@@ -3646,9 +3701,7 @@ ol {
     padding: 10px 0 24px;
   }
 
-  .header__cart {
-
-  }
+  .header__cart {}
 
   .over_hid {
     overflow: hidden;

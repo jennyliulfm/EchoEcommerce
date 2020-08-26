@@ -35,13 +35,13 @@ import { UserProfileComponent} from './components/user/user-profile/user-profile
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 import { TopnavComponent } from './components/common/topnav/topnav.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TopbannerComponent } from './components/common/topbanner/topbanner.component';
 import { FeaturedComponent } from './components/common/featured/featured.component';
 import { MiddlebannerComponent } from './components/common/middlebanner/middlebanner.component';
 import { LatestProductsComponent } from './components/common/latest-products/latest-products.component';
 import { BottombannerComponent } from './components/common/bottombanner/bottombanner.component';
 import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import { TopcategoryComponent } from './components/common/topcategory/topcategor
     NgxFileDropModule,
     ModalModule.forRoot(),
     SocialLoginModule,
-    CarouselModule
+    CarouselModule,
   ],
   providers: [
     {

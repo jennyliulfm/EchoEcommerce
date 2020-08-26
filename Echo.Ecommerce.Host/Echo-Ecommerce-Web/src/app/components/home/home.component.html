@@ -33,17 +33,20 @@
     </div>
  -->
 
-<div class="wrapper">
-    <div id="page-wrapper">
-        <div id="preloder">
-            <div class="loader"></div>
+<div id="wrapper">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <app-topnav></app-topnav>
+        <div id="page-content" >
+            <app-topbanner></app-topbanner>
+            <!-- <app-topcategory></app-topcategory> -->
+           
+            <app-featured></app-featured>
+            <app-middlebanner></app-middlebanner>
+           <!--<app-latest-products></app-latest-products>-->
+              <app-bottombanner></app-bottombanner> 
+
         </div>
-        <app-topnav></app-topnav> 
-        <app-topbanner></app-topbanner>
-        <app-topcategory></app-topcategory>
-        <app-featured></app-featured>
-        <app-middlebanner></app-middlebanner>
-        <app-latest-products></app-latest-products>
-        <app-bottombanner></app-bottombanner>     
+       
     </div>
+
 </div>

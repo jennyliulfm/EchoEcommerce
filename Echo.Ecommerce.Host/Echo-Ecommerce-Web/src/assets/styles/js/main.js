@@ -98,6 +98,24 @@
         }
     });
 
+    $(".topbanner__left__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        nav: true,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        smartSpeed: 1200,
+        autoHeight: true,
+        autoplay: true,
+       
+        autoplaySpeed: 500,
+        dots:true,
+        dotsContainer:'#dots',
+    
+        dotsEach: true    
+    });
+
 
     $('.hero__categories__all').on('click', function(){
         $('.hero__categories ul').slideToggle(400);
