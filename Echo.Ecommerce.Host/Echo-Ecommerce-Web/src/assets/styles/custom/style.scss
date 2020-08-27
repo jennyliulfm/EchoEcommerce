@@ -690,9 +690,9 @@ ol {
 -----------------------*/
 
 .hero {
-  height: 260px;
-  margin-bottom: 30px
-
+  height: 250px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .hero.hero-normal {
@@ -880,9 +880,8 @@ ol {
 .top-banner-right-item {
   height: 120px;
   display: flex;
-  margin-bottom: 10px;
   max-width: 100%;
-  margin-left: 30px;
+  margin-left: 15px;
   width: 100%;
 }
 
@@ -890,7 +889,6 @@ owl-carousel-o {
   position: absolute;
   height: 100%;
   width: 100%;
-  
 }
 
 .owl-item {
