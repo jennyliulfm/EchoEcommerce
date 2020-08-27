@@ -121,6 +121,9 @@
         $('.hero__categories ul').slideToggle(400);
     });
 
+    var dots = $('.owl-dots').css('position', 'absolute').css('bottom', '5px');
+    dots.css('left', 'calc(50% - ' + dots.width()/2+'px)');
+
     /*--------------------------
         Latest Product Slider
     ----------------------------*/

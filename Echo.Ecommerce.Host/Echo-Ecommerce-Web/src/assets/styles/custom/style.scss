@@ -297,7 +297,8 @@ ol {
   position: sticky;
   top: 0;
   z-index: 10;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  height: 105px;
 }
 
 .header__top__left {
@@ -526,7 +527,7 @@ ol {
 
 
 .header__logo {
-  padding: 15px 0;
+  padding: 0 0;
 }
 
 .header__logo a {
@@ -534,7 +535,7 @@ ol {
 }
 
 .header__menu {
-  padding: 24px 0;
+  padding: 5px 0;
 }
 
 .header__menu ul li {
@@ -547,7 +548,7 @@ ol {
 .header__menu ul li .header__menu__dropdown {
   position: absolute;
   left: 0;
-  top: 50px;
+  top: 30px;
   background: #222222;
   width: 180px;
   z-index: 9;
@@ -612,7 +613,7 @@ ol {
 
 .header__cart {
   text-align: center;
-  padding: 24px 0;
+  padding: 5px 0;
 }
 
 .header__cart ul {
@@ -629,9 +630,6 @@ ol {
   display: inline-block;
   color: white;
 }
-
-
-
 
 .header__cart ul li {
   list-style: none;
@@ -3698,10 +3696,8 @@ owl-carousel-o {
 
   .header__cart {
     text-align: center;
-    padding: 10px 0 24px;
+    padding: 5px 0 0;
   }
-
-  .header__cart {}
 
   .over_hid {
     overflow: hidden;
