@@ -1,0 +1,22 @@
+<!-- Categories Section Begin -->
+<section class="middle_top_section">
+    <div class="container-fluid">
+        <div class="row h-50 no-gutters">
+            <div class="col h-50 w-50 border-0 top_activity" *ngFor="let activity of activities">
+                <div class="category-item">
+                    <a href="">
+                        <img [src]="activity.url" alt="">
+                        <span class="caption">{{ activity.name }}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="banner-activity" style="margin-top: 20px;">
+            <div class="row h-100 no-gutters">
+                <img [src]='this.banner.url' alt="" style="display: block;">
+            </div>
+        </div>
+        
+    </div>
+</section>

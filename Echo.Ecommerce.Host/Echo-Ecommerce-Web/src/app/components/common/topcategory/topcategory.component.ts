@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { timestamp } from 'rxjs/operators';
 import { categoryColumnNumber } from '../../../models/appConf'
-
-export interface CategoryPhoto {
-  id?: number;
-  title?: string;
-  url?: string;
-  thumbnailUrl?: string;
-  name?: string,
-}
+import { BannerPhoto } from 'src/app/models/model';
 
 @Component({
   selector: 'app-topcategory',
@@ -18,7 +11,7 @@ export interface CategoryPhoto {
 })
 export class TopcategoryComponent implements OnInit {
 
-  apiData: Array<CategoryPhoto> = [];
+  categroyData: Array<BannerPhoto> = [];
   public rowNumber: number = 0;
   public columNumber: number = categoryColumnNumber;
   public rowArray: Array<number> = [];
@@ -52,15 +45,86 @@ export class TopcategoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.initData();
+    this.getCategoryData();
   }
 
 
   /**
    * 
    */
-  initData() {
-    this.apiData = [
+  getCategoryData() {
+    this.categroyData = [
+      {
+        id: 1,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat1.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat1.png',
+        name: "Clothing"
+      },
+      {
+        id: 2,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat2.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat2.png',
+        name: "Eating"
+      },
+      {
+        id: 3,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat3.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat3.png',
+        name: "Sports"
+      },
+
+      {
+        id: 4,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat4.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat4.png',
+        name: "Wellbeing"
+      },
+      {
+        id: 5,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat5.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat5.png',
+        name: "Skirts"
+      },
+      {
+        id: 6,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat6.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat6.png',
+        name: "Electronics"
+      },
+      {
+        id: 7,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat7.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat7.png',
+        name: "Fresh Fruit"
+      },
+      {
+        id: 8,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat8.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat8.png',
+        name: "Clothing"
+      },
+      {
+        id: 9,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat9.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat9.png',
+        name: "Clothing"
+      },
+      {
+        id: 10,
+        title: "Testing1",
+        url: '../../../assets/styles/images/categories/cat10.png',
+        thumbnailUrl: '../../../assets/styles/images/categories/cat10.png',
+        name: "Clothing"
+      },
       {
         id: 1,
         title: "Testing1",
@@ -134,11 +198,12 @@ export class TopcategoryComponent implements OnInit {
       },
 
 
+
     ];
 
-    this.rowNumber = this.apiData.length / this.columNumber;
-    if (this.apiData.length % this.columNumber != 0) {
-      this.rowNumber = this.apiData.length / this.columNumber + 1;
+    this.rowNumber = this.categroyData.length / this.columNumber;
+    if (this.categroyData.length % this.columNumber != 0) {
+      this.rowNumber = this.categroyData.length / this.columNumber + 1;
     }
 
     this.rowArray = Array.apply(null, { length: this.rowNumber }).map(Number.call, Number);

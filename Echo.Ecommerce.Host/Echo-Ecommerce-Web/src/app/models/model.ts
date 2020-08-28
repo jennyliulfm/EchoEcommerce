@@ -54,3 +54,11 @@ export interface OrderProduct {
     productId?: number,
     quantity?: number
 }
+
+export interface BannerPhoto {
+    id?: number;
+    title?: string;
+    url?: string;
+    thumbnailUrl?: string;
+    name?: string,
+  }

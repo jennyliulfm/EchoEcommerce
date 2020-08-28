@@ -4,14 +4,14 @@
         <div class="row no-gutters">
             <div class="col-12 col-md-8">
                 <owl-carousel-o [options]="customOptions" >
-                    <ng-container *ngFor="let slide of apiData">
+                    <ng-container *ngFor="let slide of topBannerPhotos">
                         <ng-template class="slide " carouselSlide [id]="slide.id" class="px-md-5">
                             <img [src]="slide.url" [alt]="slide.id" [title]="slide.id" >
                         </ng-template>
                     </ng-container>
                 </owl-carousel-o>
             </div>
-            <div class="col-8 col-md-4" >
+            <div class="col-8 col-md-4"  >
                 <div class="top-banner-right-item set-bg"
                     data-setbg="../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg" style=" margin-bottom: 10px;">
                 </div>

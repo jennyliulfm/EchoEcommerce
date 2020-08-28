@@ -882,7 +882,7 @@ ol {
   height: 120px;
   display: flex;
   max-width: 100%;
-  margin-left: 15px;
+  margin-left: 10px;
   width: 100%;
 }
 
@@ -904,6 +904,27 @@ owl-carousel-o {
   padding-left: 5%;
   padding-right: 5%;
 }
+
+
+.middle_top_section {
+  height: 320px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.middle_top_section.container-fluid.top_activity {
+  height: 60%;
+  position: absolute;
+}
+
+.middle_top_section.container-fluid.banner_activity {
+  height: 40%;
+  position: absolute; 
+}
+
 
 .hero__text span {
   font-size: 14px;
@@ -943,7 +964,7 @@ owl-carousel-o {
 -----------------------*/
 .categories {
   z-index: -10;
-  height: 270px;
+  height: 300px;
 }
 
 .categories.container-fluid {
@@ -959,6 +980,7 @@ owl-carousel-o {
   align-self: center;
   display: inline-block;
   text-align: center;
+  margin-bottom: 30px;
 
 }
 
@@ -983,6 +1005,7 @@ owl-carousel-o {
 
 .category-item>caption {
   display: block;
+  margin-top: 10px;
 }
 
 .categories .container-fluid h4 {
