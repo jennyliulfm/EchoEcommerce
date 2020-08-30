@@ -28,7 +28,7 @@ export interface Category {
 
 export interface CartProduct {
     productId: number;
-    description:string;
+    description: string;
     name: string;
     price: number;
     quantity: number;
@@ -61,4 +61,14 @@ export interface BannerPhoto {
     url?: string;
     thumbnailUrl?: string;
     name?: string,
-  }
+}
+
+export interface CardProduct {
+    id: number;
+    title: string;
+    description?: string;
+    photo_url: string;
+    price: number;
+    discount: number;
+    category: string,
+}
