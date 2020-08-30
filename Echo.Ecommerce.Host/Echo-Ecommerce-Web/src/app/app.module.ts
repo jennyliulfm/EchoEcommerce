@@ -43,6 +43,7 @@ import { BottombannerComponent } from './components/common/bottombanner/bottomba
 import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MiddletopbannerComponent } from './components/common/middletopbanner/middletopbanner.component';
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { MiddletopbannerComponent } from './components/common/middletopbanner/mi
     LatestProductsComponent,
     BottombannerComponent,
     TopcategoryComponent,
-    MiddletopbannerComponent
+    MiddletopbannerComponent,
+    DetailPageComponent
   ],
   imports: [
     BrowserModule,

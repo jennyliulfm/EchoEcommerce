@@ -20,10 +20,11 @@ import { UserLayoutComponent } from './components/user/user-layout/user-layout.c
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
 
 export const routes: Routes = [
   {path:'home', component: HomeComponent},
-
+  { path: 'detailpage', component:DetailPageComponent},
   {
     path: '',
     component: BasicLayoutComponent,
@@ -34,7 +35,9 @@ export const routes: Routes = [
       { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
       { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },
       { path: 'order/detail', component: OrderdetailComponent },
-      { path: 'order/checkout', component:CheckoutComponent }
+      { path: 'order/checkout', component:CheckoutComponent },
+
+
     ],
   },
   {
