@@ -43,7 +43,11 @@ import { BottombannerComponent } from './components/common/bottombanner/bottomba
 import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MiddletopbannerComponent } from './components/common/middletopbanner/middletopbanner.component';
+<<<<<<< HEAD
 import { DetailPageComponent } from './components/detail-page/detail-page.component';
+=======
+import { FlashsaleComponent } from './components/common/flashsale/flashsale.component';
+>>>>>>> feature/newui
 
 @NgModule({
   declarations: [
@@ -72,7 +76,11 @@ import { DetailPageComponent } from './components/detail-page/detail-page.compon
     BottombannerComponent,
     TopcategoryComponent,
     MiddletopbannerComponent,
+<<<<<<< HEAD
     DetailPageComponent
+=======
+    FlashsaleComponent
+>>>>>>> feature/newui
   ],
   imports: [
     BrowserModule,
