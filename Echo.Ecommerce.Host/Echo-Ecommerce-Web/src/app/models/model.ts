@@ -69,9 +69,10 @@ export interface CardProduct {
     description?: string;
     photo_url: string;
     price: number;
-    discount: number;
-    category: string;
-    expiredHours:number;
+    discount?: number;
+    category?: string;
+    expiredHours?:number;
+    reviews?: number;
 }
 
 export interface SalesEvent {

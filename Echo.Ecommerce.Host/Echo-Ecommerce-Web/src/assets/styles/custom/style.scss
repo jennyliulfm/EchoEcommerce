@@ -894,7 +894,7 @@ owl-carousel-o {
   height: 100%;
   width: 100%;
   z-index: 0;
-  
+
 }
 
 .owl-item {
@@ -1127,6 +1127,24 @@ owl-carousel-o {
 
 .mb-20 {
   margin-bottom: 20px
+}
+
+a {
+  text-decoration: none !important
+}
+
+.popular-product {
+  height: 150px;
+  position: relative;
+}
+
+.star {
+  color: orange;
+}
+
+.flash-sales {
+  height: 600px;
+  position: relative;
 }
 
 /*---------------------
