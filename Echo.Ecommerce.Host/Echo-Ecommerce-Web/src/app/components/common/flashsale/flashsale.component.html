@@ -3,10 +3,16 @@
         <div class="col-md-3 mb-30" *ngFor=" let product of products">
             <div class="card">
                 <div class="card-body">
-                    <span class="float-right text-center off">
-                        <strong class="text-center text-danger">{{ product.discount }}%</strong>
-                        <strong class="text-center text-white">OFF</strong>
-                    </span>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row align-items-center time float-left"> 
+                            <i class="fa fa-clock-o fa-3x"></i> 
+                            <small class="ml-1">48 hours</small> 
+                        </div>
+                        <span class="float-right text-center off">
+                            <strong class="text-center text-danger">{{ product.discount }}%</strong>
+                            <strong class="text-center text-white">OFF</strong>
+                        </span>
+                    </div>                   
                     <div class="card-img-actions">
                         <img [src]="product.photo_url" class="card-img img-fluid" alt="">
                     </div>
