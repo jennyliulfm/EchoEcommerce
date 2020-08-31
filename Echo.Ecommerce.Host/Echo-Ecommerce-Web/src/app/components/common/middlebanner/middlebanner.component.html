@@ -1,18 +1,9 @@
- <!-- Banner Begin -->
- <div class="banner">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src=" ../../../../assets/styles/images/banner/banner-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="../../../../assets/styles/images/banner/banner-2.jpg" alt="">
-                </div>
+<div class="events mt-50 mb-50">
+    <div class="container-fluid d-flex">
+        <div class="row no-gutters">
+            <div class="col-sm-6" *ngFor="let sale of this.salesEvents">
+                <img [src]="sale.photo_url" alt="" href="sale.event_url">
             </div>
         </div>
     </div>
 </div>
-<!-- Banner End -->
