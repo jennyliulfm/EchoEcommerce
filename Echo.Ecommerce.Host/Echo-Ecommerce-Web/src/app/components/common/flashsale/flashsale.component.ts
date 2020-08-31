@@ -30,6 +30,7 @@ export class FlashsaleComponent implements OnInit {
         photo_url: "https://i.imgur.com/nOFet9u.jpg",
         category: "Laptops & Notebooks",
         discount: 20,
+        expiredHours: 2,
       },
 
       {
@@ -40,6 +41,7 @@ export class FlashsaleComponent implements OnInit {
         photo_url: "https://i.imgur.com/VY0R9aV.png",
         category: "Electronics",
         discount: 13,
+        expiredHours: 3,
       },
       {
         id:3,
@@ -49,6 +51,7 @@ export class FlashsaleComponent implements OnInit {
         photo_url: "https://i.imgur.com/QQwcBpF.png",
         category: "Electronics",
         discount: 13,
+        expiredHours: 20,
       },
       {
         id:4,
@@ -58,6 +61,7 @@ export class FlashsaleComponent implements OnInit {
         photo_url: "https://i.imgur.com/nOFet9u.jpg",
         category: "Laptops & Notebooks",
         discount: 20,
+        expiredHours: 24,
       },
 
       // {

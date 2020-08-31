@@ -70,7 +70,8 @@ export interface CardProduct {
     photo_url: string;
     price: number;
     discount: number;
-    category: string,
+    category: string;
+    expiredHours:number;
 }
 
 export interface SalesEvent {
