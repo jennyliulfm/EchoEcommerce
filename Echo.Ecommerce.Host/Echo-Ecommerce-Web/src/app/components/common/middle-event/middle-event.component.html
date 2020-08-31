@@ -1,10 +1,8 @@
 <div class="events">
-    <img src="../../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg" alt="">
     <div class="container-fluid d-flex">
-       
-        <div class="row ">
-            <div class="col-md-4" *ngFor="let event of events">
-                <img [src]="event.photo_url" alt="" href="event.event_url">
+        <div class="row no-gutters">
+            <div class="col-md-4 mb-30" *ngFor="let sale of this.salesEvents">
+                <img [src]="sale.photo_url" alt="" href="sale.event_url">
             </div>
         </div>
     </div>

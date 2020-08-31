@@ -9,7 +9,7 @@ import { SalesEvent } from 'src/app/models/model';
 })
 export class MiddleEventComponent implements OnInit {
 
-  public events: Array<SalesEvent> =[];
+  public salesEvents: Array<SalesEvent> =[];
   constructor() { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class MiddleEventComponent implements OnInit {
    * 
    */
   getSalesEvents() {
-    this.events = [
+    this.salesEvents = [
       {
         id:1,
         name: "Mother's Day",
