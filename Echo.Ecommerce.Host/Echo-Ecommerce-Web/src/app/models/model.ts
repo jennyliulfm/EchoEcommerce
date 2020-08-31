@@ -72,3 +72,10 @@ export interface CardProduct {
     discount: number;
     category: string,
 }
+
+export interface SalesEvent {
+    id: number;
+    name: string;
+    photo_url: string;
+    event_url: string;
+}

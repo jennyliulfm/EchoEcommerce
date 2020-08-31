@@ -44,6 +44,7 @@ import { TopcategoryComponent } from './components/common/topcategory/topcategor
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MiddletopbannerComponent } from './components/common/middletopbanner/middletopbanner.component';
 import { FlashsaleComponent } from './components/common/flashsale/flashsale.component';
+import { MiddleEventComponent } from './components/common/middle-event/middle-event.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { FlashsaleComponent } from './components/common/flashsale/flashsale.comp
     BottombannerComponent,
     TopcategoryComponent,
     MiddletopbannerComponent,
-    FlashsaleComponent
+    FlashsaleComponent,
+    MiddleEventComponent
   ],
   imports: [
     BrowserModule,

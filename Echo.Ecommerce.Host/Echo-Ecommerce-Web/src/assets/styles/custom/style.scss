@@ -59,6 +59,7 @@ bs-datepicker-container {
   // overflow: scroll;
   // overflow: auto;
   overflow-x: scroll;
+  z-index: 1000;
 }
 
 .wrapper {
@@ -294,10 +295,11 @@ ol {
 -----------------------*/
 .shop-top {
   background-color: #f53d2d;
-  width: 100vw;
-  position: sticky;
+
   top: 0;
-  z-index: 10;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
   margin-bottom: 20px;
   height: 105px;
 }
@@ -694,6 +696,7 @@ ol {
   height: 250px;
   margin-top: 30px;
   margin-bottom: 30px;
+  z-index: -1000;
 }
 
 .hero.hero-normal {
@@ -890,6 +893,8 @@ owl-carousel-o {
   position: absolute;
   height: 100%;
   width: 100%;
+  z-index: 0;
+  
 }
 
 .owl-item {
@@ -898,11 +903,14 @@ owl-carousel-o {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  z-index: -1000;
 }
 
 #page-content {
   padding-left: 5%;
   padding-right: 5%;
+  z-index: -1000;
+  margin-top: 150px;
 }
 
 
@@ -922,7 +930,7 @@ owl-carousel-o {
 
 .middle_top_section.container-fluid.banner_activity {
   height: 40%;
-  position: absolute; 
+  position: absolute;
 }
 
 
@@ -1085,6 +1093,41 @@ owl-carousel-o {
 .categories__slider.owl-carousel .owl-nav button.owl-next {
   left: auto;
   right: -35px;
+}
+
+
+/*---------------------
+  Middle-Event
+-----------------------*/
+.events {
+  z-index: -10;
+  height: 150px;
+  display: flex;
+  position: relative;
+}
+
+.mt-50 {
+  margin-top: 50px
+}
+
+.mb-50 {
+  margin-bottom: 50px
+}
+
+.mt-30 {
+  margin-top: 30px
+}
+
+.mb-30 {
+  margin-bottom: 30px
+}
+
+.mt-20 {
+  margin-top: 20px
+}
+
+.mb-20 {
+  margin-bottom: 20px
 }
 
 /*---------------------
