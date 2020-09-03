@@ -47,6 +47,7 @@ import { FlashsaleComponent } from './components/common/flashsale/flashsale.comp
 import { MiddleEventComponent } from './components/common/middle-event/middle-event.component';
 import { PopularProductComponent } from './components/common/popular-product/popular-product.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +77,8 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     MiddletopbannerComponent,
     FlashsaleComponent,
     MiddleEventComponent,
-    PopularProductComponent
+    PopularProductComponent,
+
   ],
   imports: [
     BrowserModule,

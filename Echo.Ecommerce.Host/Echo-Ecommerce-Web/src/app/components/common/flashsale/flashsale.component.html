@@ -1,9 +1,9 @@
-<div class="flash-sales mt-30 mb-30">
+<div class="flash-sales mt-20">
     <div class="container-fluid">
         <h5 class="mb-2">Flash Sales</h5>
         <div class="row no-gutters p-0 m-0">
             <div class="col-md-3 mb-30" *ngFor=" let product of products">
-                <div class="card p-0">
+                <div class="card" >  
                     <div class="card-body ">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-row align-items-center time float-left">
@@ -14,37 +14,43 @@
                                 <strong class="text-center text-danger">{{ product.discount }}%</strong>
                                 <strong class="text-center text-white">OFF</strong>
                             </span>
-                        </div>
+                        </div>          
                         <div class="card-img-actions">
                             <img [src]="product.photo_url" class="card-img img-fluid" alt="">
                         </div>
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="mb-2">
+                        <div class="mb-0">
                             <h6 class="font-weight-semibold mb-1">
                                 <a href="#" class="text-default mb-2 stretched-link"
                                     data-abc="true">{{ product.title }}</a>
                             </h6>
                             <a href="#" class="text-muted" data-abc="true">{{ product.category}}</a>
                         </div>
-                        <h5 class="mb-0 font-weight-semibold ">{{ product.price | currency:'AUS' }}</h5>
-                        <div class="mb-2 mt-2">
-                            <div class="progress bg-secondary " style="height: 25px;">
-                                <div class="progress-bar bg-danger" style="width:20%">
-                                    <strong class="text-light text-uppercase text-center">34 sold</strong>
+                        <div class="row mb-2 mt-2 no-gutters" style="position: relative;">
+                            <div class="col-sm-6">
+                                <h6 class="mb-0 font-weight-semibold float-left ">{{ product.price | currency:'AUS' }}</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <h6 class="mb-0 font-weight-semibold old-price float-right">{{ product.price | currency:'AUS' }}</h6>
+                            </div>                               
+                        </div>
+                        <div class="mb-2">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                                    <strong class="text-light text-uppercase ">40 Sold</strong>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-2">
-                            <button type="button" class="btn bg-cart w-100 flex-end flex">
-                                <i class="fa fa-cart-plus mr-2"></i>
-                                <strong class="text-uppercase text-center ">
-                                    Add to cart
-                                </strong>
-                            </button>
-                        </div>
-
                     </div>
+                    <div class="card-footer bg-light m-0" style="border:none">           
+                        <button type="button " class="btn bg-cart "  style="width:100%" >
+                            <i class="fa fa-cart-plus "></i>
+                            <strong class="text-uppercase text-center">
+                                Add to cart
+                            </strong>
+                        </button>     
+                    </div>
+
                 </div>
             </div>
         </div>

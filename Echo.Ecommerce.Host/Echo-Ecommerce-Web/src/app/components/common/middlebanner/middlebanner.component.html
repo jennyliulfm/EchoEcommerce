@@ -1,9 +1,7 @@
-<div class="events mt-50 mb-50">
-    <div class="container-fluid d-flex">
-        <div class="row no-gutters">
-            <div class="col-sm-6" *ngFor="let sale of this.salesEvents">
-                <img [src]="sale.photo_url" alt="" href="sale.event_url">
-            </div>
+<div class="container-fluid d-flex mt-20 mb-50">
+    <div class="row no-gutters d-flex">
+        <div class="col-md-6 d-flex" *ngFor="let sale of this.salesEvents" style="position: relative;">
+            <img [src]="sale.photo_url" alt="" href="sale.event_url">
         </div>
     </div>
 </div>

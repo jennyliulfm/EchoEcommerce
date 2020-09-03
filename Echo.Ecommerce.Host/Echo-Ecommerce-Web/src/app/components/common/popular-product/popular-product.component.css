@@ -1,0 +1,8 @@
+.card-body {
+  height: 160px;
+}
+
+.popular-product-price {
+  position: absolute;
+  bottom: 5px;
+}

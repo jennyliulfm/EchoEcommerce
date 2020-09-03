@@ -1143,8 +1143,13 @@ a {
 }
 
 .flash-sales {
-  height: 600px;
+  height: 550px;
   position: relative;
+}
+
+.old-price {
+  color: #f00;
+  text-decoration: line-through;
 }
 
 /*---------------------
