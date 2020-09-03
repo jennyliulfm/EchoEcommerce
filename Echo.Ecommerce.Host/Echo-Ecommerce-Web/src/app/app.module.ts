@@ -39,7 +39,6 @@ import { TopbannerComponent } from './components/common/topbanner/topbanner.comp
 import { FeaturedComponent } from './components/common/featured/featured.component';
 import { MiddlebannerComponent } from './components/common/middlebanner/middlebanner.component';
 import { LatestProductsComponent } from './components/common/latest-products/latest-products.component';
-import { BottombannerComponent } from './components/common/bottombanner/bottombanner.component';
 import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MiddletopbannerComponent } from './components/common/middletopbanner/middletopbanner.component';
@@ -72,7 +71,7 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     FeaturedComponent,
     MiddlebannerComponent,
     LatestProductsComponent,
-    BottombannerComponent,
+  
     TopcategoryComponent,
     MiddletopbannerComponent,
     FlashsaleComponent,

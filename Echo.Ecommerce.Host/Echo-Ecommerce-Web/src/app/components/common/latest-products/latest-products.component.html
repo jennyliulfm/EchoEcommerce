@@ -1,186 +1,25 @@
-  <!-- Latest Product Section Begin -->
-  <section class="latest-product spad">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Latest Products</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
+<div class="container-fluid">
+    <h5 class="mb-2">New Products</h5>
+    <div class="row no-gutters p-0 m-0">
+        <div class="col-md-3 mb-30" *ngFor=" let product of products">
+            <div class="card text-center">
+                <img class="card-img-top" [src]="product.photo_url" alt="Card image">
+                <div class="card-body text-center"> 
+                    <div class="mb-0">
+                        <h6 class="font-weight-semibold mb-1">
+                            <a href="#" class="text-default mb-2 stretched-link" data-abc="true">{{ product.title }}</a>
+                        </h6>
+                        <a href="#" class="text-muted" data-abc="true">{{ product.category}}</a>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Top Rated Products</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-
-                        </div>
+                    <div class="mt-2 mb-2">
+                        <h5 class="font-weight-semibold text-center" >
+                            {{product.price | currency:'AUS'}}</h5>
                     </div>
+                 
+                    
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Review Products</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="../../../assets/styles/images/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
-</section>
-<!-- Latest Product Section End -->
+</div>

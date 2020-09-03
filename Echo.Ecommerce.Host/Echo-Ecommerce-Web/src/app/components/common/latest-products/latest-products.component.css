@@ -1,0 +1,14 @@
+.card {
+  height: 400px;
+  position: relative;
+}
+
+.card-footer {
+  border: none;
+  background-color: #ffff;
+}
+
+.lastest-product-price {
+  position: absolute;
+  bottom: 5px;
+}

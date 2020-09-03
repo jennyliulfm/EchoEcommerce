@@ -894,7 +894,6 @@ owl-carousel-o {
   height: 100%;
   width: 100%;
   z-index: 0;
-
 }
 
 .owl-item {
@@ -903,7 +902,6 @@ owl-carousel-o {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  z-index: -1000;
 }
 
 #page-content {
@@ -2961,9 +2959,9 @@ a {
 -----------------------*/
 
 .footer {
-  background: #F3F6FA;
-  padding-top: 70px;
   padding-bottom: 0;
+  position: relative;
+  border: none;
 }
 
 .footer__about {
