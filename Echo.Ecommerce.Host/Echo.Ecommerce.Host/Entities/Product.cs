@@ -24,5 +24,12 @@ namespace Echo.Ecommerce.Host.Entities
         public bool? IsDeleted { get; set; } = false;
 
         public int Quantity { get; set; }
+
+        public double Discount { get; set; }
+        public double NewPrice { get; set; }
+
+        public string Photo_Url { get; set; }
     }
+
+
 }

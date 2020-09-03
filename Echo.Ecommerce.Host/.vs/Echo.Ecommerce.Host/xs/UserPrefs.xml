@@ -1,42 +1,43 @@
 ﻿<Properties StartupConfiguration="{88E21257-A11B-430E-9B57-1F44AB5303BE}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Echo.Ecommerce.Host/Entities/Banner.cs">
     <Files>
-      <File FileName="Echo.Ecommerce.Host/Entities/OrderProduct.cs" Line="21" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/OrderController.cs" Line="39" Column="27" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Order.cs" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="22" Column="8" />
+      <File FileName="Echo.Ecommerce.Host/Entities/OrderProduct.cs" Line="18" Column="26" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/OrderController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Order.cs" Line="34" Column="9" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Product.cs" Line="31" Column="8" />
       <File FileName="Echo.Ecommerce.Host/Properties/launchSettings.json" />
       <File FileName="Echo.Ecommerce.Host/appsettings.json" Line="15" Column="62" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" Line="298" Column="67" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/UserController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/ProductController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/CategoryController.cs" />
       <File FileName="Echo.Ecommerce.Host/Models/AppConfig.cs" />
-      <File FileName="Echo.Ecommerce.Host/Startup.cs" Line="44" Column="44" />
-      <File FileName="Echo.Ecommerce.Host/Program.cs" Line="17" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Entities/User.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/User.cs" />
-      <File FileName="Echo.Ecommerce.Host/Models/SocialUser.cs" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Address.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Controllers/BasicController.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/OrderProduct.cs" />
+      <File FileName="Echo.Ecommerce.Host/Startup.cs" />
+      <File FileName="Echo.Ecommerce.Host/Program.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/User.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/User.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Models/SocialUser.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/AddressController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Address.cs" />
+      <File FileName="Echo.Ecommerce.Host/Controllers/BasicController.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/OrderProduct.cs" Line="1" Column="1" />
       <File FileName="Echo.Ecommerce.Host/Entities/OrderStatus.cs" />
       <File FileName="Echo.Ecommerce.Host/Models/Order.cs" />
-      <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/DBContext.cs" />
+      <File FileName="Echo.Ecommerce.Host/Models/Product.cs" Line="16" Column="46" />
       <File FileName="Echo.Ecommerce.Host/AdminSeed.cs" />
       <File FileName="Echo.Ecommerce.Host/Echo.Ecommerce.Host.csproj" />
-      <File FileName="Echo.Ecommerce.Host/Entities/Category.cs" />
-      <File FileName="Echo.Ecommerce.Test/GenerateApis.cs" Line="48" Column="144" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Category.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Test/GenerateApis.cs" />
       <File FileName="Echo.Ecommerce.Test/appsettings.json" />
       <File FileName="Echo.Ecommerce.Host/Models/Category.cs" />
       <File FileName="Echo.Ecommerce.Host/Repositories/UserRepository.cs" />
-      <File FileName="Echo.Ecommerce.Host/Repositories/GenericRepository.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Repositories/GenericRepository.cs" />
       <File FileName="Echo.Ecommerce.Host/Repositories/ICategoryRepository.cs" />
       <File FileName="Echo.Ecommerce.Host/Repositories/CategoryRepository.cs" />
-      <File FileName="Echo.Ecommerce.Host/Migrations/20200806095610_Add Address to order.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Migrations/20200806064819_Restructure Table.cs" Line="1" Column="1" />
-      <File FileName="Echo.Ecommerce.Host/Migrations/DBContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="Echo.Ecommerce.Host/Migrations/20200806095610_Add Address to order.cs" />
+      <File FileName="Echo.Ecommerce.Host/Migrations/20200806064819_Restructure Table.cs" />
+      <File FileName="Echo.Ecommerce.Host/Migrations/DBContextModelSnapshot.cs" />
+      <File FileName="Echo.Ecommerce.Host/Entities/Banner.cs" Line="6" Column="16" />
       <File FileName="Echo.Ecommerce.Host/Repositories/IGenericRepository.cs" Line="15" Column="62" NotebookId="1" />
     </Files>
     <Pads>
@@ -45,9 +46,12 @@
           <Node name="Echo.Ecommerce.Host" expanded="True">
             <Node name="Echo.Ecommerce.Host" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Entities" expanded="True" />
+              <Node name="Entities" expanded="True">
+                <Node name="Banner.cs" selected="True" />
+              </Node>
               <Node name="Migrations" expanded="True" />
-              <Node name="appsettings.json" expanded="True" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="Echo.Ecommerce.Test" expanded="True" />
           </Node>

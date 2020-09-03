@@ -31,5 +31,7 @@ namespace Echo.Ecommerce.Host.Entities
 
         public List<OrderProduct> OrderProducts { get; set; }
 
+        
+
     }
 }

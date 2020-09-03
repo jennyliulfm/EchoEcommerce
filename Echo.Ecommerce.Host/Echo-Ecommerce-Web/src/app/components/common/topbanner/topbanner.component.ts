@@ -20,7 +20,7 @@ export class TopbannerComponent implements OnInit {
     center: true,
     dots: true,
     dotsEach: true,
-    mergeFit: true,
+    
     responsive: {
       0: {
         items: 1,
