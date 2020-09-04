@@ -24,7 +24,7 @@ import { DetailPageComponent } from './components/detail-page/detail-page.compon
 
 export const routes: Routes = [
   {path:'home', component: HomeComponent},
-  { path: 'detailpage', component:DetailPageComponent},
+  { path: 'detailpage/:id', component:DetailPageComponent},
   {
     path: '',
     component: BasicLayoutComponent,
