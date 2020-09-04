@@ -24,20 +24,20 @@ export class MiddleEventComponent implements OnInit {
       {
         id:1,
         name: "Mother's Day",
-        photo_url: "../../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg",
-        event_url: "../../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg",       
+        photo_url: "../../../../assets/styles/images/banner/topbanner/1.png",
+        event_url: "../../../../assets/styles/images/banner/topbanner/1.png",       
       },
       {
         id:3,
         name: "Mother's Day",
-        photo_url: "../../../../assets/styles/images/banner/topbanner/rightsmall2.png",
-        event_url: "../../../../assets/styles/images/banner/topbanner/rightsmall2.png",       
+        photo_url: "../../../../assets/styles/images/banner/topbanner/5.png",
+        event_url: "../../../../assets/styles/images/banner/topbanner/5.png",       
       },
       {
         id:3,
         name: "Mother's Day",
-        photo_url: "../../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg",
-        event_url: "../../../../assets/styles/images/banner/topbanner/rightsmall1.jpeg",     
+        photo_url: "../../../../assets/styles/images/banner/topbanner/6.png",
+        event_url: "../../../../assets/styles/images/banner/topbanner/6.png",     
       },
     ];
   }
