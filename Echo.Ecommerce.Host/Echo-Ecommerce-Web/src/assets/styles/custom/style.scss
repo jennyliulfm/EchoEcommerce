@@ -694,7 +694,7 @@ ol {
 -----------------------*/
 
 .hero {
-  height: 250px;
+  height: 300px;
   margin-top: 30px;
   margin-bottom: 30px;
   z-index: -1000;
@@ -883,7 +883,7 @@ ol {
 }
 
 .top-banner-right-item {
-  height: 140px;
+  height: 130px;
   display: flex;
   max-width: 100%;
   margin-left: 10px;
@@ -2963,6 +2963,7 @@ a {
   padding-bottom: 0;
   position: relative;
   border: none;
+  z-index: 0;
 }
 
 .footer__about {
