@@ -34,22 +34,10 @@ export const routes: Routes = [
   //   component: BasicLayoutComponent,
   //   children: [
   //     // { path:'', redirectTo:'home', pathMatch: 'full'},
-
-  //     { path: 'admin/product', component: ProductComponent, },
-  //     { path: 'admin/category', component: CategoryComponent, },
   //     { path: 'user/emailconfirm', component: EmailConfirmComponent, },
   //     { path: 'order/detail', component: OrderdetailComponent },
   //     { path: 'order/checkout', component: CheckoutComponent }
   //   ],
   // },
-  // {
-  //   path: 'userLayout',
-  //   component: UserLayoutComponent,
-  //   children: [
-  //     { path: '', redirectTo: 'home', pathMatch: 'full' },
-  //     { path: 'user/profile', component: UserProfileComponent },
-  //     { path: 'user/addressmanagement', component: AddressManagementComponent },
-  //     { path: 'user/orderhistory', component: OrderHistoryComponent }
-  //   ]
-  // }
+
 ];

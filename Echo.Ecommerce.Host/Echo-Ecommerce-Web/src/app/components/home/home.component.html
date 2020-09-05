@@ -1,37 +1,3 @@
-<!-- <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-md-3" *ngFor="let product of products; let i = index;">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                    <div class="product-imitation">
-                        [ INFO ]
-                    </div>
-                    <div class="product-desc">
-                        <span class="product-price">
-                            {{ product.price | currency }}
-                        </span>
-                        <small class="text-muted">{{ product.category.categoryName }}</small>
-                        <a class="product-name"> {{ product.name }}</a>
-
-                        <div class="small m-t-xs">
-                            {{ product.description }}
-                        </div>
-                        <div style="clear:both">
-                            <div style="float: left;">
-                                <input type="number" value="1" min="1" max="100" step="1" #amount>
-                            </div>
-                            <div class="text-right">
-                                <button type="button" class="btn btn-lg btn-primary "
-                                    (click)="addToCart($event, product, amount.value)">Add To
-                                    Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- -->
 
 <div id="wrapper">
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -47,8 +13,21 @@
             <app-middlebanner></app-middlebanner>
             <app-latest-products> </app-latest-products>
             <app-footer></app-footer>
-        </div>
 
+
+
+        </div>
     </div>
 
 </div>
+
+<ng-template #popbannertemplate>
+    <div class="modal-header m-0 p-0">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body m-0 p-0 ">
+        <img [src]="popupBanner.photo_url" alt="">
+    </div>
+</ng-template>
