@@ -20,12 +20,12 @@ export class TopbannerComponent implements OnInit {
     center: true,
     dots: true,
     dotsEach: true,
-    mergeFit: true,
+    
     responsive: {
       0: {
         items: 1,
       },
-      600: {
+      500: {
         items: 1,
       },
       1000: {
@@ -54,20 +54,20 @@ export class TopbannerComponent implements OnInit {
       {
         id: 1,
         title: "Testing1",
-        url: '../../../assets/styles/images/banner/topbanner/banner1.jpeg',
-        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/banner1.jpeg'
+        url: '../../../assets/styles/images/banner/topbanner/1.png',
+        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/1.png'
       },
       {
         id: 2,
         title: "Testing1",
-        url: '../../../assets/styles/images/banner/topbanner/banner2.png',
-        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/banner2.png'
+        url: '../../../assets/styles/images/banner/topbanner/2.png',
+        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/2.png'
       },
       {
         id: 3,
         title: "Testing1",
-        url: '../../../assets/styles/images/banner/topbanner/banner3.jpeg',
-        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/banner3.jpeg'
+        url: '../../../assets/styles/images/banner/topbanner/5.png',
+        thumbnailUrl: '../../../assets/styles/images/banner/topbanner/5.png'
       },
     ];
 

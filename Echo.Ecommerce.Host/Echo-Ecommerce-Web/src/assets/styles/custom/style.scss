@@ -530,7 +530,8 @@ ol {
 
 
 .header__logo {
-  padding: 0 0;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .header__logo a {
@@ -693,7 +694,7 @@ ol {
 -----------------------*/
 
 .hero {
-  height: 250px;
+  height: 300px;
   margin-top: 30px;
   margin-bottom: 30px;
   z-index: -1000;
@@ -882,7 +883,7 @@ ol {
 }
 
 .top-banner-right-item {
-  height: 120px;
+  height: 130px;
   display: flex;
   max-width: 100%;
   margin-left: 10px;
@@ -1098,8 +1099,8 @@ owl-carousel-o {
   Middle-Event
 -----------------------*/
 .events {
-  height: 120px;
-  display: flex;
+  height: 200px;
+  
   position: relative;
 }
 
@@ -2962,6 +2963,7 @@ a {
   padding-bottom: 0;
   position: relative;
   border: none;
+  z-index: 0;
 }
 
 .footer__about {
@@ -3351,6 +3353,7 @@ a {
 
   .header .container {
     position: relative;
+    height: 100%;
   }
 
   .humberger__menu__wrapper {
@@ -3539,8 +3542,13 @@ a {
     visibility: visible;
   }
 
+  .header {
+    height: 105px;
+  }
   .header__top {
     display: none;
+    height: 100%;
+    display: block;
   }
 
   .header__menu {

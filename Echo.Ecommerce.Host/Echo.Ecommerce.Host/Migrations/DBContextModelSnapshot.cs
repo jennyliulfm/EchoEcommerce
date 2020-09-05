@@ -48,6 +48,35 @@ namespace Echo.Ecommerce.Host.Migrations
                     b.ToTable("Address");
                 });
 
+            modelBuilder.Entity("Echo.Ecommerce.Host.Entities.Banner", b =>
+                {
+                    b.Property<int>("BannerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("ExpiredDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Photo_Url")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("BannerId");
+
+                    b.ToTable("Banners");
+                });
+
             modelBuilder.Entity("Echo.Ecommerce.Host.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -156,11 +185,20 @@ namespace Echo.Ecommerce.Host.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<double>("Discount")
+                        .HasColumnType("double");
+
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<double>("NewPrice")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Photo_Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("Price")

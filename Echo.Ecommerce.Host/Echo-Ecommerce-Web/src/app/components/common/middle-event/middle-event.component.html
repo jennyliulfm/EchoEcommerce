@@ -1,8 +1,8 @@
 <div class="events mb-20">
-    <div class="container-fluid d-flex">
-        <div class="row no-gutters">
+    <div class="container-fluid ">
+        <div class="row no-gutters my-auto">
             <div class="col-md-4 mb-30" *ngFor="let sale of this.salesEvents">
-                <img [src]="sale.photo_url" alt="" href="sale.event_url">
+                <img [src]="sale.photo_url" alt="" href="sale.event_url" style="display: inline-block;">
             </div>
         </div>
     </div>

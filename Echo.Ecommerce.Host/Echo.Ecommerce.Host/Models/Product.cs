@@ -11,6 +11,9 @@ namespace Echo.Ecommerce.Host.Models
         public double Price { get; set; }
         public Category Category { get; set; }
         public int Quantity { get; set; }
+        public double Discount { get; set; }
+        public double NewPrice { get; set; }
+        public string Photo_Url { get; set; }
 
         public Product(Entities.Product product)
         {
@@ -19,6 +22,8 @@ namespace Echo.Ecommerce.Host.Models
             Description = product.Description;
             Price = product.Price;
             Quantity = product.Quantity;
+            Discount = product.Discount;
+            NewPrice = product.NewPrice;
           
             if(product.Category != null )
             {

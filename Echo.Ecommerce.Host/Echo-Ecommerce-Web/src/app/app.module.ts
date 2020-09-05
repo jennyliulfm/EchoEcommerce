@@ -19,8 +19,8 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 import { LogoutComponent } from './components/user/logout/logout.component';
 
 import { HomeComponent } from './components/home/home.component';
-import { ProductComponent } from './components/admin/product/product.component';
-import { CategoryComponent } from './components/admin/category/category.component';
+// import { ProductComponent } from './components/admin/product/product.component';
+// import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { TokenInterceptor } from '../app/auth/token.interceptor'
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -31,9 +31,9 @@ import { OrderService } from './services/order.service';
 import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
 import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
 import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
-import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
-import { AddressManagementComponent } from './components/user/address-management/address-management.component';
-import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+// import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
+// import { AddressManagementComponent } from './components/user/address-management/address-management.component';
+// import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 import { TopnavComponent } from './components/common/topnav/topnav.component';
 import { TopbannerComponent } from './components/common/topbanner/topbanner.component';
 import { FeaturedComponent } from './components/common/featured/featured.component';
@@ -56,16 +56,16 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     BasicLayoutComponent,
     LogoutComponent,
     HomeComponent,
-    ProductComponent,
-    CategoryComponent,
+    // ProductComponent,
+    // CategoryComponent,
     EmailConfirmComponent,
     CheckoutComponent,
     OrderdetailComponent,
     UserLayoutComponent,
     UserNavigationComponent,
-    UserProfileComponent,
-    AddressManagementComponent,
-    OrderHistoryComponent,
+    // UserProfileComponent,
+    // AddressManagementComponent,
+    // OrderHistoryComponent,
     TopnavComponent,
     TopbannerComponent,
     FeaturedComponent,

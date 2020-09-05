@@ -24,6 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Echo.Ecommerce.Test/1.0.0": {
         "dependencies": {
+          "AWSSDK.Core": "3.5.1.6",
+          "AWSSDK.S3": "3.5.0.8",
           "Echo.Ecommerce.Host": "1.0.0",
           "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.HttpsPolicy": "2.2.0",
@@ -298,6 +300,31 @@
         },
         "compile": {
           "Echo.Ecommerce.Test.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.5.1.6": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.1.6"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        }
+      },
+      "AWSSDK.S3/3.5.0.8": {
+        "dependencies": {
+          "AWSSDK.Core": "3.5.1.6"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.0.8"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {}
         }
       },
       "coverlet.msbuild/2.9.0": {},
@@ -4053,6 +4080,8 @@
       },
       "Echo.Ecommerce.Host/1.0.0": {
         "dependencies": {
+          "AWSSDK.Core": "3.5.1.6",
+          "AWSSDK.S3": "3.5.0.8",
           "IdentityServer4.AspNetIdentity": "4.0.4",
           "Microsoft.AspNet.Identity.Core": "2.2.3",
           "Microsoft.AspNet.Identity.EntityFramework": "2.2.3",
@@ -5526,6 +5555,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.5.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zrJgh4h0Ct/1ebm9KUFeDVfQuys8Hh9Yji4A7/0peRS1/O2wBM7AcZ5SBpdrBCbKkSdJLl5ERMKO7UrSUiHk/Q==",
+      "path": "awssdk.core/3.5.1.6",
+      "hashPath": "awssdk.core.3.5.1.6.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.5.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-64uRylFf3Pc7UCZxopW9n4PB+pRcrRjpsRcE+JO6EZFt3x+XStjku9gu4i0sM7i2Dbne8OL5WiGUmUyVtaWOLQ==",
+      "path": "awssdk.s3/3.5.0.8",
+      "hashPath": "awssdk.s3.3.5.0.8.nupkg.sha512"
     },
     "coverlet.msbuild/2.9.0": {
       "type": "package",
