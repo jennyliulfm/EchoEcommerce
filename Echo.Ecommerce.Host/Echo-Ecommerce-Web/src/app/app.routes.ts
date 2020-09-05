@@ -21,10 +21,13 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 import { AdminModule } from '../app/modules/admin/admin.module';
+import { UserModule } from '../app/modules/user/user.module';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', loadChildren: '../app/modules/admin/admin.module#AdminModule'},
+  { path: 'user', loadChildren: '../app/modules/user/user.module#UserModule'},
+
 
   // {
   //   path: '',

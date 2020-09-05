@@ -31,9 +31,9 @@ import { OrderService } from './services/order.service';
 import { OrderdetailComponent } from './components/orderdetail/orderdetail.component';
 import { UserLayoutComponent } from './components/user/user-layout/user-layout.component';
 import { UserNavigationComponent } from './components/user/user-navigation/user-navigation.component';
-import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
-import { AddressManagementComponent } from './components/user/address-management/address-management.component';
-import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+// import { UserProfileComponent} from './components/user/user-profile/user-profile.component';
+// import { AddressManagementComponent } from './components/user/address-management/address-management.component';
+// import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 import { TopnavComponent } from './components/common/topnav/topnav.component';
 import { TopbannerComponent } from './components/common/topbanner/topbanner.component';
 import { FeaturedComponent } from './components/common/featured/featured.component';
@@ -63,9 +63,9 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     OrderdetailComponent,
     UserLayoutComponent,
     UserNavigationComponent,
-    UserProfileComponent,
-    AddressManagementComponent,
-    OrderHistoryComponent,
+    // UserProfileComponent,
+    // AddressManagementComponent,
+    // OrderHistoryComponent,
     TopnavComponent,
     TopbannerComponent,
     FeaturedComponent,
