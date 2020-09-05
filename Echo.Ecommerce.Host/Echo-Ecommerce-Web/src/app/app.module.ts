@@ -19,8 +19,8 @@ import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-la
 import { LogoutComponent } from './components/user/logout/logout.component';
 
 import { HomeComponent } from './components/home/home.component';
-import { ProductComponent } from './components/admin/product/product.component';
-import { CategoryComponent } from './components/admin/category/category.component';
+// import { ProductComponent } from './components/admin/product/product.component';
+// import { CategoryComponent } from './components/admin/category/category.component';
 import { EmailConfirmComponent } from './components/user/email-confirm/email-confirm.component';
 import { TokenInterceptor } from '../app/auth/token.interceptor'
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -56,8 +56,8 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     BasicLayoutComponent,
     LogoutComponent,
     HomeComponent,
-    ProductComponent,
-    CategoryComponent,
+    // ProductComponent,
+    // CategoryComponent,
     EmailConfirmComponent,
     CheckoutComponent,
     OrderdetailComponent,
