@@ -13,8 +13,6 @@ export class CartService {
 
   public cartItems: Array<CartProduct> = [];
 
-
-
   /**
    * Get cart items
    */

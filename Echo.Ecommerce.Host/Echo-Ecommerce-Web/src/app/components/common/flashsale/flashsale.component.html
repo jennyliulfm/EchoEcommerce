@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <h5 class="mb-2">Flash Sales</h5>
         <div class="row no-gutters p-0 m-0">
-            <div class="col-md-3 mb-30" *ngFor=" let product of products">
+            <div class="col-md-3 mb-30" *ngFor=" let product of products;trackBy:trackbyPrdocutId" [routerLink]="['/productdetail', product.id]">
                 <div class="card" >  
                     <div class="card-body ">
                         <div class="d-flex justify-content-between align-items-center">
@@ -20,10 +20,10 @@
                         </div>
                         <div class="mb-0">
                             <h6 class="font-weight-semibold mb-1">
-                                <a href="#" class="text-default mb-2 stretched-link"
+                                <a  class="text-default mb-2 "
                                     data-abc="true">{{ product.title }}</a>
                             </h6>
-                            <a href="#" class="text-muted" data-abc="true">{{ product.category}}</a>
+                            <a  class="text-muted" data-abc="true">{{ product.category}}</a>
                         </div>
                         <div class="row mb-2 mt-2 no-gutters" style="position: relative;">
                             <div class="col-sm-6">

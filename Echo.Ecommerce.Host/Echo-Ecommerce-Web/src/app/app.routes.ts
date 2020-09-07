@@ -22,11 +22,18 @@ import { AddressManagementComponent } from './components/user/address-management
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 import { AdminModule } from '../app/modules/admin/admin.module';
 import { UserModule } from '../app/modules/user/user.module';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'admin', loadChildren: '../app/modules/admin/admin.module#AdminModule'},
-  { path: 'user', loadChildren: '../app/modules/user/user.module#UserModule'},
+  { path: "productdetail/:id", component: ProductDetailComponent },
+  { path: 'user/signup', component: SignupComponent },
+  { path: 'user/signin', component: SigninComponent },
+  { path: 'admin', loadChildren: '../app/modules/admin/admin.module#AdminModule' },
+  { path: 'user', loadChildren: '../app/modules/user/user.module#UserModule' },
+
 
 
   // {

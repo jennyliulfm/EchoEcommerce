@@ -8,7 +8,7 @@ import { CardProduct } from '../../../models/model';
 })
 export class FlashsaleComponent implements OnInit {
 
-  public products: Array<CardProduct> =[];
+  public products: Array<CardProduct> = [];
 
   constructor() { }
 
@@ -21,9 +21,9 @@ export class FlashsaleComponent implements OnInit {
    * 
    */
   getProducts() {
-    this.products = [ 
+    this.products = [
       {
-        id:1,
+        id: 1,
         title: "Toshiba Notebook with 500GB HDD & 8GB",
         description: "testing",
         price: 33.89,
@@ -34,7 +34,7 @@ export class FlashsaleComponent implements OnInit {
       },
 
       {
-        id:2,
+        id: 2,
         title: "Hygen Smart watch",
         description: "testing",
         price: 33.89,
@@ -44,7 +44,7 @@ export class FlashsaleComponent implements OnInit {
         expiredHours: 3,
       },
       {
-        id:3,
+        id: 3,
         title: "Hygen Smart watch",
         description: "testing",
         price: 33.89,
@@ -54,7 +54,7 @@ export class FlashsaleComponent implements OnInit {
         expiredHours: 20,
       },
       {
-        id:4,
+        id: 4,
         title: "Toshiba Notebook with 500GB HDD & 8GB",
         description: "testing",
         price: 33.89,
@@ -141,4 +141,10 @@ export class FlashsaleComponent implements OnInit {
     ]
   }
 
+  /**
+   * Trackby
+   */
+  trackbyPrdocutId(index: number, product: CardProduct): number {
+    return product.id
+  }
 }

@@ -68,4 +68,8 @@ export class PopularProductComponent implements OnInit {
     ];
   }
 
+  trackbyPrdocutId(index: number, product: CardProduct): number {
+    return product.id
+  }
+
 }

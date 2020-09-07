@@ -1,0 +1,38 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <app-topnav></app-topnav>
+    <div class="page-content">
+        <!-- <div class="container-fluid text-center" [ngStyle]="{'background-image': getBackgroundImage()}"> -->
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-lg-6 ml-auto justify-content-center ">
+                    <h3 class="m-t-none m-b">Sign in</h3>
+                    <div style="margin-bottom: 10px;">
+                        <div class="row clear">
+                            <button class="btn btn-social-icon btn-google mx-1 google-plus " style="float: left;"
+                                (click)="signInWithGoogle()">Login with
+                                Google <span class="fa fa-google"></span></button>
+                            <button class="btn btn-social-icon btn-facebook mx-1 facebook float-right"
+                                style="float: right;" (click)="signInWithFB()">Login with
+                                Facebook <span class="fa fa-facebook"></span></button>
+                        </div>
+                    </div>
+
+                    <form role="form" [formGroup]="userGroupModel" (ngSubmit)="userLogin()">
+                        <div class="form-group"><input type="email" placeholder="Enter email" class="form-control"
+                                formControlName="email"></div>
+                        <div class="form-group"><input type="password" placeholder="Password" class="form-control"
+                                [pattern]="passwordPattern" formControlName="password"></div>
+                        <div>
+                            <button class="btn btn-sm btn-primary float-right m-t-n-xs" type="submit"><strong>Log
+                                    in</strong></button>
+                            <label> <input type="checkbox" class="i-checks"> Remember me </label>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <app-footer></app-footer>
+
+    </div>

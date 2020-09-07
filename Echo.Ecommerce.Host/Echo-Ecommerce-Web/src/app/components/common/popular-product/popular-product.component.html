@@ -1,7 +1,7 @@
 <div class="container-fluid mt-50">
     <h5 class="mb-2">Popular Products</h5>
     <div class="row no-gutters justify-content-between">
-        <div class="col-md-3" *ngFor=" let product of products">
+        <div class="col-md-3" *ngFor=" let product of products;trackBy:trackbyPrdocutId">
             <div class="card card-body p-0">
                 <div
                     class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">

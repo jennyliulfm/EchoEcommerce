@@ -61,7 +61,7 @@
 
 
 <!-- Header Section Begin -->
-<div class="shop-top">
+<div class="shop-top fixed-top">
     <header class="header">
         <div class="header__top">
             <div class="container-fluid">
@@ -81,7 +81,7 @@
                                 <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="../../../assets/styles//images/language.png" alt="" >
+                                <img src="./assets/styles//images/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -90,11 +90,11 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth_login">
-                                <a href="#">Login</a>
+                                <span  [routerLink]="['/user/signin']">Login</span>
                             </div>
 
                             <div class="header__top__right__auth_signup">
-                                <a href="#">Sign Up</a>
+                                <span [routerLink]="['/user/signup']">Sign Up</span>
                             </div>
 
                             <div class="header__top__right__auth_signup">
@@ -108,13 +108,16 @@
                 <div class="row p-0 no-gutters m-0">
                     <div class="col-lg-2">
                         <div class="header__logo " style="align-content: center;">
-                            <a href="./index.html"><img src="../../../assets/styles/images/logo.png" alt="" style="display: block;width: 128px;height: 128px;" class="mx-auto d-block rounded-circle"></a>
+                            <a href="./index.html"><img src="./assets/styles/images/logo.png" alt=""
+                                    style="display: block;width: 128px;height: 128px;"
+                                    class="mx-auto d-block rounded-circle"></a>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="input-group header__menu">
-                            <input class="form-control py-1 border-left-0 border" type="search"
-                                id="example-search-input" style="height: 40px;" />
+                            <input #search class="form-control py-1 border-left-0 border" type="search"
+                                id="example-search-input" style="height: 40px;" [ngModel]="searchWords"
+                                (ngModelChange)="searchProduct(search.value)" />
                             <span class="input-group-prepend">
                                 <div class="input-group-text bg-transparent search-bar border border-white ">
                                     <a href=""><i class="fa fa-search"></i> </a>

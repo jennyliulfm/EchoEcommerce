@@ -45,6 +45,9 @@ import { MiddletopbannerComponent } from './components/common/middletopbanner/mi
 import { FlashsaleComponent } from './components/common/flashsale/flashsale.component';
 import { MiddleEventComponent } from './components/common/middle-event/middle-event.component';
 import { PopularProductComponent } from './components/common/popular-product/popular-product.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 
 @NgModule({
@@ -77,6 +80,9 @@ import { PopularProductComponent } from './components/common/popular-product/pop
     FlashsaleComponent,
     MiddleEventComponent,
     PopularProductComponent,
+    ProductDetailComponent,
+    SignupComponent,
+    SigninComponent,
 
   ],
   imports: [
