@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CardProduct } from 'src/app/models/model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-detail-page',
@@ -11,14 +13,15 @@ import { switchMap } from 'rxjs/operators';
 export class DetailPageComponent implements OnInit {
   route: ActivatedRoute;
 
-  constructor() { }
+  constructor(private chartService: CartService,
+    private productService: ProductService,) { }
 
   selectedItem?: CardProduct 
   
   ngOnInit(): void {
     this.route.params
-    .pipe(switchMap((params: Params) => { this.visibility='hidden'; return this.dishService.getDish(params['id']);}))
-    .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown';},
+    .pipe(switchMap((params: Params) => { this.visibility='hidden'; return this.productService.getDish(params['id']);}))
+    .subscribe(dish => { this. = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown';},
       errmess => this.errMess = <any>errmess);
   }
 
