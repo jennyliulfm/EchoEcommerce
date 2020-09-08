@@ -42,10 +42,15 @@ import { LatestProductsComponent } from './components/common/latest-products/lat
 import { TopcategoryComponent } from './components/common/topcategory/topcategory.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MiddletopbannerComponent } from './components/common/middletopbanner/middletopbanner.component';
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
 import { FlashsaleComponent } from './components/common/flashsale/flashsale.component';
+<<<<<<< HEAD
 import { MiddleEventComponent } from './components/common/middle-event/middle-event.component';
 import { PopularProductComponent } from './components/common/popular-product/popular-product.component';
 
+=======
+import { ReviewComponent } from './components/detail-page/review/review.component';
+>>>>>>> feature/detailpage
 
 @NgModule({
   declarations: [
@@ -74,10 +79,16 @@ import { PopularProductComponent } from './components/common/popular-product/pop
   
     TopcategoryComponent,
     MiddletopbannerComponent,
+<<<<<<< HEAD
     FlashsaleComponent,
     MiddleEventComponent,
     PopularProductComponent,
 
+=======
+    DetailPageComponent,
+    FlashsaleComponent,
+    ReviewComponent
+>>>>>>> feature/detailpage
   ],
   imports: [
     BrowserModule,

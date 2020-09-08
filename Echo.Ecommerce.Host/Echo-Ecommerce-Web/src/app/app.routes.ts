@@ -20,6 +20,7 @@ import { UserLayoutComponent } from './components/user/user-layout/user-layout.c
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { AddressManagementComponent } from './components/user/address-management/address-management.component';
 import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+<<<<<<< HEAD
 import { AdminModule } from '../app/modules/admin/admin.module';
 import { UserModule } from '../app/modules/user/user.module';
 
@@ -40,4 +41,36 @@ export const routes: Routes = [
   //   ],
   // },
 
+=======
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
+
+export const routes: Routes = [
+  {path:'home', component: HomeComponent},
+  { path: 'detailpage/:id', component:DetailPageComponent},
+  {
+    path: '',
+    component: BasicLayoutComponent,
+    children: [
+      { path:'', redirectTo:'home', pathMatch: 'full'},
+     
+      { path: 'admin/product', component: ProductComponent, canActivate: [AuthGuard]},
+      { path: 'admin/category', component: CategoryComponent, canActivate: [AuthGuard]},
+      { path: 'user/emailconfirm', component: EmailConfirmComponent,canActivate: [AuthGuard] },
+      { path: 'order/detail', component: OrderdetailComponent },
+      { path: 'order/checkout', component:CheckoutComponent },
+
+
+    ],
+  },
+  {
+    path:'userLayout',
+    component:UserLayoutComponent,
+    children:[
+      { path:'', redirectTo:'home', pathMatch: 'full'},
+      { path: 'user/profile', component:UserProfileComponent},
+      { path: 'user/addressmanagement', component:AddressManagementComponent},
+      { path: 'user/orderhistory', component:OrderHistoryComponent}
+    ]
+  }
+>>>>>>> feature/detailpage
 ];
